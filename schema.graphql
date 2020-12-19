@@ -1,18 +1,26 @@
-type Product {
-    productID: ID!
+type Geo {
+    lon: Float
+    lat: Float
+}
+
+type Person {
+    personID: ID!
     name: String @search(by: [term])
-    reviews: [Review] @hasInverse(field: about)
+    nickNames: [String]
+    # just year for now
+    dateOfBirth: Int 
+    # just year for now
+    dateOfDeath: Int
+    visited: [Geo]
+    related: [Person]
 }
 
-type Customer {
-    username: String! @id @search(by: [hash, regexp])
-    reviews: [Review] @hasInverse(field: by)
+type Story {
+    title: String
 }
 
-type Review {
-    id: ID!
-    about: Product!
-    by: Customer!
-    comment: String @search(by: [fulltext])
-    rating: Int @search
-}
+# type Edge {
+#     directional: Boolean
+#     # e.g. adoptive father
+#     type: String
+# }
