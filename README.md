@@ -19,12 +19,21 @@ mkdir dgraph
 
 map outside:inside port if needed
 
+Persistent data:
 docker run --rm -it \
     -p 8080:8080 \
     -p 9080:9080 \
     -p 8001:8000 \
     -v $(pwd)/dgraph:/dgraph \
     dgraph/standalone:v20.11.0
+
+Non persistent data:
+docker run --rm -it \
+    -p 8080:8080 \
+    -p 9080:9080 \
+    -p 8001:8000 \
+    dgraph/standalone:v20.11.0
+
 
 Visit http://localhost:8001 for Ratel UI
 
