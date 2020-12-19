@@ -20,10 +20,20 @@ const GraphDebugger = () => {
       <p>test query:</p>
       <pre>
         {`{
-me(func: has(starring)) {
-name
+  queryPerson {
+    __typename
+    personID
+    name
+  }
 }
-}`}
+
+{
+  queryStory {
+    __typename
+    title
+  }
+}
+`}
       </pre>
       <GraphiQL fetcher={graphQLFetcher} />
     </>

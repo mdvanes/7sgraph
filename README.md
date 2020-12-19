@@ -44,18 +44,18 @@ curl -X POST localhost:8080/admin/schema --data-binary '@schema.graphql'
 Populate with mutation query (in GraphiQL):
 
 mutation {
-  addProduct(input: [
-    { name: "GraphQL on Dgraph"},
-    { name: "Dgraph: The GraphQL Database"}
+  addPerson(input: [
+    { name: "Pa Salt"},
+    { name: "Maia"}
   ]) {
-    product {
-      productID
+    person {
+      personID
       name
     }
   }
-  addCustomer(input: [{ username: "Michael"}]) {
-    customer {
-      username
+  addStory(input: [{ title: "The Seven Sisters"}]) {
+    story {
+      title
     }
   }
 }
@@ -63,32 +63,59 @@ mutation {
 and retrieve them (in GraphiQL):
 
 query {
-  queryProduct {
+  queryPerson {
     name
   }
 }
 
 
-// TODO fix this:
+// TODO fill up:
 Populate the database with ./populate.sh
 
 In Ratel, try 
 
 ```
+query {
+  Person(func: has(Person.name)) {
+    Person.name
+  }
+}
+
+or
+
 {
- me(func: has(starring)) {
-   name
+  foo(func: has(dgraph.type)) {
+    Person.name
+    Story.title
   }
 }
 ```
+
+/* TODO fix: this works in debugger
+{
+  queryStory {
+    __typename
+    title
+  }
+}
+
+but this gives (correct?) nodes in Ratel, but without labels:
+
+{
+  foo(func: has(Story.title)) {
+
+    Story.title
+  }
+}
+*/
 
 or run on terminal:
 
 ```
 curl -i -H "Content-Type: application/dql" "localhost:8080/query" -XPOST -d $'
-{
- me(func: has(starring)) {
-   name
+query {
+  Person(func: has(name)) {
+    name
   }
 }
 ' 
