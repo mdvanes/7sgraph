@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+# 7sgraph
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+| Graph of characters from the Seven Sisters books
 
-## Available Scripts
+Stack:
 
-In the project directory, you can run:
+* CRA TypeScript
+* react-d3-graph
+* graphql-codegen
+* graphql-request
+* DGraph
+* GraphiQL
 
-### `yarn start`
+TODO Ratel has a "Geo" tab, use that!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Set up the backend
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+mkdir dgraph
 
-### `yarn test`
+map outside:inside port if needed
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+docker run --rm -it \
+    -p 8080:8080 \
+    -p 9080:9080 \
+    -p 8001:8000 \
+    -v $(pwd)/dgraph:/dgraph \
+    dgraph/standalone:v20.11.0
 
-### `yarn build`
+Visit http://localhost:8001 for Ratel UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create a schema:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+curl -X POST localhost:8080/admin/schema --data-binary '@schema.graphql'
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Populate with mutation query (in GraphiQL):
 
-### `yarn eject`
+mutation {
+  addProduct(input: [
+    { name: "GraphQL on Dgraph"},
+    { name: "Dgraph: The GraphQL Database"}
+  ]) {
+    product {
+      productID
+      name
+    }
+  }
+  addCustomer(input: [{ username: "Michael"}]) {
+    customer {
+      username
+    }
+  }
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+and retrieve them (in GraphiQL):
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+query {
+  queryProduct {
+    name
+  }
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+// TODO fix this:
+Populate the database with ./populate.sh
 
-## Learn More
+In Ratel, try 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+{
+ me(func: has(starring)) {
+   name
+  }
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+or run on terminal:
+
+```
+curl -i -H "Content-Type: application/dql" "localhost:8080/query" -XPOST -d $'
+{
+ me(func: has(starring)) {
+   name
+  }
+}
+' 
+```
