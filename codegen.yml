@@ -1,14 +1,22 @@
 overwrite: true
 schema: "http://localhost:8080/graphql"
-# documents: "src/**/*.graphql"
+documents: "src/**/*.graphql"
 generates:
   src/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"   
       # - "typescript-graphql-request"
-    config:
-      gqlImport: graphql-request#gql
+      - "typescript-react-apollo"
+    # config:
+    #   withComponent: true  
+    # config:
+    #   gqlImport: graphql-request#gql
+  # src/generated/graphql.components.tsx:
+  #   plugins:
+  #     - "typescript-react-apollo"
+  #   # config:
+  #   #   withComponent: true  
   ./schema.graphql.json:
     plugins:
       - "introspection"
