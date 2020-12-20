@@ -35,7 +35,7 @@ const myConfig: GraphConfiguration<CustomNode, GraphLink> = {
   focusAnimationDuration: 0.75,
   focusZoom: 1,
   //   freezeAllDragEvents: false,
-  height: 400,
+  height: 550,
   highlightDegree: 2,
   highlightOpacity: 0.2,
   linkHighlightBehavior: true,
@@ -118,40 +118,31 @@ const GraphQuery = () => {
   const justPersons = data?.queryPerson?.filter(isJustVal) ?? [];
 
   const graphData = {
-    nodes:
-      justPersons.map(({ personID, name }) => ({
-        id: personID || "a",
-        name: name || "",
-      })),
-    links:
-      justPersons.flatMap(({ personID, related }) => {
-        return (
-          related?.filter(isJustVal).map((relatedPerson) => ({
-            source: personID,
-            target: relatedPerson?.personID ?? "",
-          })) ?? []
-        );
-      }),
+    nodes: justPersons.map(({ personID, name }) => ({
+      id: personID || "a",
+      name: name || "",
+    })),
+    links: justPersons.flatMap(({ personID, related }) => {
+      return (
+        related?.filter(isJustVal).map((relatedPerson) => ({
+          source: personID,
+          target: relatedPerson?.personID ?? "",
+        })) ?? []
+      );
+    }),
   };
 
   return (
     <>
-      <ul>
-        {justPersons.map(({ personID, name }) => (
-          <li key={personID}>{name}</li>
-        ))}
-      </ul>
-      <div style={{ border: "1px solid black" }}>
-        {graphData.nodes.length > 0 && (
-          <Graph
-            id="graph-id" // id is mandatory
-            data={graphData}
-            config={myConfig}
-            //   onClickNode={onClickNode}
-            //   onClickLink={onClickLink}
-          />
-        )}
-      </div>
+      {graphData.nodes.length > 0 && (
+        <Graph
+          id="graph-id" // id is mandatory
+          data={graphData}
+          config={myConfig}
+          //   onClickNode={onClickNode}
+          //   onClickLink={onClickLink}
+        />
+      )}
     </>
   );
 };
