@@ -1,8 +1,3 @@
-type Geo {
-    lon: Float
-    lat: Float
-}
-
 type Person {
     personID: ID!
     name: String @search(by: [term])
@@ -11,12 +6,15 @@ type Person {
     dateOfBirth: Int 
     # just year for now
     dateOfDeath: Int
-    visited: [Geo]
+    # should be Geo/geo/Point/Point[]
+    location: [Int]
     related: [Person]
+    story: Story
 }
 
 type Story {
-    title: String
+    storyID: ID!
+    title: String @search(by: [term])
 }
 
 # type Edge {
