@@ -53,18 +53,53 @@
 # }
 # ' 
 
+# TODO figure out how to set location such that it shows up in Ratel. This does not work.
+# curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -X POST -d $'
+# {
+#   set {
+#    _:alcyone <Person.name> "Alcyone" .
+#    _:alcyone <dgraph.type> "Person" .
+#    _:alcyone <Person.location> "{\'type\':\'Point\',\'coordinates\':[-122.4220186,37.772318]}"^^<geo:geojson> .
+   
+#    _:asterope <Person.name> "Asterope" .
+#    _:asterope <dgraph.type> "Person" .
+#    _:asterope <Person.related> _:alcyone .
+
+#    _:book2 <Story.title> "The Storm Sister" .
+#    _:book2 <dgraph.type> "Story" .
+#   }
+# }
+# ' 
+
 curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -X POST -d $'
 {
   set {
-   _:alcyone <Person.name> "Alcyone" .
-   _:alcyone <dgraph.type> "Person" .
-   
-   _:asterope <Person.name> "Asterope" .
-   _:asterope <dgraph.type> "Person" .
-   _:asterope <Person.related> _:alcyone .
+   _:book1 <Story.title> "The Seven Sisters" .
+   _:book1 <dgraph.type> "Story" .
 
    _:book2 <Story.title> "The Storm Sister" .
    _:book2 <dgraph.type> "Story" .
+
+   _:maia <Person.name> "Maia" .
+   _:maia <dgraph.type> "Person" .
+   _:maia <Person.story> _:book1 .
+
+   _:alcyone <Person.name> "Alcyone" .
+   _:alcyone <Person.nickNames> "Ally" .
+   _:alcyone <Person.nickNames> "Storm" .
+   _:alcyone <dgraph.type> "Person" .
+   _:alcyone <Person.story> _:book2 .
+   
+   _:asterope <Person.name> "Asterope" .
+   _:asterope <Person.nickNames> "Star" .
+   _:asterope <Person.nickNames> "Shadow" .
+   _:asterope <dgraph.type> "Person" .
+
+   _:pasalt <Person.name> "Pa Salt" .
+   _:pasalt <dgraph.type> "Person" .
+   _:pasalt <Person.related> _:maia .
+   _:pasalt <Person.related> _:alcyone .
+   _:pasalt <Person.related> _:asterope .
   }
 }
 ' 
