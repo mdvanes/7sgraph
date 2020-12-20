@@ -1,0 +1,17 @@
+query getAllPersons {
+  queryPerson {
+    __typename
+    personID
+    name
+    dateOfBirth
+    nickNames
+    story {
+      title
+    }
+    related {
+      __typename
+      name
+      personID
+    }
+  }
+}
