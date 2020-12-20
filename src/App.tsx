@@ -1,7 +1,5 @@
 import React from "react";
-import GraphiQL from "graphiql";
 import logo from "./armillarysphere.svg";
-import { FetcherParams } from "graphiql/dist/components/GraphiQL";
 import "./App.css";
 import "graphiql/graphiql.css";
 import AppBar from "@material-ui/core/AppBar/AppBar";
@@ -10,11 +8,11 @@ import Toolbar from "@material-ui/core/Toolbar/Toolbar";
 import Typography from "@material-ui/core/Typography/Typography";
 import { Menu as MenuIcon } from "@material-ui/icons";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import GraphDebugger from "./GraphDebugger";
+import GraphDebugger from "./components/GraphDebugger/GraphDebugger";
 import { Box } from "@material-ui/core";
+import GraphQuery from "./components/GraphQuery/GraphQuery";
 
 function App() {
-  const classes = {};
   return (
     <Router>
       <div className="App">
@@ -73,7 +71,9 @@ function App() {
           <Route path="/debugger">
             <GraphDebugger />
           </Route>
-          <Route path="/">{/* <Home /> */}</Route>
+          <Route path="/">
+            <GraphQuery />
+          </Route>
         </Switch>
       </div>
     </Router>
