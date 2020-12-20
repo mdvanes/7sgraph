@@ -10,6 +10,7 @@ Stack:
 * graphql-request
 * DGraph
 * GraphiQL
+* https://github.com/graphql/vscode-graphql
 
 TODO Ratel has a "Geo" tab, use that!
 
@@ -39,7 +40,7 @@ Visit http://localhost:8001 for Ratel UI
 
 Create a schema:
 
-curl -X POST localhost:8080/admin/schema --data-binary '@schema.graphql'
+curl -X POST localhost:8080/admin/schema --data-binary '@prepare_schema.graphql'
 
 Populate with mutation query (in GraphiQL):
 
