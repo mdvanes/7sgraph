@@ -53,53 +53,54 @@
 # }
 # ' 
 
-# curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -X POST -d $'
-# {
-#   set {
-#    _:0x0003 <Person.name> "Alcyone" .
-#    _:0x0003 <dgraph.type> "Person" .
+curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -X POST -d $'
+{
+  set {
+   _:alcyone <Person.name> "Alcyone" .
+   _:alcyone <dgraph.type> "Person" .
    
-#    _:0x0004 <Person.name> "Asterope" .
-#    _:0x0004 <dgraph.type> "Person" .
-#    _:0x0004 <Person.related> _:0x0003 .
+   _:asterope <Person.name> "Asterope" .
+   _:asterope <dgraph.type> "Person" .
+   _:asterope <Person.related> _:alcyone .
 
-#    _:0x0005 <Story.title> "The Storm Sister" .
-#    _:0x0005 <dgraph.type> "Story" .
-#   }
-# }
-# ' 
+   _:book2 <Story.title> "The Storm Sister" .
+   _:book2 <dgraph.type> "Story" .
+  }
+}
+' 
 
 # https://dgraph.io/docs/mutations/json-mutation-format/#json-syntax-using-raw-http-or-ratel-ui
 # https://dgraph.io/docs/mutations/json-mutation-format/
+# https://dgraph.io/docs/tutorial-2/#adding-an-edge-between-existing-nodes
 
-curl -H "Content-Type: application/json" "localhost:8080/mutate?commitNow=true" -X POST -d $'
-{
-  "set": [
-    {
-      "Person.uid": "_:maia",
-      "Person.name": "Maia",
-      "dgraph.type": "Person"
-    },
-    {
-      "Person.uid": "_:alcyone",
-      "Person.name": "Alcyone",
-      "dgraph.type": "Person"
-    },
-    {
-      "uid": "_:maia",
-      "Person.related": [{"uid": "_:alcyone"}]
-    },   
-    {
-      "Story.title": "The Storm Sister",
-      "dgraph.type": "Story"
-    },
-    {
-      "Story.title": "The Seven Sisters",
-      "dgraph.type": "Story"
-    }
-  ]
-}
-' 
+# Setting a related link in JSON does not seem to work, unless using the resolved UID (see below)
+# curl -H "Content-Type: application/json" "localhost:8080/mutate?commitNow=true" -X POST -d $'
+# {
+#   "set": [
+#     {
+#       "Person.uid": "_:maia",
+#       "Person.name": "Maia",
+#       "dgraph.type": "Person"
+#     },
+#     {
+#       "Person.uid": "_:alcyone",
+#       "Person.name": "Alcyone",
+#       "dgraph.type": "Person",
+#       "Person.related": { 
+#         "uid": "_:maia" 
+#       }
+#     },  
+#     {
+#       "Story.title": "The Storm Sister",
+#       "dgraph.type": "Story"
+#     },
+#     {
+#       "Story.title": "The Seven Sisters",
+#       "dgraph.type": "Story"
+#     }
+#   ]
+# }
+# ' 
 
 # curl -H "Content-Type: application/json" "localhost:8080/mutate?commitNow=true" -X POST -d $'
 # {
