@@ -76,7 +76,7 @@ const GraphQuery = () => {
         <Graph
           id="graph-id" // id is mandatory
           data={graphData}
-          config={appGraphConfig}
+          config={appGraphConfig(window.innerWidth, window.innerHeight - 64 - 5)}
           //   onClickNode={onClickNode}
           //   onClickLink={onClickLink}
         />
