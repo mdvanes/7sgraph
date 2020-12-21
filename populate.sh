@@ -81,14 +81,22 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:book2 <dgraph.type> "Story" .
 
    _:zed <Person.name> "Zed" .
+   _:zed <Person.gender> "male" .
    _:zed <dgraph.type> "Person" .
 
+   _:kreeg <Person.name> "Kreeg" .
+   _:kreeg <Person.gender> "male" .
+   _:kreeg <dgraph.type> "Person" .
+   _:kreeg <Person.parent> _:zed .
+
    _:maia <Person.name> "Maia d\'Apliése" .
+   _:maia <Person.gender> "female" .
    _:maia <dgraph.type> "Person" .
    _:maia <Person.story> _:book1 .
    _:maia <Person.physicalRelation> _:zed .
 
    _:alcyone <Person.name> "Alcyone d\'Apliése" .
+   _:alcyone <Person.gender> "female" .
    _:alcyone <Person.nickNames> "Ally" .
    _:alcyone <Person.nickNames> "Storm" .
    _:alcyone <Person.dateOfBirth> "1980" .
@@ -104,7 +112,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:felixmhalvorsen <dgraph.type> "Person" .
    _:felixmhalvorsen <Person.parent> _:alcyone .
    _:felixmhalvorsen <Person.parent> _:thomfhalvorsen .
-   _:thomfhalvorsen <Person.story> _:book2 .
+   _:felixmhalvorsen <Person.story> _:book2 .
    
    _:piphalvorsen <Person.name> "Jens Halvorsen" .
    _:piphalvorsen <Person.nickNames> "Pip" .
@@ -112,9 +120,33 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:piphalvorsen <Person.parent> _:felixmhalvorsen .
 
    _:asterope <Person.name> "Asterope d\'Apliése" .
+   _:asterope <Person.gender> "female" .
    _:asterope <Person.nickNames> "Star" .
    _:asterope <Person.nickNames> "Shadow" .
    _:asterope <dgraph.type> "Person" .
+
+   _:celeano <Person.name> "Celeano d\'Apliése" .
+   _:celeano <Person.gender> "female" .
+   _:celeano <Person.nickNames> "CeCe" .
+   _:celeano <Person.nickNames> "Pearl" .
+   _:celeano <dgraph.type> "Person" .
+
+   _:taygete <Person.name> "Taygete d\'Apliése" .
+   _:taygete <Person.gender> "female" .
+   _:taygete <Person.nickNames> "Tiggy" .
+   _:taygete <Person.nickNames> "Moon" .
+   _:taygete <dgraph.type> "Person" .
+
+   _:electra <Person.name> "Electra d\'Apliése" .
+   _:electra <Person.gender> "female" .
+   _:electra <Person.nickNames> "Sun" .
+   _:electra <dgraph.type> "Person" .
+   _:electra <Person.physicalRelation> _:zed .
+
+   _:merope <Person.name> "Merope d\'Apliése" .
+   _:merope <Person.gender> "female" .
+   _:merope <Person.nickNames> "Missing" .
+   _:merope <dgraph.type> "Person" .
 
    _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <dgraph.type> "Person" .
@@ -122,6 +154,10 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:pasalt <Person.nonBioParent> _:maia .
    _:pasalt <Person.nonBioParent> _:alcyone .
    _:pasalt <Person.nonBioParent> _:asterope .
+   _:pasalt <Person.nonBioParent> _:celeano .
+   _:pasalt <Person.nonBioParent> _:taygete .
+   _:pasalt <Person.nonBioParent> _:electra .
+   _:pasalt <Person.nonBioParent> _:merope .
   }
 }
 ' 

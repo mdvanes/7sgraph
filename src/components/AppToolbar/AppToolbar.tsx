@@ -4,7 +4,6 @@ import {
   Link as RouterLink,
 } from "react-router-dom";
 import { Button, makeStyles } from "@material-ui/core";
-// import { ReactComponent as ArmillarySphereIcon } from "../../armillarysphere.svg";
 import ArmillarySphereIcon from "../ArmillarySphereIcon/ArmillarySphereIcon";
 
 const useStyles = makeStyles((theme) => ({
