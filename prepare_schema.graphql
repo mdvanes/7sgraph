@@ -8,7 +8,9 @@ type Person {
     dateOfDeath: Int
     # should be Geo/geo/Point/Point[]
     location: [Int]
-    related: [Person]
+    parent: [Person]
+    nonBioParent: [Person]
+    physicalRelation: [Person]
     story: Story
 }
 
