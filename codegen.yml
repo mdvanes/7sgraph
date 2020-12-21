@@ -10,8 +10,9 @@ generates:
       # - "typescript-react-apollo"
     # config:
     #   withComponent: true  
-    # config:
-    #   gqlImport: graphql-request#gql
+    config:
+      # breaks because gql yields a string not a document: gqlImport: graphql-request#gql
+      gqlImport: graphql.macro#gql
   # src/generated/graphql.components.tsx:
   #   plugins:
   #     - "typescript-react-apollo"

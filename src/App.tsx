@@ -1,75 +1,23 @@
 import React from "react";
-import logo from "./armillarysphere.svg";
 import "./App.css";
 import "graphiql/graphiql.css";
 import AppBar from "@material-ui/core/AppBar/AppBar";
-import IconButton from "@material-ui/core/IconButton/IconButton";
-import Toolbar from "@material-ui/core/Toolbar/Toolbar";
-import Typography from "@material-ui/core/Typography/Typography";
-import { Menu as MenuIcon } from "@material-ui/icons";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import GraphDebugger from "./components/GraphDebugger/GraphDebugger";
-import { Box } from "@material-ui/core";
 import GraphQuery from "./components/GraphQuery/GraphQuery";
+import AppToolbar from "./components/AppToolbar/AppToolbar";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6">
-              <img
-                src={logo}
-                className="App-logo"
-                alt="logo"
-                style={{ width: "30px", fill: "white", marginRight: "10px" }}
-              />
-              Seven Sisters characters graph
-            </Typography>
-            <Box m={1}>
-              <Link to="/">Graph</Link>
-            </Box>
-            <Box m={1}>
-              <Link to="/debugger">Debugger</Link>
-            </Box>
-            <Box m={1}>
-              <a href="http://localhost:8001/?latest">Ratel</a>
-            </Box>
-          </Toolbar>
+          <AppToolbar />
         </AppBar>
-        {/* <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} />
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer> */}
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <Switch>
           <Route path="/debugger">
             <GraphDebugger />

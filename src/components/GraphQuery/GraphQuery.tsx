@@ -15,7 +15,7 @@ import { FC, useEffect, useState } from "react";
 //   uri: "http://localhost:8080/graphql",
 // });
 
-const client = new GraphQLClient("http://localhost:8080/graphql", {
+const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
 });
 
@@ -45,7 +45,7 @@ function isJustVal<T>(val: Maybe<T>): val is T {
 // };
 
 // TODO try to fix Codegen. Most important, because then wrap Sdk calls in useEffect and use useState to manage nodes/links.
-
+// TODO using gql from graphql-requests breaks the generated type in getSdk
 
 const GraphQuery: FC = () => {
   const [graphData, setGraphData] = useState<any>();
