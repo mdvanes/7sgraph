@@ -1,6 +1,6 @@
 # 7sgraph
 
-| Graph of characters from the Seven Sisters books
+> Graph of characters from the Seven Sisters books
 
 Stack:
 
@@ -13,6 +13,9 @@ Stack:
 * https://github.com/graphql/vscode-graphql
 
 TODO Ratel has a "Geo" tab, use that!
+
+* filter/query by story/date/geo
+
 
 ## Set up the backend
 

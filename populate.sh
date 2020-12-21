@@ -80,16 +80,37 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:book2 <Story.title> "The Storm Sister" .
    _:book2 <dgraph.type> "Story" .
 
+   _:zed <Person.name> "Zed" .
+   _:zed <dgraph.type> "Person" .
+
    _:maia <Person.name> "Maia" .
    _:maia <dgraph.type> "Person" .
    _:maia <Person.story> _:book1 .
+   _:maia <Person.physicalRelation> _:zed .
 
-   _:alcyone <Person.name> "Alcyone" .
+   _:alcyone <Person.name> "Alcyone d\'Apliese" .
    _:alcyone <Person.nickNames> "Ally" .
    _:alcyone <Person.nickNames> "Storm" .
+   _:alcyone <Person.dateOfBirth> "1980" .
    _:alcyone <dgraph.type> "Person" .
    _:alcyone <Person.story> _:book2 .
    
+   _:thomfhalvorsen <Person.name> "Thom Felix Halvorsen" .
+   _:thomfhalvorsen <Person.dateOfBirth> "1980" .
+   _:thomfhalvorsen <dgraph.type> "Person" .
+   _:thomfhalvorsen <Person.story> _:book2 .
+
+   _:felixmhalvorsen <Person.name> "Felix Mendelssohn Halvorsen" .
+   _:felixmhalvorsen <dgraph.type> "Person" .
+   _:felixmhalvorsen <Person.parent> _:alcyone .
+   _:felixmhalvorsen <Person.parent> _:thomfhalvorsen .
+   _:thomfhalvorsen <Person.story> _:book2 .
+   
+   _:piphalvorsen <Person.name> "Jens Halvorsen" .
+   _:piphalvorsen <Person.nickNames> "Pip" .
+   _:piphalvorsen <dgraph.type> "Person" .
+   _:piphalvorsen <Person.parent> _:felixmhalvorsen .
+
    _:asterope <Person.name> "Asterope" .
    _:asterope <Person.nickNames> "Star" .
    _:asterope <Person.nickNames> "Shadow" .
@@ -97,9 +118,10 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
 
    _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <dgraph.type> "Person" .
-   _:pasalt <Person.related> _:maia .
-   _:pasalt <Person.related> _:alcyone .
-   _:pasalt <Person.related> _:asterope .
+   _:pasalt <Person.dateOfDeath> "2007" .
+   _:pasalt <Person.nonBioParent> _:maia .
+   _:pasalt <Person.nonBioParent> _:alcyone .
+   _:pasalt <Person.nonBioParent> _:asterope .
   }
 }
 ' 

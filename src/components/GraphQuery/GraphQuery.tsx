@@ -1,12 +1,7 @@
-import React from "react";
-import {
-  Graph,
-  GraphConfiguration,
-  GraphLink,
-  GraphNode,
-} from "react-d3-graph";
-import { Maybe, useGetAllPersonsQuery } from "../../generated/graphql";
+import { Graph } from "react-d3-graph";
+import { Maybe, useGetAllPersonsQuery, useGetPersonByNameQuery } from "../../generated/graphql";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
+import appGraphConfig from "./appGraphConfig";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -22,78 +17,6 @@ const client = new ApolloClient({
 function isJustVal<T>(val: Maybe<T>): val is T {
   return Boolean(val);
 }
-
-interface CustomNode extends GraphNode {
-  name: string;
-}
-
-// the graph configuration, just override the ones you need
-const myConfig: GraphConfiguration<CustomNode, GraphLink> = {
-  automaticRearrangeAfterDropNode: true,
-  collapsible: true,
-  directed: true,
-  focusAnimationDuration: 0.75,
-  focusZoom: 1,
-  //   freezeAllDragEvents: false,
-  height: 550,
-  highlightDegree: 2,
-  highlightOpacity: 0.2,
-  linkHighlightBehavior: true,
-  maxZoom: 12,
-  minZoom: 0.05,
-  nodeHighlightBehavior: true,
-  panAndZoom: false,
-  staticGraph: false,
-  staticGraphWithDragAndDrop: false,
-  width: 800,
-  d3: {
-    alphaTarget: 0.05,
-    gravity: -250,
-    linkLength: 120,
-    linkStrength: 2,
-    disableLinkForce: false,
-  },
-  node: {
-    color: "#d3d3d3",
-    fontColor: "black",
-    fontSize: 10,
-    fontWeight: "normal",
-    highlightColor: "red",
-    highlightFontSize: 14,
-    highlightFontWeight: "bold",
-    highlightStrokeColor: "red",
-    highlightStrokeWidth: 1.5,
-    mouseCursor: "crosshair",
-    opacity: 0.9,
-    renderLabel: true,
-    size: 200,
-    strokeColor: "none",
-    strokeWidth: 1.5,
-    svg: "",
-    symbolType: "circle",
-    labelProperty: (n: { name: string }) => n.name,
-  },
-  link: {
-    color: "lightgray",
-    fontColor: "black",
-    fontSize: 8,
-    fontWeight: "normal",
-    highlightColor: "red",
-    highlightFontSize: 8,
-    highlightFontWeight: "normal",
-    // labelProperty: "label",
-    mouseCursor: "pointer",
-    opacity: 1,
-    renderLabel: false,
-    semanticStrokeWidth: true,
-    strokeWidth: 3,
-    markerHeight: 6,
-    markerWidth: 6,
-    // strokeDasharray: 0,
-    // strokeDashoffset: 0,
-    // strokeLinecap: "butt",
-  },
-};
 
 // const fakeData = {
 //   nodes: [
@@ -114,6 +37,9 @@ const GraphQuery = () => {
   const { data /*, loading, error */ } = useGetAllPersonsQuery({
     client,
   });
+  // const { data /*, loading, error */ } = useGetPersonByNameQuery({
+  //   client, variables: { name: "Salt"}
+  // });
 
   const justPersons = data?.queryPerson?.filter(isJustVal) ?? [];
 
@@ -122,14 +48,26 @@ const GraphQuery = () => {
       id: personID || "a",
       name: name || "",
     })),
-    links: justPersons.flatMap(({ personID, related }) => {
-      return (
-        related?.filter(isJustVal).map((relatedPerson) => ({
-          source: personID,
-          target: relatedPerson?.personID ?? "",
-        })) ?? []
-      );
-    }),
+    links: justPersons.flatMap(
+      ({ personID, parent, nonBioParent, physicalRelation }) => {
+        const relatedParent =
+          parent?.filter(isJustVal).map((parentPerson) => ({
+            source: personID,
+            target: parentPerson?.personID ?? "",
+          })) ?? [];
+        const relatedNonBio =
+          nonBioParent?.filter(isJustVal).map((nonBioParentPerson) => ({
+            source: personID,
+            target: nonBioParentPerson?.personID ?? "",
+          })) ?? [];
+        const relatedPhys =
+          physicalRelation?.filter(isJustVal).map((physicalRelationPerson) => ({
+            source: personID,
+            target: physicalRelationPerson?.personID ?? "",
+          })) ?? [];
+        return relatedParent.concat(relatedNonBio, relatedPhys);
+      }
+    ),
   };
 
   return (
@@ -138,7 +76,7 @@ const GraphQuery = () => {
         <Graph
           id="graph-id" // id is mandatory
           data={graphData}
-          config={myConfig}
+          config={appGraphConfig}
           //   onClickNode={onClickNode}
           //   onClickLink={onClickLink}
         />

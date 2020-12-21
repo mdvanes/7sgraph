@@ -1,5 +1,5 @@
-query getAllPersons {
-  queryPerson {
+query getPersonByName($name: String!) {
+  queryPerson(filter: { name: {allofterms: $name}}) {
     __typename
     personID
     name
