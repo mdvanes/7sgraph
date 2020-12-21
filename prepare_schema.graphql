@@ -2,6 +2,7 @@ type Person {
     personID: ID!
     name: String @search(by: [term])
     nickNames: [String]
+    gender: String
     # just year for now
     dateOfBirth: Int 
     # just year for now
