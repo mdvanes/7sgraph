@@ -5,14 +5,14 @@ interface CustomNode extends GraphNode {
 }
 
 // the graph configuration, just override the ones you need
-const appGraphConfig: GraphConfiguration<CustomNode, GraphLink> = {
+const appGraphConfig = (width: number, height: number): GraphConfiguration<CustomNode, GraphLink> => ({
   automaticRearrangeAfterDropNode: true,
   collapsible: true,
   directed: true,
   focusAnimationDuration: 0.75,
   focusZoom: 1,
   //   freezeAllDragEvents: false,
-  height: 550,
+  height,
   highlightDegree: 2,
   highlightOpacity: 0.2,
   linkHighlightBehavior: true,
@@ -22,7 +22,7 @@ const appGraphConfig: GraphConfiguration<CustomNode, GraphLink> = {
   panAndZoom: false,
   staticGraph: false,
   staticGraphWithDragAndDrop: false,
-  width: 800,
+  width,
   d3: {
     alphaTarget: 0.05,
     gravity: -250,
@@ -70,6 +70,6 @@ const appGraphConfig: GraphConfiguration<CustomNode, GraphLink> = {
     // strokeDashoffset: 0,
     // strokeLinecap: "butt",
   },
-};
+});
 
 export default appGraphConfig;
