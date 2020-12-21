@@ -83,12 +83,12 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:zed <Person.name> "Zed" .
    _:zed <dgraph.type> "Person" .
 
-   _:maia <Person.name> "Maia" .
+   _:maia <Person.name> "Maia d\'Apliése" .
    _:maia <dgraph.type> "Person" .
    _:maia <Person.story> _:book1 .
    _:maia <Person.physicalRelation> _:zed .
 
-   _:alcyone <Person.name> "Alcyone d\'Apliese" .
+   _:alcyone <Person.name> "Alcyone d\'Apliése" .
    _:alcyone <Person.nickNames> "Ally" .
    _:alcyone <Person.nickNames> "Storm" .
    _:alcyone <Person.dateOfBirth> "1980" .
@@ -111,7 +111,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:piphalvorsen <dgraph.type> "Person" .
    _:piphalvorsen <Person.parent> _:felixmhalvorsen .
 
-   _:asterope <Person.name> "Asterope" .
+   _:asterope <Person.name> "Asterope d\'Apliése" .
    _:asterope <Person.nickNames> "Star" .
    _:asterope <Person.nickNames> "Shadow" .
    _:asterope <dgraph.type> "Person" .

@@ -36,6 +36,9 @@ function App() {
             <Box m={1}>
               <Link to="/debugger">Debugger</Link>
             </Box>
+            <Box m={1}>
+              <a href="http://localhost:8001/?latest">Ratel</a>
+            </Box>
           </Toolbar>
         </AppBar>
         {/* <Drawer
