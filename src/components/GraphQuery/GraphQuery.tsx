@@ -44,8 +44,20 @@ function isJustVal<T>(val: Maybe<T>): val is T {
 //   ],
 // };
 
-// TODO try to fix Codegen. Most important, because then wrap Sdk calls in useEffect and use useState to manage nodes/links.
-// TODO using gql from graphql-requests breaks the generated type in getSdk
+// TODO first search a person (Pa Salt) by name. Then onclick find all related nodes with
+/*
+{
+  // node(func: uid(0x8)) { or
+  node(func: eq(Person.name, "Pa Salt")) {
+    uid
+    expand(_all_) {
+      uid
+      expand(_all_)
+    }
+  }
+}
+*/
+// however, this is "Ratel" DQL. This should be a normal query.
 
 const GraphQuery: FC = () => {
   const [graphData, setGraphData] = useState<any>();
@@ -63,7 +75,13 @@ const GraphQuery: FC = () => {
         }));
 
         const links = justPersons.flatMap(
-          ({ personID, parent, nonBioParent, physicalRelation }) => {
+          ({
+            personID,
+            parent,
+            nonBioParent,
+            physicalRelation,
+            // otherRelation,
+          }) => {
             const relatedParent =
               parent?.filter(isJustVal).map((parentPerson) => ({
                 source: personID,
@@ -81,7 +99,12 @@ const GraphQuery: FC = () => {
                   source: personID,
                   target: physicalRelationPerson?.personID ?? "",
                 })) ?? [];
-            return relatedParent.concat(relatedNonBio, relatedPhys);
+            // const relatedOther
+            //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
+            //     source: personID,
+            //     target: otherRelationPerson?.personID ?? "",
+            //   })) ?? [];
+            return relatedParent.concat(relatedNonBio, relatedPhys); // , relatedOther);
           }
         );
 

@@ -148,9 +148,15 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:merope <Person.nickNames> "Missing" .
    _:merope <dgraph.type> "Person" .
 
-   _:pasalt <Person.name> "Pa Salt" .
+   _:marina <Person.name> "Marina" .
+   _:marina <Person.nickNames> "Ma" .
+   _:marina <Person.gender> "female" .
+   _:marina <dgraph.type> "Person" .
+
    _:pasalt <dgraph.type> "Person" .
+   _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <Person.dateOfDeath> "2007" .
+   _:marina <Person.gender> "male" .
    _:pasalt <Person.nonBioParent> _:maia .
    _:pasalt <Person.nonBioParent> _:alcyone .
    _:pasalt <Person.nonBioParent> _:asterope .
@@ -158,6 +164,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:pasalt <Person.nonBioParent> _:taygete .
    _:pasalt <Person.nonBioParent> _:electra .
    _:pasalt <Person.nonBioParent> _:merope .
+   _:pasalt <Person.otherRelation> _:marina .
   }
 }
 ' 
