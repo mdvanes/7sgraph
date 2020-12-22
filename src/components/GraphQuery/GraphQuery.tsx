@@ -82,15 +82,23 @@ const GraphQuery: FC = () => {
             physicalRelation,
             // otherRelation,
           }) => {
-            const relatedParent =
+            // TODO extend Link
+            type CustomLink = {
+              source: string,
+              target: string;
+              color?: string;
+            }
+            const relatedParent: CustomLink[] =
               parent?.filter(isJustVal).map((parentPerson) => ({
                 source: personID,
                 target: parentPerson?.personID ?? "",
+                color: "#141823",
               })) ?? [];
             const relatedNonBio =
               nonBioParent?.filter(isJustVal).map((nonBioParentPerson) => ({
                 source: personID,
                 target: nonBioParentPerson?.personID ?? "",
+                color: "#3f51b5",
               })) ?? [];
             const relatedPhys =
               physicalRelation
@@ -98,6 +106,7 @@ const GraphQuery: FC = () => {
                 .map((physicalRelationPerson) => ({
                   source: personID,
                   target: physicalRelationPerson?.personID ?? "",
+                  color: "#f50057",
                 })) ?? [];
             // const relatedOther
             //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
@@ -122,7 +131,7 @@ const GraphQuery: FC = () => {
           nodes,
           links: linksToExistingNodes,
         });
-        console.log(nodes, links);
+        // console.log(nodes, links);
       } catch (err) {
         console.error(err);
       }
