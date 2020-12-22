@@ -12,6 +12,7 @@ type Person {
     parent: [Person]
     nonBioParent: [Person]
     physicalRelation: [Person]
+    otherRelation: [Person]
     story: Story
 }
 

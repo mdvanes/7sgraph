@@ -23,5 +23,10 @@ query getPersonByName($name: String!) {
       name
       personID
     }
+    otherRelation {
+      __typename
+      name
+      personID
+    }
   }
 }
