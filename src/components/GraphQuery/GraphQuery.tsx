@@ -12,7 +12,7 @@ import {
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
 import { GraphQLClient } from "graphql-request";
 import { FC, useEffect, useRef, useState } from "react";
-import getConnectedToNameDQL from "../../dql/getPersonsByRelation";
+// import getConnectedToNameDQL from "../../dql/getPersonsByRelation";
 
 // const client = new ApolloClient({
 //   cache: new InMemoryCache(),
@@ -64,13 +64,7 @@ const convertPersonsToGraphData = (
   const allNodes = nodes.concat(relatedNodes);
 
   const links = justPersons.flatMap(
-    ({
-      personID,
-      parent,
-      nonBioParent,
-      physicalRelation,
-      // otherRelation,
-    }) => {
+    ({ personID, parent, nonBioParent, physicalRelation, otherRelation }) => {
       // TODO extend Link
       type CustomLink = {
         source: string;
@@ -96,12 +90,12 @@ const convertPersonsToGraphData = (
           target: physicalRelationPerson?.personID ?? "",
           color: "#f50057",
         })) ?? [];
-      // const relatedOther
-      //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
-      //     source: personID,
-      //     target: otherRelationPerson?.personID ?? "",
-      //   })) ?? [];
-      return relatedParent.concat(relatedNonBio, relatedPhys); // , relatedOther);
+      const relatedOther =
+        otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
+          source: personID,
+          target: otherRelationPerson?.personID ?? "",
+        })) ?? [];
+      return relatedParent.concat(relatedNonBio, relatedPhys, relatedOther);
     }
   );
 
@@ -114,20 +108,23 @@ const convertPersonsToGraphData = (
   return [allNodes, linksToExistingNodes];
 };
 
-const convertRelatedToNodes = (queryPerson: GetPersonByNameQuery["queryPerson"]): CustomNode[] => {
+const convertRelatedToNodes = (
+  queryPerson: GetPersonByNameQuery["queryPerson"]
+): CustomNode[] => {
   const justPersons = queryPerson?.filter(isJustVal) ?? [];
   const {
     parent,
     nonBioParent,
     physicalRelation,
-    // otherRelation,
+    otherRelation,
   } = justPersons[0];
 
   const justParents = parent?.filter(isJustVal) ?? [];
   const justNonBioParents = nonBioParent?.filter(isJustVal) ?? [];
   const justPhysical = physicalRelation?.filter(isJustVal) ?? [];
+  const justOther = otherRelation?.filter(isJustVal) ?? [];
   const nodes = justParents
-    .concat(justNonBioParents, justPhysical)
+    .concat(justNonBioParents, justPhysical, justOther)
     .map<CustomNode>(({ personID, name }) => ({
       id: personID || "a",
       name: name || "",
@@ -140,7 +137,16 @@ const convertPersonsToGraphData1 = (
   getPerson: GetPersonByUidQuery["getPerson"]
 ) => {
   // const justPersons = queryPerson?.filter(isJustVal) ?? [];
-  const justPersons = [getPerson || { personID: "", name: "", parent: [], nonBioParent: [], physicalRelation: [] }];
+  const justPersons = [
+    getPerson || {
+      personID: "",
+      name: "",
+      parent: [],
+      nonBioParent: [],
+      physicalRelation: [],
+      otherRelation: [],
+    },
+  ];
 
   const nodes = justPersons.map(({ personID, name }) => ({
     id: personID || "a",
@@ -152,13 +158,7 @@ const convertPersonsToGraphData1 = (
   const allNodes = nodes.concat(relatedNodes);
 
   const links = justPersons.flatMap(
-    ({
-      personID,
-      parent,
-      nonBioParent,
-      physicalRelation,
-      // otherRelation,
-    }) => {
+    ({ personID, parent, nonBioParent, physicalRelation, otherRelation }) => {
       // TODO extend Link
       type CustomLink = {
         source: string;
@@ -184,12 +184,12 @@ const convertPersonsToGraphData1 = (
           target: physicalRelationPerson?.personID ?? "",
           color: "#f50057",
         })) ?? [];
-      // const relatedOther
-      //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
-      //     source: personID,
-      //     target: otherRelationPerson?.personID ?? "",
-      //   })) ?? [];
-      return relatedParent.concat(relatedNonBio, relatedPhys); // , relatedOther);
+      const relatedOther =
+        otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
+          source: personID,
+          target: otherRelationPerson?.personID ?? "",
+        })) ?? [];
+      return relatedParent.concat(relatedNonBio, relatedPhys, relatedOther);
     }
   );
 
@@ -211,14 +211,17 @@ const convertRelatedToNodes1 = (
     parent,
     nonBioParent,
     physicalRelation,
-    // otherRelation,
+    otherRelation,
   } = getPerson || { parent: [], nonBioParent: [] };
 
   const justParents = parent?.filter(isJustVal).filter(isJustVal) ?? [];
-  const justNonBioParents = nonBioParent?.filter(isJustVal).filter(isJustVal) ?? [];
-  const justPhysical = physicalRelation?.filter(isJustVal).filter(isJustVal) ?? [];
+  const justNonBioParents =
+    nonBioParent?.filter(isJustVal).filter(isJustVal) ?? [];
+  const justPhysical =
+    physicalRelation?.filter(isJustVal).filter(isJustVal) ?? [];
+  const justOther = otherRelation?.filter(isJustVal).filter(isJustVal) ?? [];
   const nodes = justParents
-    .concat(justNonBioParents, justPhysical)
+    .concat(justNonBioParents, justPhysical, justOther)
     .map<CustomNode>(({ personID, name }) => ({
       id: personID || "a",
       name: name || "",
