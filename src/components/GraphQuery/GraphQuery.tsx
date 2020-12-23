@@ -6,6 +6,7 @@ import {
   getSdk,
   GetPersonByNameQuery,
   Person,
+  GetPersonByUidQuery,
 } from "../../generated/graphql";
 // import { ApolloClient, InMemoryCache } from "@apollo/client";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
@@ -49,7 +50,9 @@ function isJustVal<T>(val: Maybe<T>): val is T {
 
 // TODO first search a person (Pa Salt) by name. Then onclick find all related nodes with
 
-const convertPersonsToGraphData = (queryPerson: GetPersonByNameQuery["queryPerson"]) => {
+const convertPersonsToGraphData = (
+  queryPerson: GetPersonByNameQuery["queryPerson"]
+) => {
   const justPersons = queryPerson?.filter(isJustVal) ?? [];
 
   const nodes = justPersons.map(({ personID, name }) => ({
@@ -129,13 +132,104 @@ const convertRelatedToNodes = (queryPerson: GetPersonByNameQuery["queryPerson"])
       id: personID || "a",
       name: name || "",
     }));
-    console.log(nodes);
+  console.log(nodes);
+  return nodes;
+};
+
+const convertPersonsToGraphData1 = (
+  getPerson: GetPersonByUidQuery["getPerson"]
+) => {
+  // const justPersons = queryPerson?.filter(isJustVal) ?? [];
+  const justPersons = [getPerson || { personID: "", name: "", parent: [], nonBioParent: [], physicalRelation: [] }];
+
+  const nodes = justPersons.map(({ personID, name }) => ({
+    id: personID || "a",
+    name: name || "",
+  }));
+  //  || { parent: [], nonBioParent: [] }
+
+  const relatedNodes = convertRelatedToNodes1(getPerson);
+  const allNodes = nodes.concat(relatedNodes);
+
+  const links = justPersons.flatMap(
+    ({
+      personID,
+      parent,
+      nonBioParent,
+      physicalRelation,
+      // otherRelation,
+    }) => {
+      // TODO extend Link
+      type CustomLink = {
+        source: string;
+        target: string;
+        color?: string;
+      };
+      // TODO make helper function
+      const relatedParent: CustomLink[] =
+        parent?.filter(isJustVal).map((parentPerson) => ({
+          source: personID,
+          target: parentPerson?.personID ?? "",
+          color: "#141823",
+        })) ?? [];
+      const relatedNonBio =
+        nonBioParent?.filter(isJustVal).map((nonBioParentPerson) => ({
+          source: personID,
+          target: nonBioParentPerson?.personID ?? "",
+          color: "#3f51b5",
+        })) ?? [];
+      const relatedPhys =
+        physicalRelation?.filter(isJustVal).map((physicalRelationPerson) => ({
+          source: personID,
+          target: physicalRelationPerson?.personID ?? "",
+          color: "#f50057",
+        })) ?? [];
+      // const relatedOther
+      //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
+      //     source: personID,
+      //     target: otherRelationPerson?.personID ?? "",
+      //   })) ?? [];
+      return relatedParent.concat(relatedNonBio, relatedPhys); // , relatedOther);
+    }
+  );
+
+  const linksToExistingNodes = links.filter(
+    (link) =>
+      allNodes.some((n) => n.id === link.source) &&
+      allNodes.some((n) => n.id === link.target)
+  );
+
+  return [allNodes, linksToExistingNodes];
+};
+
+// TODO merge with convertRelatedToNodes. Difference is this accepts 1 person, above accepts an array
+const convertRelatedToNodes1 = (
+  getPerson: GetPersonByUidQuery["getPerson"]
+): CustomNode[] => {
+  // const justPersons = queryPerson?.filter(isJustVal) ?? [];
+  const {
+    parent,
+    nonBioParent,
+    physicalRelation,
+    // otherRelation,
+  } = getPerson || { parent: [], nonBioParent: [] };
+
+  const justParents = parent?.filter(isJustVal).filter(isJustVal) ?? [];
+  const justNonBioParents = nonBioParent?.filter(isJustVal).filter(isJustVal) ?? [];
+  const justPhysical = physicalRelation?.filter(isJustVal).filter(isJustVal) ?? [];
+  const nodes = justParents
+    .concat(justNonBioParents, justPhysical)
+    .map<CustomNode>(({ personID, name }) => ({
+      id: personID || "a",
+      name: name || "",
+    }));
+  console.log(nodes);
   return nodes;
 };
 
 const GraphQuery: FC = () => {
   const [graphData, setGraphData] = useState<any>();
-  const { getAllPersons, getPersonByName } = getSdk(client);
+  const { getPersonByName, getPersonByUid } = getSdk(client);
   const graphRef = useRef();
 
   useEffect(() => {
@@ -238,12 +332,12 @@ const GraphQuery: FC = () => {
     (async () => {
       try {
         // TODO replace getPersonByName with getPersonByUID
-        const { queryPerson } = await getPersonByName({ name });
+        const { getPerson } = await getPersonByUid({ uid });
         // const { queryPerson } = await getAllPersons();
         // TODO unwrap nodes from nonBioParent, parent, etc
         // TODO fix bug: click Maia, it should also unwrap her parents (needs reverse key?)
 
-        const [nodes, links] = convertPersonsToGraphData(queryPerson);
+        const [nodes, links] = convertPersonsToGraphData1(getPerson);
 
         setGraphData({
           nodes: graphData.nodes.concat(nodes),
