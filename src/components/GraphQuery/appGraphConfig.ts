@@ -1,6 +1,6 @@
 import { GraphConfiguration, GraphLink, GraphNode } from "react-d3-graph";
 
-interface CustomNode extends GraphNode {
+export interface CustomNode extends GraphNode {
   name: string;
 }
 
@@ -15,7 +15,7 @@ const appGraphConfig = (width: number, height: number): GraphConfiguration<Custo
   height,
   highlightDegree: 2,
   highlightOpacity: 0.2,
-  linkHighlightBehavior: true,
+  linkHighlightBehavior: false,
   maxZoom: 12,
   minZoom: 0.05,
   nodeHighlightBehavior: true,

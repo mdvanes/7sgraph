@@ -5,6 +5,7 @@ import {
   // useGetPersonByNameQuery,
   getSdk,
   GetPersonByNameQuery,
+  Person,
 } from "../../generated/graphql";
 // import { ApolloClient, InMemoryCache } from "@apollo/client";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
@@ -48,13 +49,16 @@ function isJustVal<T>(val: Maybe<T>): val is T {
 
 // TODO first search a person (Pa Salt) by name. Then onclick find all related nodes with
 
-const fooMap = (queryPerson: GetPersonByNameQuery["queryPerson"]) => {
+const convertPersonsToGraphData = (queryPerson: GetPersonByNameQuery["queryPerson"]) => {
   const justPersons = queryPerson?.filter(isJustVal) ?? [];
 
   const nodes = justPersons.map(({ personID, name }) => ({
     id: personID || "a",
     name: name || "",
   }));
+
+  const relatedNodes = convertRelatedToNodes(queryPerson);
+  const allNodes = nodes.concat(relatedNodes);
 
   const links = justPersons.flatMap(
     ({
@@ -100,11 +104,33 @@ const fooMap = (queryPerson: GetPersonByNameQuery["queryPerson"]) => {
 
   const linksToExistingNodes = links.filter(
     (link) =>
-      nodes.some((n) => n.id === link.source) &&
-      nodes.some((n) => n.id === link.target)
+      allNodes.some((n) => n.id === link.source) &&
+      allNodes.some((n) => n.id === link.target)
   );
 
-  return [nodes, linksToExistingNodes];
+  return [allNodes, linksToExistingNodes];
+};
+
+const convertRelatedToNodes = (queryPerson: GetPersonByNameQuery["queryPerson"]): CustomNode[] => {
+  const justPersons = queryPerson?.filter(isJustVal) ?? [];
+  const {
+    parent,
+    nonBioParent,
+    physicalRelation,
+    // otherRelation,
+  } = justPersons[0];
+
+  const justParents = parent?.filter(isJustVal) ?? [];
+  const justNonBioParents = nonBioParent?.filter(isJustVal) ?? [];
+  const justPhysical = physicalRelation?.filter(isJustVal) ?? [];
+  const nodes = justParents
+    .concat(justNonBioParents, justPhysical)
+    .map<CustomNode>(({ personID, name }) => ({
+      id: personID || "a",
+      name: name || "",
+    }));
+    console.log(nodes);
+  return nodes;
 };
 
 const GraphQuery: FC = () => {
@@ -116,6 +142,9 @@ const GraphQuery: FC = () => {
     (async () => {
       try {
         const { queryPerson } = await getPersonByName({ name: "Pa Salt" });
+
+        // const relatedNodes = convertRelatedToNodes(queryPerson);
+
         // const justPersons = queryPerson?.filter(isJustVal) ?? [];
 
         // const nodes = justPersons.map(({ personID, name }) => ({
@@ -178,7 +207,7 @@ const GraphQuery: FC = () => {
         //   links: linksToExistingNodes,
         // };
 
-        const [nodes, links] = fooMap(queryPerson);
+        const [nodes, links] = convertPersonsToGraphData(queryPerson);
 
         setGraphData({
           nodes,
@@ -203,28 +232,28 @@ const GraphQuery: FC = () => {
   // }
 
   const onClickNode = (uid: string, { name }: CustomNode) => {
-    console.log(uid, name);
+    console.log("onclicknode", uid, name);
     // getConnectedToNameDQL(name);
 
     (async () => {
       try {
         // TODO replace getPersonByName with getPersonByUID
-        // const { queryPerson } = await getPersonByName({ name });
-        const { queryPerson } = await getAllPersons();
+        const { queryPerson } = await getPersonByName({ name });
+        // const { queryPerson } = await getAllPersons();
         // TODO unwrap nodes from nonBioParent, parent, etc
         // TODO fix bug: click Maia, it should also unwrap her parents (needs reverse key?)
 
-        const [nodes, links] = fooMap(queryPerson);
+        const [nodes, links] = convertPersonsToGraphData(queryPerson);
 
         setGraphData({
-          nodes,
-          links,
+          nodes: graphData.nodes.concat(nodes),
+          links: graphData.links.concat(links),
         });
 
         // TODO fix resetNodesPosition, see https://github.com/danielcaldas/react-d3-graph/blob/master/sandbox/Sandbox.jsx
         const graphInst = graphRef.current;
-        if(graphInst) {
-          console.log("graphref", graphRef.current);
+        if (graphInst) {
+          // console.log("graphref", graphRef.current);
           (graphInst as any).resetNodesPositions();
         }
         // console.log(nodes, links);
