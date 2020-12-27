@@ -1,0 +1,18 @@
+fragment PersonWithLinksFields on Person {
+  ...PersonFields
+  story {
+    title
+  }
+  parent {
+    ...PersonFields
+  }
+  nonBioParent {
+    ...PersonFields
+  }
+  physicalRelation {
+    ...PersonFields
+  }
+  otherRelation {
+    ...PersonFields
+  }
+}

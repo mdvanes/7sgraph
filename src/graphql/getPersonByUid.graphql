@@ -1,32 +1,5 @@
 query getPersonByUid($uid: ID!) {
   getPerson(personID: $uid) {
-    __typename
-    personID
-    name
-    dateOfBirth
-    nickNames
-    story {
-      title
-    }
-    parent {
-      __typename
-      name
-      personID
-    }
-    nonBioParent {
-      __typename
-      name
-      personID
-    }
-    physicalRelation {
-      __typename
-      name
-      personID
-    }
-    otherRelation {
-      __typename
-      name
-      personID
-    }
+    ...PersonWithLinksFields
   }
 }
