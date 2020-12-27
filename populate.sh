@@ -156,7 +156,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:pasalt <dgraph.type> "Person" .
    _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <Person.dateOfDeath> "2007" .
-   _:marina <Person.gender> "male" .
+   _:pasalt <Person.gender> "male" .
    _:pasalt <Person.nonBioParent> _:maia .
    _:pasalt <Person.nonBioParent> _:alcyone .
    _:pasalt <Person.nonBioParent> _:asterope .

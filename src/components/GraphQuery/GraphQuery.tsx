@@ -108,6 +108,16 @@ const convertPersonsToGraphData = (
   return [allNodes, linksToExistingNodes];
 };
 
+const genderColor = (gender?: Maybe<string>): string | undefined => {
+  if(gender === "male") {
+    return "#357ae8";
+  }
+  if(gender === "female") {
+    return "#f50057";
+  }
+  return;
+}
+
 const convertRelatedToNodes = (
   queryPerson: GetPersonByNameQuery["queryPerson"]
 ): CustomNode[] => {
@@ -125,9 +135,10 @@ const convertRelatedToNodes = (
   const justOther = otherRelation?.filter(isJustVal) ?? [];
   const nodes = justParents
     .concat(justNonBioParents, justPhysical, justOther)
-    .map<CustomNode>(({ personID, name }) => ({
+    .map<CustomNode>(({ personID, name, gender }) => ({
       id: personID || "a",
       name: name || "",
+      color: genderColor(gender),
     }));
   console.log(nodes);
   return nodes;
@@ -337,7 +348,6 @@ const GraphQuery: FC = () => {
         // TODO replace getPersonByName with getPersonByUID
         const { getPerson } = await getPersonByUid({ uid });
         // const { queryPerson } = await getAllPersons();
-        // TODO unwrap nodes from nonBioParent, parent, etc
         // TODO fix bug: click Maia, it should also unwrap her parents (needs reverse key?)
 
         const [nodes, links] = convertPersonsToGraphData1(getPerson);
