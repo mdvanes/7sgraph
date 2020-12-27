@@ -1,37 +1,5 @@
 query getPersonByName($name: String!) {
   queryPerson(filter: { name: { allofterms: $name } }) {
-    __typename
-    personID
-    name
-    dateOfBirth
-    nickNames
-    gender
-    story {
-      title
-    }
-    parent {
-      __typename
-      name
-      personID
-      gender
-    }
-    nonBioParent {
-      __typename
-      name
-      personID
-      gender
-    }
-    physicalRelation {
-      __typename
-      name
-      personID
-      gender
-    }
-    otherRelation {
-      __typename
-      name
-      personID
-      gender
-    }
+    ...PersonWithLinksFields
   }
 }
