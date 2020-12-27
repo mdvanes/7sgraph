@@ -1,20 +1,12 @@
 import { Graph } from "react-d3-graph";
-import {
-  Maybe,
-  // useGetAllPersonsQuery,
-  // useGetPersonByNameQuery,
-  getSdk,
-  GetPersonByNameQuery,
-  Person,
-  GetPersonByUidQuery,
-  PersonFieldsFragment,
-  PersonWithLinksFieldsFragment,
-} from "../../generated/graphql";
-// import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { getSdk } from "../../generated/graphql";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
 import { GraphQLClient } from "graphql-request";
 import { FC, useEffect, useRef, useState } from "react";
-import { convertPersonsToGraphData, convertPersonsToGraphData1, isJustVal } from "./convertPersonsToGraphData";
+import {
+  convertPersonsToGraphData,
+  isJustVal,
+} from "./convertPersonsToGraphData";
 // import getConnectedToNameDQL from "../../dql/getPersonsByRelation";
 
 // const client = new ApolloClient({
@@ -53,8 +45,6 @@ const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
 
 // TODO first search a person (Pa Salt) by name. Then onclick find all related nodes with
 
-
-
 const GraphQuery: FC = () => {
   const [graphData, setGraphData] = useState<any>();
   const { getPersonByName, getPersonByUid } = getSdk(client);
@@ -64,70 +54,6 @@ const GraphQuery: FC = () => {
     (async () => {
       try {
         const { queryPerson } = await getPersonByName({ name: "Pa Salt" });
-
-        // const relatedNodes = convertRelatedToNodes(queryPerson);
-
-        // const justPersons = queryPerson?.filter(isJustVal) ?? [];
-
-        // const nodes = justPersons.map(({ personID, name }) => ({
-        //   id: personID || "a",
-        //   name: name || "",
-        // }));
-
-        // const links = justPersons.flatMap(
-        //   ({
-        //     personID,
-        //     parent,
-        //     nonBioParent,
-        //     physicalRelation,
-        //     // otherRelation,
-        //   }) => {
-        //     // TODO extend Link
-        //     type CustomLink = {
-        //       source: string;
-        //       target: string;
-        //       color?: string;
-        //     };
-        //     // TODO make helper function
-        //     const relatedParent: CustomLink[] =
-        //       parent?.filter(isJustVal).map((parentPerson) => ({
-        //         source: personID,
-        //         target: parentPerson?.personID ?? "",
-        //         color: "#141823",
-        //       })) ?? [];
-        //     const relatedNonBio =
-        //       nonBioParent?.filter(isJustVal).map((nonBioParentPerson) => ({
-        //         source: personID,
-        //         target: nonBioParentPerson?.personID ?? "",
-        //         color: "#3f51b5",
-        //       })) ?? [];
-        //     const relatedPhys =
-        //       physicalRelation
-        //         ?.filter(isJustVal)
-        //         .map((physicalRelationPerson) => ({
-        //           source: personID,
-        //           target: physicalRelationPerson?.personID ?? "",
-        //           color: "#f50057",
-        //         })) ?? [];
-        //     // const relatedOther
-        //     //   otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
-        //     //     source: personID,
-        //     //     target: otherRelationPerson?.personID ?? "",
-        //     //   })) ?? [];
-        //     return relatedParent.concat(relatedNonBio, relatedPhys); // , relatedOther);
-        //   }
-        // );
-
-        // const linksToExistingNodes = links.filter(
-        //   (link) =>
-        //     nodes.some((n) => n.id === link.source) &&
-        //     nodes.some((n) => n.id === link.target)
-        // );
-
-        // const graphData = {
-        //   nodes,
-        //   links: linksToExistingNodes,
-        // };
 
         const justPersons = queryPerson?.filter(isJustVal) ?? [];
 
@@ -143,17 +69,6 @@ const GraphQuery: FC = () => {
       }
     })();
   }, []);
-  // const { data /* loading,*/, error } = useGetAllPersonsQuery({
-  //   client,
-  // });
-  // const { data /*, loading */, error } = useGetPersonByNameQuery({
-  //   client,
-  //   variables: { name: "Salt" },
-  // });
-
-  // if (error) {
-  //   console.error(error);
-  // }
 
   const onClickNode = (uid: string, { name }: CustomNode) => {
     console.log("onclicknode", uid, name);
@@ -167,7 +82,9 @@ const GraphQuery: FC = () => {
         // TODO fix bug: click Maia, it should also unwrap her parents (needs reverse key?)
 
         const persons = getPerson ? [getPerson].filter(isJustVal) : [];
-        const [nodes, links] = persons ? convertPersonsToGraphData(persons) : [[], []];
+        const [nodes, links] = persons
+          ? convertPersonsToGraphData(persons)
+          : [[], []];
 
         setGraphData({
           nodes: graphData.nodes.concat(nodes),
