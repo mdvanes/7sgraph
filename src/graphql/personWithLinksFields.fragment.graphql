@@ -3,10 +3,16 @@ fragment PersonWithLinksFields on Person {
   story {
     title
   }
-  parent {
+  children {
     ...PersonFields
   }
-  nonBioParent {
+  parents {
+    ...PersonFields
+  }
+  nonBioChildren {
+    ...PersonFields
+  }
+  nonBioParents {
     ...PersonFields
   }
   physicalRelation {
