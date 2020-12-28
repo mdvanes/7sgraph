@@ -17,15 +17,26 @@ const genderColor = (gender?: Maybe<string>): string | undefined => {
   return;
 };
 
-const convertPersonToNode = ({
+const convertPersonToNode = (originNode?: CustomNode) => ({
   personID,
   name,
   gender,
-}: PersonWithLinksFieldsFragment): CustomNode => ({
-  id: personID || "INVALID_PERSON_ID",
-  name: name || "INVALID_PERSON_NAME",
-  color: genderColor(gender),
-});
+}: PersonWithLinksFieldsFragment): CustomNode => {
+  const node = {
+    id: personID || "INVALID_PERSON_ID",
+    name: name || "INVALID_PERSON_NAME",
+    color: genderColor(gender),
+  };
+  if (originNode && originNode.x && originNode.y) {
+    return {
+      ...node,
+      // TODO this can be improved by replacing random with radial, but it needs the total list of nodes that will be added
+      x: originNode.x + ((Math.random() - 0.5) * 200),
+      y: originNode.y + ((Math.random() - 0.5) * 200),
+    };
+  }
+  return node;
+};
 
 export function isJustVal<T>(val: Maybe<T>): val is T {
   return Boolean(val);
@@ -54,14 +65,15 @@ const convertRelatedPersonToEdge = (type: string, personID: string) => (
 };
 
 export const convertPersonsToGraphData = (
-  persons: PersonWithLinksFieldsFragment[]
+  persons: PersonWithLinksFieldsFragment[],
+  originNode?: CustomNode
 ) => {
   const justPersons = persons?.filter(isJustVal) ?? [];
 
-  const nodes = justPersons.map<CustomNode>(convertPersonToNode);
+  const nodes = justPersons.map<CustomNode>(convertPersonToNode(originNode));
 
   // TODO should this not for tail too?
-  const relatedNodes = convertRelatedToNodes(justPersons[0]);
+  const relatedNodes = convertRelatedToNodes(justPersons[0], originNode);
   const allNodes = nodes.concat(relatedNodes);
 
   const links = justPersons.flatMap(
@@ -105,14 +117,17 @@ export const convertPersonsToGraphData = (
   return [allNodes, linksToExistingNodes];
 };
 
-const convertRelatedToNodes = ({
-  children,
-  parents,
-  nonBioChildren,
-  nonBioParents,
-  physicalRelation,
-  otherRelation,
-}: PersonWithLinksFieldsFragment): CustomNode[] => {
+const convertRelatedToNodes = (
+  {
+    children,
+    parents,
+    nonBioChildren,
+    nonBioParents,
+    physicalRelation,
+    otherRelation,
+  }: PersonWithLinksFieldsFragment,
+  originNode?: CustomNode
+): CustomNode[] => {
   const allRelations = {
     children,
     parents,
@@ -124,5 +139,5 @@ const convertRelatedToNodes = ({
   const allRelatedPersons = Object.entries(allRelations)
     .flatMap(([relationType, relatedPersons]) => relatedPersons)
     .filter(isJustVal);
-  return allRelatedPersons.map<CustomNode>(convertPersonToNode)
+  return allRelatedPersons.map<CustomNode>(convertPersonToNode(originNode));
 };

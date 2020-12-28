@@ -14,9 +14,12 @@ Stack:
 
 TODO
 
+* fix stable positions when adding nodes
+* add Material UI slider for time selection (see GraphQuery)
+* when the schema is stable: script to convert JSON to addMutation CURL statements to be able to bulk update
 * fix codegen for graphql-request
+* fix should this not for tail too? in convertPersonsToGraphData
 * filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
-* add related nodes when (double) clicking a node
 * show details on node (right) click
 * filter/query by story/date/geo
 * Try out Geo tab in Ratel
@@ -172,8 +175,6 @@ and
     }
   }
 }
-
-// TODO rename nonBioParent to nonBioChildren and add nonBioParents relation
 
 mutation {
   addPerson(input: [

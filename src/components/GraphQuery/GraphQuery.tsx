@@ -18,34 +18,8 @@ const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
 });
 
-// type Maybe1<T> = Maybe<T> | undefined;
-
-// function withDefault<T>(v: Maybe<T>, defaultVal: T): T {
-//   return v ? v : defaultVal;
-// }
-
-// function isJustVal<T>(val: Maybe<T>): val is T {
-//   return Boolean(val);
-// }
-
-// const fakeData = {
-//   nodes: [
-//     { id: "Maia" },
-//     { id: "Alcyone" },
-//     { id: "Asterope" },
-//     { id: "Pa Salt" },
-//   ],
-//   links: [
-//     {
-//       source: "Pa Salt",
-//       target: "Maia",
-//     },
-//   ],
-// };
-
-// TODO first search a person (Pa Salt) by name. Then onclick find all related nodes with
-
 const GraphQuery: FC = () => {
+  // TODO fix any type
   const [graphData, setGraphData] = useState<any>();
   const { getPersonByName, getPersonByUid } = getSdk(client);
   const graphRef = useRef();
@@ -70,20 +44,16 @@ const GraphQuery: FC = () => {
     })();
   }, []);
 
-  const onClickNode = (uid: string, { name }: CustomNode) => {
-    console.log("onclicknode", uid, name);
+  const onClickNode = (uid: string, originNode: CustomNode) => {
+    // console.log("onclicknode", uid, originNode);
     // getConnectedToNameDQL(name);
 
     (async () => {
       try {
-        // TODO replace getPersonByName with getPersonByUID
         const { getPerson } = await getPersonByUid({ uid });
-        // const { queryPerson } = await getAllPersons();
-        // TODO fix bug: click Maia, it should also unwrap her parents (needs reverse key?)
-
         const persons = getPerson ? [getPerson].filter(isJustVal) : [];
         const [nodes, links] = persons
-          ? convertPersonsToGraphData(persons)
+          ? convertPersonsToGraphData(persons, originNode)
           : [[], []];
 
         setGraphData({
@@ -91,13 +61,11 @@ const GraphQuery: FC = () => {
           links: graphData.links.concat(links),
         });
 
-        // TODO fix resetNodesPosition, see https://github.com/danielcaldas/react-d3-graph/blob/master/sandbox/Sandbox.jsx
-        const graphInst = graphRef.current;
-        if (graphInst) {
-          // console.log("graphref", graphRef.current);
-          (graphInst as any).resetNodesPositions();
-        }
-        // console.log(nodes, links);
+        // const graphInst = graphRef.current;
+        // if (graphInst) {
+        //   console.log("graphref", graphRef.current);
+        //   // (graphInst as any).resetNodesPositions();
+        // }
       } catch (err) {
         console.error(err);
       }
@@ -106,17 +74,32 @@ const GraphQuery: FC = () => {
 
   return (
     <>
+      {/* <div className={classes.root}>
+        <Typography id="range-slider" gutterBottom>
+          Time range
+        </Typography>
+        <Slider
+          value={value}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          getAriaValueText={valuetext}
+        />
+      </div> */}
       {graphData && graphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory
           ref={graphRef as any}
-          data={graphData}
+          data={{ ...graphData, focusedNodeId: "pasalt" }}
           config={appGraphConfig(
             window.innerWidth,
             window.innerHeight - 64 - 5
           )}
           onClickNode={onClickNode as any}
           //   onClickLink={onClickLink}
+          // onNodePositionChange={(n, x, y) => {
+          //   console.log(`Node ${n} moved to ${x},${y}`);
+          // }}
         />
       )}
     </>

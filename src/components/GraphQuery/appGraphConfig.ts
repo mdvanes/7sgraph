@@ -2,12 +2,14 @@ import { GraphConfiguration, GraphLink, GraphNode } from "react-d3-graph";
 
 export interface CustomNode extends GraphNode {
   name: string;
+  x?: number,
+  y?: number,
 }
 
 // the graph configuration, just override the ones you need
 const appGraphConfig = (width: number, height: number): GraphConfiguration<CustomNode, GraphLink> => ({
-  automaticRearrangeAfterDropNode: true,
-  collapsible: true,
+  automaticRearrangeAfterDropNode: false,
+  collapsible: false,
   directed: true,
   focusAnimationDuration: 0.75,
   focusZoom: 1,
@@ -21,11 +23,11 @@ const appGraphConfig = (width: number, height: number): GraphConfiguration<Custo
   nodeHighlightBehavior: true,
   panAndZoom: false,
   staticGraph: false,
-  staticGraphWithDragAndDrop: false,
+  staticGraphWithDragAndDrop: true,
   width,
   d3: {
     alphaTarget: 0.05,
-    gravity: -250,
+    gravity: -50,
     linkLength: 120,
     linkStrength: 2,
     disableLinkForce: false,
@@ -58,7 +60,7 @@ const appGraphConfig = (width: number, height: number): GraphConfiguration<Custo
     highlightColor: "red",
     highlightFontSize: 8,
     highlightFontWeight: "normal",
-    labelProperty: (x) => x.source,
+    // labelProperty: (x) => x.source,
     mouseCursor: "pointer",
     opacity: 1,
     renderLabel: true,
