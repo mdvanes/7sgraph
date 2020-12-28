@@ -100,6 +100,21 @@ query getPersonsByStoryTitle($title: String!) {
 {
   "title": "Storm"
 }
+
+# Test query inverse relation
+{
+  queryPerson {
+    __typename
+    personID
+    name
+    nonBioParent {
+      name
+    }
+    nonBioParentParent {
+      name
+    }
+  }
+}
 `}
       </pre>
     </>

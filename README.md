@@ -12,9 +12,14 @@ Stack:
 * GraphiQL
 * https://github.com/graphql/vscode-graphql
 
-TODO Ratel has a "Geo" tab, use that!
+TODO
 
+* fix codegen for graphql-request
+* filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
+* add related nodes when (double) clicking a node
+* show details on node (right) click
 * filter/query by story/date/geo
+* Try out Geo tab in Ratel
 
 
 ## Set up the backend
@@ -40,6 +45,7 @@ docker run --rm -it \
 
 
 Visit http://localhost:8001 for Ratel UI
+Visit http://localhost:3011/ for web UI
 
 Create a schema:
 
@@ -72,8 +78,6 @@ query {
   }
 }
 
-
-// TODO fill up:
 Populate the database with ./populate.sh
 
 In Ratel, try 
@@ -124,3 +128,62 @@ query {
 }
 ' 
 ```
+
+
+This works, but required @reverse on nonBioParent:
+
+{
+  getRelatedNodesByUid(func: anyofterms(Person.name, "Maia")) {
+    uid
+    ~Person.nonBioParent {
+      uid
+      Person.name
+    }
+    expand(_all_) {
+      uid
+      expand(_all_)
+    }
+  }
+}
+
+@hasInverse only works when adding with "mutation" not with RDF
+
+mutation {
+  addPerson(input: [
+    { name: "TestPerson1", story: { storyID: "0xa" } },
+    { name: "TestPerson2", story: { storyID: "0xa" } }
+  ]) {
+    person {
+      personID
+      name
+      story
+    }
+  }
+}
+
+and 
+
+{
+  queryStory {
+    __typename
+    title
+    persons {
+      name
+    }
+  }
+}
+
+// TODO rename nonBioParent to nonBioChildren and add nonBioParents relation
+
+mutation {
+  addPerson(input: [
+    { name: "TestPerson4", story: { storyID: "0xa" } },
+    { name: "TestPerson5", story: { storyID: "0xa" } }
+  ]) {
+    person {
+      personID
+      name
+      story
+    }
+  }
+}

@@ -1,5 +1,5 @@
 type Person {
-    personID: ID!
+    personID: String! @id
     name: String @search(by: [term])
     nickNames: [String]
     gender: String
@@ -10,8 +10,9 @@ type Person {
     # should be Geo/geo/Point/Point[]
     location: [Int]
     parent: [Person]
-    nonBioParent: [Person]
-    physicalRelation: [Person]
+    nonBioParent: [Person] @hasInverse(field: nonBioParentParent)
+    nonBioParentParent: [Person]
+    physicalRelation: [Person] @hasInverse(field: physicalRelation)
     otherRelation: [Person]
     story: Story
 }
@@ -19,10 +20,5 @@ type Person {
 type Story {
     storyID: ID!
     title: String @search(by: [term])
+    persons: [Person] @hasInverse(field: story)
 }
-
-# type Edge {
-#     directional: Boolean
-#     # e.g. adoptive father
-#     type: String
-# }
