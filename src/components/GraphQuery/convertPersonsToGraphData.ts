@@ -1,19 +1,20 @@
 import { GraphLink } from "react-d3-graph";
 import {
   Maybe,
+  PersonFieldsFragment,
   PersonWithLinksFieldsFragment,
 } from "../../generated/graphql";
 import { CustomNode } from "./appGraphConfig";
 
 const genderColor = (gender?: Maybe<string>): string | undefined => {
-    if (gender === "male") {
-      return "#357ae8";
-    }
-    if (gender === "female") {
-      return "#f50057";
-    }
-    return;
-  };
+  if (gender === "male") {
+    return "#357ae8";
+  }
+  if (gender === "female") {
+    return "#f50057";
+  }
+  return;
+};
 
 const convertPersonToNode = ({
   personID,
@@ -29,6 +30,28 @@ export function isJustVal<T>(val: Maybe<T>): val is T {
   return Boolean(val);
 }
 
+const relationTypeColor = (type: string): string | undefined => {
+  if (type === "parent") {
+    return "#141823";
+  }
+  if (type === "nonBioParent") {
+    return "#3f51b5";
+  }
+  if (type === "physicalRelation") {
+    return "#f50057";
+  }
+};
+
+const convertRelatedPersonToEdge = (type: string, personID: string) => (
+  person: PersonFieldsFragment | null
+): GraphLink => {
+  return {
+    source: personID,
+    target: person?.personID ?? "INVALID_PERSON_ID",
+    color: relationTypeColor(type),
+  };
+};
+
 export const convertPersonsToGraphData = (
   persons: PersonWithLinksFieldsFragment[]
 ) => {
@@ -42,31 +65,22 @@ export const convertPersonsToGraphData = (
 
   const links = justPersons.flatMap(
     ({ personID, parent, nonBioParent, physicalRelation, otherRelation }) => {
-      // TODO make helper function
-      const relatedParent: GraphLink[] =
-        parent?.filter(isJustVal).map((parentPerson) => ({
-          source: personID,
-          target: parentPerson?.personID ?? "",
-          color: "#141823",
-        })) ?? [];
-      const relatedNonBio =
-        nonBioParent?.filter(isJustVal).map((nonBioParentPerson) => ({
-          source: personID,
-          target: nonBioParentPerson?.personID ?? "",
-          color: "#3f51b5",
-        })) ?? [];
-      const relatedPhys =
-        physicalRelation?.filter(isJustVal).map((physicalRelationPerson) => ({
-          source: personID,
-          target: physicalRelationPerson?.personID ?? "",
-          color: "#f50057",
-        })) ?? [];
-      const relatedOther =
-        otherRelation?.filter(isJustVal).map((otherRelationPerson) => ({
-          source: personID,
-          target: otherRelationPerson?.personID ?? "",
-        })) ?? [];
-      return relatedParent.concat(relatedNonBio, relatedPhys, relatedOther);
+      const allRelations = {
+        parent,
+        nonBioParent,
+        physicalRelation,
+        otherRelation,
+      };
+      const edgesForAllRelations: GraphLink[] = Object.entries(
+        allRelations
+      ).flatMap(([relationType, relatedPersons]) => {
+        return relatedPersons
+          ? relatedPersons.map(
+              convertRelatedPersonToEdge(relationType, personID)
+            )
+          : [];
+      });
+      return edgesForAllRelations;
     }
   );
 
@@ -79,14 +93,12 @@ export const convertPersonsToGraphData = (
   return [allNodes, linksToExistingNodes];
 };
 
-const convertRelatedToNodes = (
-  {
-    parent,
-    nonBioParent,
-    physicalRelation,
-    otherRelation,
-  }: PersonWithLinksFieldsFragment
-): CustomNode[] => {
+const convertRelatedToNodes = ({
+  parent,
+  nonBioParent,
+  physicalRelation,
+  otherRelation,
+}: PersonWithLinksFieldsFragment): CustomNode[] => {
   const justParents = parent?.filter(isJustVal) ?? [];
   const justNonBioParents = nonBioParent?.filter(isJustVal) ?? [];
   const justPhysical = physicalRelation?.filter(isJustVal) ?? [];
