@@ -107,10 +107,16 @@ query getPersonsByStoryTitle($title: String!) {
     __typename
     personID
     name
-    nonBioParent {
+    children {
       name
     }
-    nonBioParentParent {
+    parents {
+      name
+    }
+    nonBioChildren {
+      name
+    }
+    nonBioParents {
       name
     }
   }

@@ -90,7 +90,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:pasalt <Person.dateOfDeath> "2007" .
    _:kreeg <Person.gender> "male" .
    _:kreeg <dgraph.type> "Person" .
-   _:kreeg <Person.parent> _:zed .
+   _:kreeg <Person.children> _:zed .
 
    _:maia <Person.name> "Maia d\'Apliése" .
    _:maia <Person.personID> "maia" .
@@ -114,7 +114,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:piphalvorsen <Person.personID> "piphalvorsen" .
    _:piphalvorsen <Person.nickNames> "Pip" .
    _:piphalvorsen <dgraph.type> "Person" .
-   _:piphalvorsen <Person.parent> _:felixmhalvorsen .
+   _:piphalvorsen <Person.children> _:felixmhalvorsen .
 
    _:asterope <Person.name> "Asterope d\'Apliése" .
    _:asterope <Person.personID> "asterope" .
@@ -161,13 +161,13 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <Person.dateOfDeath> "2007" .
    _:pasalt <Person.gender> "male" .
-   _:pasalt <Person.nonBioParent> _:maia .
-   _:pasalt <Person.nonBioParent> _:alcyone .
-   _:pasalt <Person.nonBioParent> _:asterope .
-   _:pasalt <Person.nonBioParent> _:celeano .
-   _:pasalt <Person.nonBioParent> _:taygete .
-   _:pasalt <Person.nonBioParent> _:electra .
-   _:pasalt <Person.nonBioParent> _:merope .
+   _:pasalt <Person.nonBioChildren> _:maia .
+   _:pasalt <Person.nonBioChildren> _:alcyone .
+   _:pasalt <Person.nonBioChildren> _:asterope .
+   _:pasalt <Person.nonBioChildren> _:celeano .
+   _:pasalt <Person.nonBioChildren> _:taygete .
+   _:pasalt <Person.nonBioChildren> _:electra .
+   _:pasalt <Person.nonBioChildren> _:merope .
    _:pasalt <Person.otherRelation> _:marina .
   }
 }
@@ -219,7 +219,7 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
 # }
 curl 'http://localhost:8080/graphql' \
   -H 'Content-Type: application/json' \
-  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"thomfhalvorsen\", name: \"Thom Felix Halvorsen\", dateOfBirth: 1980 },\n  ]) {\n    person {\n      personID\n      name\n      nonBioParent {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
+  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"thomfhalvorsen\", name: \"Thom Felix Halvorsen\", dateOfBirth: 1980 },\n  ]) {\n    person {\n      personID\n      name\n      children {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
   --compressed
 
 # Add Felix
@@ -238,7 +238,7 @@ curl 'http://localhost:8080/graphql' \
 # }
 curl 'http://localhost:8080/graphql' \
   -H 'Content-Type: application/json' \
-  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"felixmhalvorsen\", name: \"Felix Mendelssohn Halvorsen\", nonBioParent: [{ personID: \"alcyone\" }, { personID: \"thomfhalvorsen\" }] }\n  ]) {\n    person {\n      personID\n      name\n      nonBioParent {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
+  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"felixmhalvorsen\", name: \"Felix Mendelssohn Halvorsen\", children: [{ personID: \"alcyone\" }, { personID: \"thomfhalvorsen\" }] }\n  ]) {\n    person {\n      personID\n      name\n      children {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
   --compressed
 
 # curl 'http://localhost:8080/graphql' \
