@@ -24,53 +24,197 @@ export type Scalars = {
   DateTime: any;
 };
 
-export type PointGeoFilter = {
-  near?: Maybe<NearFilter>;
-  within?: Maybe<WithinFilter>;
+export type Story = {
+  __typename?: 'Story';
+  storyID: Scalars['ID'];
+  title?: Maybe<Scalars['String']>;
+  persons?: Maybe<Array<Maybe<Person>>>;
+  personsAggregate?: Maybe<PersonAggregateResult>;
 };
 
-export type StoryAggregateResult = {
-  __typename?: 'StoryAggregateResult';
-  count?: Maybe<Scalars['Int']>;
-  titleMin?: Maybe<Scalars['String']>;
-  titleMax?: Maybe<Scalars['String']>;
+
+export type StoryPersonsArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
 };
 
-export type PersonOrder = {
-  asc?: Maybe<PersonOrderable>;
-  desc?: Maybe<PersonOrderable>;
-  then?: Maybe<PersonOrder>;
+
+export type StoryPersonsAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
 };
 
-export type StoryFilter = {
-  storyID?: Maybe<Array<Scalars['ID']>>;
-  title?: Maybe<StringTermFilter>;
-  has?: Maybe<StoryHasFilter>;
-  and?: Maybe<Array<Maybe<StoryFilter>>>;
-  or?: Maybe<Array<Maybe<StoryFilter>>>;
-  not?: Maybe<StoryFilter>;
+export enum HttpMethod {
+  Get = 'GET',
+  Post = 'POST',
+  Put = 'PUT',
+  Patch = 'PATCH',
+  Delete = 'DELETE'
+}
+
+export type PointRef = {
+  longitude: Scalars['Float'];
+  latitude: Scalars['Float'];
 };
 
-export type StoryPatch = {
+export type NearFilter = {
+  distance: Scalars['Float'];
+  coordinate: PointRef;
+};
+
+export type AddStoryPayload = {
+  __typename?: 'AddStoryPayload';
+  story?: Maybe<Array<Maybe<Story>>>;
+  numUids?: Maybe<Scalars['Int']>;
+};
+
+
+export type AddStoryPayloadStoryArgs = {
+  filter?: Maybe<StoryFilter>;
+  order?: Maybe<StoryOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+export type DeleteStoryPayload = {
+  __typename?: 'DeleteStoryPayload';
+  story?: Maybe<Array<Maybe<Story>>>;
+  msg?: Maybe<Scalars['String']>;
+  numUids?: Maybe<Scalars['Int']>;
+};
+
+
+export type DeleteStoryPayloadStoryArgs = {
+  filter?: Maybe<StoryFilter>;
+  order?: Maybe<StoryOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+export type PersonFilter = {
+  personID?: Maybe<StringHashFilter>;
+  name?: Maybe<StringTermFilter>;
+  has?: Maybe<PersonHasFilter>;
+  and?: Maybe<Array<Maybe<PersonFilter>>>;
+  or?: Maybe<Array<Maybe<PersonFilter>>>;
+  not?: Maybe<PersonFilter>;
+};
+
+export type Person = {
+  __typename?: 'Person';
+  personID: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  gender?: Maybe<Scalars['String']>;
+  dateOfBirth?: Maybe<Scalars['Int']>;
+  dateOfDeath?: Maybe<Scalars['Int']>;
+  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  parent?: Maybe<Array<Maybe<Person>>>;
+  nonBioParent?: Maybe<Array<Maybe<Person>>>;
+  nonBioParentParent?: Maybe<Array<Maybe<Person>>>;
+  physicalRelation?: Maybe<Array<Maybe<Person>>>;
+  otherRelation?: Maybe<Array<Maybe<Person>>>;
+  story?: Maybe<Story>;
+  parentAggregate?: Maybe<PersonAggregateResult>;
+  nonBioParentAggregate?: Maybe<PersonAggregateResult>;
+  nonBioParentParentAggregate?: Maybe<PersonAggregateResult>;
+  physicalRelationAggregate?: Maybe<PersonAggregateResult>;
+  otherRelationAggregate?: Maybe<PersonAggregateResult>;
+};
+
+
+export type PersonParentArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type PersonNonBioParentArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type PersonNonBioParentParentArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type PersonPhysicalRelationArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type PersonOtherRelationArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+
+export type PersonStoryArgs = {
+  filter?: Maybe<StoryFilter>;
+};
+
+
+export type PersonParentAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
+};
+
+
+export type PersonNonBioParentAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
+};
+
+
+export type PersonNonBioParentParentAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
+};
+
+
+export type PersonPhysicalRelationAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
+};
+
+
+export type PersonOtherRelationAggregateArgs = {
+  filter?: Maybe<PersonFilter>;
+};
+
+
+export type StringRegExpFilter = {
+  regexp?: Maybe<Scalars['String']>;
+};
+
+export type UpdatePersonPayload = {
+  __typename?: 'UpdatePersonPayload';
+  person?: Maybe<Array<Maybe<Person>>>;
+  numUids?: Maybe<Scalars['Int']>;
+};
+
+
+export type UpdatePersonPayloadPersonArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+export type AddStoryInput = {
   title?: Maybe<Scalars['String']>;
   persons?: Maybe<Array<Maybe<PersonRef>>>;
-};
-
-export type CustomHttp = {
-  url: Scalars['String'];
-  method: HttpMethod;
-  body?: Maybe<Scalars['String']>;
-  graphql?: Maybe<Scalars['String']>;
-  mode?: Maybe<Mode>;
-  forwardHeaders?: Maybe<Array<Scalars['String']>>;
-  secretHeaders?: Maybe<Array<Scalars['String']>>;
-  introspectionHeaders?: Maybe<Array<Scalars['String']>>;
-  skipIntrospection?: Maybe<Scalars['Boolean']>;
-};
-
-export type Int64Range = {
-  min: Scalars['Int64'];
-  max: Scalars['Int64'];
 };
 
 export enum DgraphIndex {
@@ -91,16 +235,18 @@ export enum DgraphIndex {
   Geo = 'geo'
 }
 
-export type StringRange = {
-  min: Scalars['String'];
-  max: Scalars['String'];
-};
+export enum Mode {
+  Batch = 'BATCH',
+  Single = 'SINGLE'
+}
 
-export type AuthRule = {
-  and?: Maybe<Array<Maybe<AuthRule>>>;
-  or?: Maybe<Array<Maybe<AuthRule>>>;
-  not?: Maybe<AuthRule>;
-  rule?: Maybe<Scalars['String']>;
+export type IntFilter = {
+  eq?: Maybe<Scalars['Int']>;
+  le?: Maybe<Scalars['Int']>;
+  lt?: Maybe<Scalars['Int']>;
+  ge?: Maybe<Scalars['Int']>;
+  gt?: Maybe<Scalars['Int']>;
+  between?: Maybe<IntRange>;
 };
 
 export type StringTermFilter = {
@@ -108,68 +254,35 @@ export type StringTermFilter = {
   anyofterms?: Maybe<Scalars['String']>;
 };
 
-export enum PersonOrderable {
-  Name = 'name',
-  Gender = 'gender',
-  DateOfBirth = 'dateOfBirth',
-  DateOfDeath = 'dateOfDeath'
-}
-
-
-export type FloatRange = {
-  min: Scalars['Float'];
-  max: Scalars['Float'];
+export type StringFullTextFilter = {
+  alloftext?: Maybe<Scalars['String']>;
+  anyoftext?: Maybe<Scalars['String']>;
 };
 
-export type FloatFilter = {
-  eq?: Maybe<Scalars['Float']>;
-  le?: Maybe<Scalars['Float']>;
-  lt?: Maybe<Scalars['Float']>;
-  ge?: Maybe<Scalars['Float']>;
-  gt?: Maybe<Scalars['Float']>;
-  between?: Maybe<FloatRange>;
+export type CustomHttp = {
+  url: Scalars['String'];
+  method: HttpMethod;
+  body?: Maybe<Scalars['String']>;
+  graphql?: Maybe<Scalars['String']>;
+  mode?: Maybe<Mode>;
+  forwardHeaders?: Maybe<Array<Scalars['String']>>;
+  secretHeaders?: Maybe<Array<Scalars['String']>>;
+  introspectionHeaders?: Maybe<Array<Scalars['String']>>;
+  skipIntrospection?: Maybe<Scalars['Boolean']>;
 };
 
-export type AddStoryPayload = {
-  __typename?: 'AddStoryPayload';
+export type UpdateStoryPayload = {
+  __typename?: 'UpdateStoryPayload';
   story?: Maybe<Array<Maybe<Story>>>;
   numUids?: Maybe<Scalars['Int']>;
 };
 
 
-export type AddStoryPayloadStoryArgs = {
+export type UpdateStoryPayloadStoryArgs = {
   filter?: Maybe<StoryFilter>;
   order?: Maybe<StoryOrder>;
   first?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type IntRange = {
-  min: Scalars['Int'];
-  max: Scalars['Int'];
-};
-
-export enum HttpMethod {
-  Get = 'GET',
-  Post = 'POST',
-  Put = 'PUT',
-  Patch = 'PATCH',
-  Delete = 'DELETE'
-}
-
-export type PersonFilter = {
-  personID?: Maybe<Array<Scalars['ID']>>;
-  name?: Maybe<StringTermFilter>;
-  has?: Maybe<PersonHasFilter>;
-  and?: Maybe<Array<Maybe<PersonFilter>>>;
-  or?: Maybe<Array<Maybe<PersonFilter>>>;
-  not?: Maybe<PersonFilter>;
-};
-
-export type NearFilter = {
-  distance: Scalars['Float'];
-  coordinate: PointRef;
 };
 
 export type GenerateMutationParams = {
@@ -178,17 +291,8 @@ export type GenerateMutationParams = {
   delete?: Maybe<Scalars['Boolean']>;
 };
 
-export type StringExactFilter = {
-  eq?: Maybe<Scalars['String']>;
-  in?: Maybe<Array<Maybe<Scalars['String']>>>;
-  le?: Maybe<Scalars['String']>;
-  lt?: Maybe<Scalars['String']>;
-  ge?: Maybe<Scalars['String']>;
-  gt?: Maybe<Scalars['String']>;
-  between?: Maybe<StringRange>;
-};
-
-export type PersonPatch = {
+export type PersonRef = {
+  personID?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
   gender?: Maybe<Scalars['String']>;
@@ -197,10 +301,16 @@ export type PersonPatch = {
   location?: Maybe<Array<Maybe<Scalars['Int']>>>;
   parent?: Maybe<Array<Maybe<PersonRef>>>;
   nonBioParent?: Maybe<Array<Maybe<PersonRef>>>;
-  aTestPerson?: Maybe<PersonRef>;
+  nonBioParentParent?: Maybe<Array<Maybe<PersonRef>>>;
   physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
   otherRelation?: Maybe<Array<Maybe<PersonRef>>>;
   story?: Maybe<StoryRef>;
+};
+
+export type StoryRef = {
+  storyID?: Maybe<Scalars['ID']>;
+  title?: Maybe<Scalars['String']>;
+  persons?: Maybe<Array<Maybe<PersonRef>>>;
 };
 
 export type Point = {
@@ -209,36 +319,99 @@ export type Point = {
   latitude: Scalars['Float'];
 };
 
-export type DeleteStoryPayload = {
-  __typename?: 'DeleteStoryPayload';
-  story?: Maybe<Array<Maybe<Story>>>;
-  msg?: Maybe<Scalars['String']>;
-  numUids?: Maybe<Scalars['Int']>;
+export type PolygonGeoFilter = {
+  near?: Maybe<NearFilter>;
+  within?: Maybe<WithinFilter>;
+  contains?: Maybe<ContainsFilter>;
+  intersects?: Maybe<IntersectsFilter>;
 };
 
-
-export type DeleteStoryPayloadStoryArgs = {
-  filter?: Maybe<StoryFilter>;
-  order?: Maybe<StoryOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+export type GenerateQueryParams = {
+  get?: Maybe<Scalars['Boolean']>;
+  query?: Maybe<Scalars['Boolean']>;
+  password?: Maybe<Scalars['Boolean']>;
+  aggregate?: Maybe<Scalars['Boolean']>;
 };
 
-export type UpdateStoryInput = {
-  filter: StoryFilter;
-  set?: Maybe<StoryPatch>;
-  remove?: Maybe<StoryPatch>;
+export type MultiPolygon = {
+  __typename?: 'MultiPolygon';
+  polygons: Array<Polygon>;
 };
 
-export enum StoryHasFilter {
-  Title = 'title',
-  Persons = 'persons'
+export type WithinFilter = {
+  polygon: PolygonRef;
+};
+
+export type Int64Filter = {
+  eq?: Maybe<Scalars['Int64']>;
+  le?: Maybe<Scalars['Int64']>;
+  lt?: Maybe<Scalars['Int64']>;
+  ge?: Maybe<Scalars['Int64']>;
+  gt?: Maybe<Scalars['Int64']>;
+  between?: Maybe<Int64Range>;
+};
+
+export type StoryOrder = {
+  asc?: Maybe<StoryOrderable>;
+  desc?: Maybe<StoryOrderable>;
+  then?: Maybe<StoryOrder>;
+};
+
+export type FloatRange = {
+  min: Scalars['Float'];
+  max: Scalars['Float'];
+};
+
+export type Int64Range = {
+  min: Scalars['Int64'];
+  max: Scalars['Int64'];
+};
+
+export type PointListRef = {
+  points: Array<PointRef>;
+};
+
+export type DateTimeFilter = {
+  eq?: Maybe<Scalars['DateTime']>;
+  le?: Maybe<Scalars['DateTime']>;
+  lt?: Maybe<Scalars['DateTime']>;
+  ge?: Maybe<Scalars['DateTime']>;
+  gt?: Maybe<Scalars['DateTime']>;
+  between?: Maybe<DateTimeRange>;
+};
+
+export type PersonAggregateResult = {
+  __typename?: 'PersonAggregateResult';
+  count?: Maybe<Scalars['Int']>;
+  personIDMin?: Maybe<Scalars['String']>;
+  personIDMax?: Maybe<Scalars['String']>;
+  nameMin?: Maybe<Scalars['String']>;
+  nameMax?: Maybe<Scalars['String']>;
+  genderMin?: Maybe<Scalars['String']>;
+  genderMax?: Maybe<Scalars['String']>;
+  dateOfBirthMin?: Maybe<Scalars['Int']>;
+  dateOfBirthMax?: Maybe<Scalars['Int']>;
+  dateOfBirthSum?: Maybe<Scalars['Int']>;
+  dateOfBirthAvg?: Maybe<Scalars['Float']>;
+  dateOfDeathMin?: Maybe<Scalars['Int']>;
+  dateOfDeathMax?: Maybe<Scalars['Int']>;
+  dateOfDeathSum?: Maybe<Scalars['Int']>;
+  dateOfDeathAvg?: Maybe<Scalars['Float']>;
+};
+
+export enum StoryOrderable {
+  Title = 'title'
 }
 
-export type StoryRef = {
-  storyID?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
-  persons?: Maybe<Array<Maybe<PersonRef>>>;
+export type ContainsFilter = {
+  point?: Maybe<PointRef>;
+  polygon?: Maybe<PolygonRef>;
+};
+
+export type UpdatePersonInput = {
+  filter: PersonFilter;
+  set?: Maybe<PersonPatch>;
+  remove?: Maybe<PersonPatch>;
 };
 
 export type Mutation = {
@@ -281,15 +454,44 @@ export type MutationDeleteStoryArgs = {
   filter: StoryFilter;
 };
 
-export type WithinFilter = {
-  polygon: PolygonRef;
-};
+export enum PersonHasFilter {
+  PersonId = 'personID',
+  Name = 'name',
+  NickNames = 'nickNames',
+  Gender = 'gender',
+  DateOfBirth = 'dateOfBirth',
+  DateOfDeath = 'dateOfDeath',
+  Location = 'location',
+  Parent = 'parent',
+  NonBioParent = 'nonBioParent',
+  NonBioParentParent = 'nonBioParentParent',
+  PhysicalRelation = 'physicalRelation',
+  OtherRelation = 'otherRelation',
+  Story = 'story'
+}
 
-export type GenerateQueryParams = {
-  get?: Maybe<Scalars['Boolean']>;
-  query?: Maybe<Scalars['Boolean']>;
-  password?: Maybe<Scalars['Boolean']>;
-  aggregate?: Maybe<Scalars['Boolean']>;
+export enum PersonOrderable {
+  PersonId = 'personID',
+  Name = 'name',
+  Gender = 'gender',
+  DateOfBirth = 'dateOfBirth',
+  DateOfDeath = 'dateOfDeath'
+}
+
+export type AddPersonInput = {
+  personID: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  gender?: Maybe<Scalars['String']>;
+  dateOfBirth?: Maybe<Scalars['Int']>;
+  dateOfDeath?: Maybe<Scalars['Int']>;
+  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  parent?: Maybe<Array<Maybe<PersonRef>>>;
+  nonBioParent?: Maybe<Array<Maybe<PersonRef>>>;
+  nonBioParentParent?: Maybe<Array<Maybe<PersonRef>>>;
+  physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
+  otherRelation?: Maybe<Array<Maybe<PersonRef>>>;
+  story?: Maybe<StoryRef>;
 };
 
 export type StringHashFilter = {
@@ -297,95 +499,30 @@ export type StringHashFilter = {
   in?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type MultiPolygon = {
-  __typename?: 'MultiPolygon';
-  polygons: Array<Polygon>;
-};
-
-export type ContainsFilter = {
-  point?: Maybe<PointRef>;
-  polygon?: Maybe<PolygonRef>;
-};
-
-export type IntFilter = {
-  eq?: Maybe<Scalars['Int']>;
-  le?: Maybe<Scalars['Int']>;
-  lt?: Maybe<Scalars['Int']>;
-  ge?: Maybe<Scalars['Int']>;
-  gt?: Maybe<Scalars['Int']>;
-  between?: Maybe<IntRange>;
-};
-
-export type StringRegExpFilter = {
-  regexp?: Maybe<Scalars['String']>;
-};
-
-export type UpdatePersonInput = {
-  filter: PersonFilter;
-  set?: Maybe<PersonPatch>;
-  remove?: Maybe<PersonPatch>;
-};
-
-export type PointRef = {
-  longitude: Scalars['Float'];
-  latitude: Scalars['Float'];
-};
-
-export type UpdateStoryPayload = {
-  __typename?: 'UpdateStoryPayload';
-  story?: Maybe<Array<Maybe<Story>>>;
-  numUids?: Maybe<Scalars['Int']>;
-};
-
-
-export type UpdateStoryPayloadStoryArgs = {
-  filter?: Maybe<StoryFilter>;
-  order?: Maybe<StoryOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-export type MultiPolygonRef = {
-  polygons: Array<PolygonRef>;
-};
-
-export type UpdatePersonPayload = {
-  __typename?: 'UpdatePersonPayload';
+export type AddPersonPayload = {
+  __typename?: 'AddPersonPayload';
   person?: Maybe<Array<Maybe<Person>>>;
   numUids?: Maybe<Scalars['Int']>;
 };
 
 
-export type UpdatePersonPayloadPersonArgs = {
+export type AddPersonPayloadPersonArgs = {
   filter?: Maybe<PersonFilter>;
   order?: Maybe<PersonOrder>;
   first?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
 };
 
-export enum StoryOrderable {
-  Title = 'title'
-}
-
-export type Story = {
-  __typename?: 'Story';
-  storyID: Scalars['ID'];
-  title?: Maybe<Scalars['String']>;
-  persons?: Maybe<Array<Maybe<Person>>>;
-  personsAggregate?: Maybe<PersonAggregateResult>;
+export type IntRange = {
+  min: Scalars['Int'];
+  max: Scalars['Int'];
 };
 
-
-export type StoryPersonsArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type StoryPersonsAggregateArgs = {
-  filter?: Maybe<PersonFilter>;
+export type AuthRule = {
+  and?: Maybe<Array<Maybe<AuthRule>>>;
+  or?: Maybe<Array<Maybe<AuthRule>>>;
+  not?: Maybe<AuthRule>;
+  rule?: Maybe<Scalars['String']>;
 };
 
 export type PointList = {
@@ -393,54 +530,35 @@ export type PointList = {
   points: Array<Point>;
 };
 
-export type DateTimeFilter = {
-  eq?: Maybe<Scalars['DateTime']>;
-  le?: Maybe<Scalars['DateTime']>;
-  lt?: Maybe<Scalars['DateTime']>;
-  ge?: Maybe<Scalars['DateTime']>;
-  gt?: Maybe<Scalars['DateTime']>;
-  between?: Maybe<DateTimeRange>;
+export type Polygon = {
+  __typename?: 'Polygon';
+  coordinates: Array<PointList>;
 };
 
-export type StringFullTextFilter = {
-  alloftext?: Maybe<Scalars['String']>;
-  anyoftext?: Maybe<Scalars['String']>;
+export type MultiPolygonRef = {
+  polygons: Array<PolygonRef>;
 };
 
-export type DeletePersonPayload = {
-  __typename?: 'DeletePersonPayload';
-  person?: Maybe<Array<Maybe<Person>>>;
-  msg?: Maybe<Scalars['String']>;
-  numUids?: Maybe<Scalars['Int']>;
-};
-
-
-export type DeletePersonPayloadPersonArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-export type PersonAggregateResult = {
-  __typename?: 'PersonAggregateResult';
+export type StoryAggregateResult = {
+  __typename?: 'StoryAggregateResult';
   count?: Maybe<Scalars['Int']>;
-  nameMin?: Maybe<Scalars['String']>;
-  nameMax?: Maybe<Scalars['String']>;
-  genderMin?: Maybe<Scalars['String']>;
-  genderMax?: Maybe<Scalars['String']>;
-  dateOfBirthMin?: Maybe<Scalars['Int']>;
-  dateOfBirthMax?: Maybe<Scalars['Int']>;
-  dateOfBirthSum?: Maybe<Scalars['Int']>;
-  dateOfBirthAvg?: Maybe<Scalars['Float']>;
-  dateOfDeathMin?: Maybe<Scalars['Int']>;
-  dateOfDeathMax?: Maybe<Scalars['Int']>;
-  dateOfDeathSum?: Maybe<Scalars['Int']>;
-  dateOfDeathAvg?: Maybe<Scalars['Float']>;
+  titleMin?: Maybe<Scalars['String']>;
+  titleMax?: Maybe<Scalars['String']>;
 };
 
-export type PointListRef = {
-  points: Array<PointRef>;
+export type PersonPatch = {
+  name?: Maybe<Scalars['String']>;
+  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  gender?: Maybe<Scalars['String']>;
+  dateOfBirth?: Maybe<Scalars['Int']>;
+  dateOfDeath?: Maybe<Scalars['Int']>;
+  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  parent?: Maybe<Array<Maybe<PersonRef>>>;
+  nonBioParent?: Maybe<Array<Maybe<PersonRef>>>;
+  nonBioParentParent?: Maybe<Array<Maybe<PersonRef>>>;
+  physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
+  otherRelation?: Maybe<Array<Maybe<PersonRef>>>;
+  story?: Maybe<StoryRef>;
 };
 
 export type Query = {
@@ -455,7 +573,7 @@ export type Query = {
 
 
 export type QueryGetPersonArgs = {
-  personID: Scalars['ID'];
+  personID: Scalars['String'];
 };
 
 
@@ -489,198 +607,94 @@ export type QueryAggregateStoryArgs = {
   filter?: Maybe<StoryFilter>;
 };
 
-export type IntersectsFilter = {
-  polygon?: Maybe<PolygonRef>;
-  multiPolygon?: Maybe<MultiPolygonRef>;
-};
-
-export type AddStoryInput = {
-  title?: Maybe<Scalars['String']>;
-  persons?: Maybe<Array<Maybe<PersonRef>>>;
-};
-
-export type StoryOrder = {
-  asc?: Maybe<StoryOrderable>;
-  desc?: Maybe<StoryOrderable>;
-  then?: Maybe<StoryOrder>;
-};
-
 export type DateTimeRange = {
   min: Scalars['DateTime'];
   max: Scalars['DateTime'];
 };
 
-export type Int64Filter = {
-  eq?: Maybe<Scalars['Int64']>;
-  le?: Maybe<Scalars['Int64']>;
-  lt?: Maybe<Scalars['Int64']>;
-  ge?: Maybe<Scalars['Int64']>;
-  gt?: Maybe<Scalars['Int64']>;
-  between?: Maybe<Int64Range>;
+export type StringRange = {
+  min: Scalars['String'];
+  max: Scalars['String'];
 };
 
-export enum PersonHasFilter {
-  Name = 'name',
-  NickNames = 'nickNames',
-  Gender = 'gender',
-  DateOfBirth = 'dateOfBirth',
-  DateOfDeath = 'dateOfDeath',
-  Location = 'location',
-  Parent = 'parent',
-  NonBioParent = 'nonBioParent',
-  ATestPerson = 'aTestPerson',
-  PhysicalRelation = 'physicalRelation',
-  OtherRelation = 'otherRelation',
-  Story = 'story'
-}
-
-export type PersonRef = {
-  personID?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  gender?: Maybe<Scalars['String']>;
-  dateOfBirth?: Maybe<Scalars['Int']>;
-  dateOfDeath?: Maybe<Scalars['Int']>;
-  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  parent?: Maybe<Array<Maybe<PersonRef>>>;
-  nonBioParent?: Maybe<Array<Maybe<PersonRef>>>;
-  aTestPerson?: Maybe<PersonRef>;
-  physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
-  otherRelation?: Maybe<Array<Maybe<PersonRef>>>;
-  story?: Maybe<StoryRef>;
+export type StoryFilter = {
+  storyID?: Maybe<Array<Scalars['ID']>>;
+  title?: Maybe<StringTermFilter>;
+  has?: Maybe<StoryHasFilter>;
+  and?: Maybe<Array<Maybe<StoryFilter>>>;
+  or?: Maybe<Array<Maybe<StoryFilter>>>;
+  not?: Maybe<StoryFilter>;
 };
 
-export enum Mode {
-  Batch = 'BATCH',
-  Single = 'SINGLE'
-}
-
-export type PolygonGeoFilter = {
-  near?: Maybe<NearFilter>;
-  within?: Maybe<WithinFilter>;
-  contains?: Maybe<ContainsFilter>;
-  intersects?: Maybe<IntersectsFilter>;
-};
-
-export type AddPersonPayload = {
-  __typename?: 'AddPersonPayload';
-  person?: Maybe<Array<Maybe<Person>>>;
-  numUids?: Maybe<Scalars['Int']>;
-};
-
-
-export type AddPersonPayloadPersonArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-export type AddPersonInput = {
-  name?: Maybe<Scalars['String']>;
-  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  gender?: Maybe<Scalars['String']>;
-  dateOfBirth?: Maybe<Scalars['Int']>;
-  dateOfDeath?: Maybe<Scalars['Int']>;
-  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  parent?: Maybe<Array<Maybe<PersonRef>>>;
-  nonBioParent?: Maybe<Array<Maybe<PersonRef>>>;
-  aTestPerson?: Maybe<PersonRef>;
-  physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
-  otherRelation?: Maybe<Array<Maybe<PersonRef>>>;
-  story?: Maybe<StoryRef>;
-};
-
-export type Person = {
-  __typename?: 'Person';
-  personID: Scalars['ID'];
-  name?: Maybe<Scalars['String']>;
-  nickNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  gender?: Maybe<Scalars['String']>;
-  dateOfBirth?: Maybe<Scalars['Int']>;
-  dateOfDeath?: Maybe<Scalars['Int']>;
-  location?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  parent?: Maybe<Array<Maybe<Person>>>;
-  nonBioParent?: Maybe<Array<Maybe<Person>>>;
-  aTestPerson?: Maybe<Person>;
-  physicalRelation?: Maybe<Array<Maybe<Person>>>;
-  otherRelation?: Maybe<Array<Maybe<Person>>>;
-  story?: Maybe<Story>;
-  parentAggregate?: Maybe<PersonAggregateResult>;
-  nonBioParentAggregate?: Maybe<PersonAggregateResult>;
-  physicalRelationAggregate?: Maybe<PersonAggregateResult>;
-  otherRelationAggregate?: Maybe<PersonAggregateResult>;
-};
-
-
-export type PersonParentArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type PersonNonBioParentArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type PersonATestPersonArgs = {
-  filter?: Maybe<PersonFilter>;
-};
-
-
-export type PersonPhysicalRelationArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type PersonOtherRelationArgs = {
-  filter?: Maybe<PersonFilter>;
-  order?: Maybe<PersonOrder>;
-  first?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-};
-
-
-export type PersonStoryArgs = {
-  filter?: Maybe<StoryFilter>;
-};
-
-
-export type PersonParentAggregateArgs = {
-  filter?: Maybe<PersonFilter>;
-};
-
-
-export type PersonNonBioParentAggregateArgs = {
-  filter?: Maybe<PersonFilter>;
-};
-
-
-export type PersonPhysicalRelationAggregateArgs = {
-  filter?: Maybe<PersonFilter>;
-};
-
-
-export type PersonOtherRelationAggregateArgs = {
-  filter?: Maybe<PersonFilter>;
-};
-
-export type Polygon = {
-  __typename?: 'Polygon';
-  coordinates: Array<PointList>;
+export type UpdateStoryInput = {
+  filter: StoryFilter;
+  set?: Maybe<StoryPatch>;
+  remove?: Maybe<StoryPatch>;
 };
 
 export type PolygonRef = {
   coordinates: Array<PointListRef>;
+};
+
+export type IntersectsFilter = {
+  polygon?: Maybe<PolygonRef>;
+  multiPolygon?: Maybe<MultiPolygonRef>;
+};
+
+export type DeletePersonPayload = {
+  __typename?: 'DeletePersonPayload';
+  person?: Maybe<Array<Maybe<Person>>>;
+  msg?: Maybe<Scalars['String']>;
+  numUids?: Maybe<Scalars['Int']>;
+};
+
+
+export type DeletePersonPayloadPersonArgs = {
+  filter?: Maybe<PersonFilter>;
+  order?: Maybe<PersonOrder>;
+  first?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+};
+
+export enum StoryHasFilter {
+  Title = 'title',
+  Persons = 'persons'
+}
+
+export type StringExactFilter = {
+  eq?: Maybe<Scalars['String']>;
+  in?: Maybe<Array<Maybe<Scalars['String']>>>;
+  le?: Maybe<Scalars['String']>;
+  lt?: Maybe<Scalars['String']>;
+  ge?: Maybe<Scalars['String']>;
+  gt?: Maybe<Scalars['String']>;
+  between?: Maybe<StringRange>;
+};
+
+export type PersonOrder = {
+  asc?: Maybe<PersonOrderable>;
+  desc?: Maybe<PersonOrderable>;
+  then?: Maybe<PersonOrder>;
+};
+
+export type StoryPatch = {
+  title?: Maybe<Scalars['String']>;
+  persons?: Maybe<Array<Maybe<PersonRef>>>;
+};
+
+
+export type PointGeoFilter = {
+  near?: Maybe<NearFilter>;
+  within?: Maybe<WithinFilter>;
+};
+
+export type FloatFilter = {
+  eq?: Maybe<Scalars['Float']>;
+  le?: Maybe<Scalars['Float']>;
+  lt?: Maybe<Scalars['Float']>;
+  ge?: Maybe<Scalars['Float']>;
+  gt?: Maybe<Scalars['Float']>;
+  between?: Maybe<FloatRange>;
 };
 
 export type GetAllPersonsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -721,7 +735,7 @@ export type GetPersonByNameQuery = (
 );
 
 export type GetPersonByUidQueryVariables = Exact<{
-  uid: Scalars['ID'];
+  uid: Scalars['String'];
 }>;
 
 
@@ -825,7 +839,7 @@ export const GetPersonByNameDocument = gql`
 }
     ${PersonWithLinksFieldsFragmentDoc}`;
 export const GetPersonByUidDocument = gql`
-    query getPersonByUid($uid: ID!) {
+    query getPersonByUid($uid: String!) {
   getPerson(personID: $uid) {
     ...PersonWithLinksFields
   }

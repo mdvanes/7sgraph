@@ -1,4 +1,4 @@
-query getPersonByUid($uid: ID!) {
+query getPersonByUid($uid: String!) {
   getPerson(personID: $uid) {
     ...PersonWithLinksFields
   }

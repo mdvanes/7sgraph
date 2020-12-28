@@ -80,22 +80,27 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:book2 <Story.title> "The Storm Sister" .
    _:book2 <dgraph.type> "Story" .
 
-   _:zed <Person.name> "Zed" .
+   _:zed <Person.name> "Zed Eszu" .
+   _:zed <Person.personID> "zed" .
    _:zed <Person.gender> "male" .
    _:zed <dgraph.type> "Person" .
 
-   _:kreeg <Person.name> "Kreeg" .
+   _:kreeg <Person.name> "Kreeg Eszu" .
+   _:kreeg <Person.personID> "kreeg" .
+   _:pasalt <Person.dateOfDeath> "2007" .
    _:kreeg <Person.gender> "male" .
    _:kreeg <dgraph.type> "Person" .
    _:kreeg <Person.parent> _:zed .
 
    _:maia <Person.name> "Maia d\'Apliése" .
+   _:maia <Person.personID> "maia" .
    _:maia <Person.gender> "female" .
    _:maia <dgraph.type> "Person" .
    _:maia <Person.story> _:book1 .
    _:maia <Person.physicalRelation> _:zed .
 
    _:alcyone <Person.name> "Alcyone d\'Apliése" .
+   _:alcyone <Person.personID> "alcyone" .
    _:alcyone <Person.gender> "female" .
    _:alcyone <Person.nickNames> "Ally" .
    _:alcyone <Person.nickNames> "Storm" .
@@ -103,57 +108,56 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
    _:alcyone <dgraph.type> "Person" .
    _:alcyone <Person.story> _:book2 .
    
-   _:thomfhalvorsen <Person.name> "Thom Felix Halvorsen" .
-   _:thomfhalvorsen <Person.dateOfBirth> "1980" .
-   _:thomfhalvorsen <dgraph.type> "Person" .
-   _:thomfhalvorsen <Person.story> _:book2 .
 
-   _:felixmhalvorsen <Person.name> "Felix Mendelssohn Halvorsen" .
-   _:felixmhalvorsen <dgraph.type> "Person" .
-   _:felixmhalvorsen <Person.parent> _:alcyone .
-   _:felixmhalvorsen <Person.parent> _:thomfhalvorsen .
-   _:felixmhalvorsen <Person.story> _:book2 .
    
    _:piphalvorsen <Person.name> "Jens Halvorsen" .
+   _:piphalvorsen <Person.personID> "piphalvorsen" .
    _:piphalvorsen <Person.nickNames> "Pip" .
    _:piphalvorsen <dgraph.type> "Person" .
    _:piphalvorsen <Person.parent> _:felixmhalvorsen .
 
    _:asterope <Person.name> "Asterope d\'Apliése" .
+   _:asterope <Person.personID> "asterope" .
    _:asterope <Person.gender> "female" .
    _:asterope <Person.nickNames> "Star" .
    _:asterope <Person.nickNames> "Shadow" .
    _:asterope <dgraph.type> "Person" .
 
    _:celeano <Person.name> "Celeano d\'Apliése" .
+   _:celeano <Person.personID> "celeano" .
    _:celeano <Person.gender> "female" .
    _:celeano <Person.nickNames> "CeCe" .
    _:celeano <Person.nickNames> "Pearl" .
    _:celeano <dgraph.type> "Person" .
 
    _:taygete <Person.name> "Taygete d\'Apliése" .
+   _:taygete <Person.personID> "taygete" .
    _:taygete <Person.gender> "female" .
    _:taygete <Person.nickNames> "Tiggy" .
    _:taygete <Person.nickNames> "Moon" .
    _:taygete <dgraph.type> "Person" .
 
    _:electra <Person.name> "Electra d\'Apliése" .
+   _:electra <Person.personID> "electra" .
    _:electra <Person.gender> "female" .
    _:electra <Person.nickNames> "Sun" .
    _:electra <dgraph.type> "Person" .
    _:electra <Person.physicalRelation> _:zed .
 
    _:merope <Person.name> "Merope d\'Apliése" .
+   _:merope <Person.personID> "merope" .
    _:merope <Person.gender> "female" .
    _:merope <Person.nickNames> "Missing" .
    _:merope <dgraph.type> "Person" .
 
    _:marina <Person.name> "Marina" .
+   _:marina <Person.personID> "marina" .
    _:marina <Person.nickNames> "Ma" .
    _:marina <Person.gender> "female" .
    _:marina <dgraph.type> "Person" .
 
    _:pasalt <dgraph.type> "Person" .
+   _:pasalt <Person.personID> "pasalt" .
    _:pasalt <Person.name> "Pa Salt" .
    _:pasalt <Person.dateOfDeath> "2007" .
    _:pasalt <Person.gender> "male" .
@@ -168,6 +172,110 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
   }
 }
 ' 
+
+
+  #  _:thomfhalvorsen <Person.name> "Thom Felix Halvorsen" .
+  #  _:thomfhalvorsen <Person.personID> "thomfhalvorsen" .
+  #  _:thomfhalvorsen <Person.dateOfBirth> "1980" .
+  #  _:thomfhalvorsen <dgraph.type> "Person" .
+  #  _:thomfhalvorsen <Person.story> _:book2 .
+
+  #  _:felixmhalvorsen <Person.name> "Felix Mendelssohn Halvorsen" .
+  #  _:felixmhalvorsen <Person.personID> "felixmhalvorsen" .
+  #  _:felixmhalvorsen <dgraph.type> "Person" .
+  #  _:felixmhalvorsen <Person.parent> _:alcyone .
+  #  _:felixmhalvorsen <Person.parent> _:thomfhalvorsen .
+  #  _:felixmhalvorsen <Person.story> _:book2 .
+
+# Can't reference an ID that is added in the same addPerson statement
+# mutation {
+#   addPerson(input: [
+#     { personID:"thomfhalvorsen", name: "Thom Felix Halvorsen", dateOfBirth: 1980 },
+#     { personID:"felixmhalvorsen", name: "Felix Mendelssohn Halvorsen", nonBioParent: [{ personID: "alcyone" },  { personID: "thomfhalvorsen" }] }
+#   ]) {
+#     person {
+#       personID
+#       name
+#       nonBioParent {
+#         personID
+#       }
+#     }
+#   }
+# }
+
+# Add Thom
+# mutation {
+#   addPerson(input: [
+#     { personID:"thomfhalvorsen", name: "Thom Felix Halvorsen", dateOfBirth: 1980 },
+#   ]) {
+#     person {
+#       personID
+#       name
+#       nonBioParent {
+#         personID
+#       }
+#     }
+#   }
+# }
+curl 'http://localhost:8080/graphql' \
+  -H 'Content-Type: application/json' \
+  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"thomfhalvorsen\", name: \"Thom Felix Halvorsen\", dateOfBirth: 1980 },\n  ]) {\n    person {\n      personID\n      name\n      nonBioParent {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
+  --compressed
+
+# Add Felix
+# mutation {
+#   addPerson(input: [
+#     { personID:"felixmhalvorsen", name: "Felix Mendelssohn Halvorsen", nonBioParent: [{ personID: "alcyone" }, { personID: "thomfhalvorsen" }] }
+#   ]) {
+#     person {
+#       personID
+#       name
+#       nonBioParent {
+#         personID
+#       }
+#     }
+#   }
+# }
+curl 'http://localhost:8080/graphql' \
+  -H 'Content-Type: application/json' \
+  --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { personID:\"felixmhalvorsen\", name: \"Felix Mendelssohn Halvorsen\", nonBioParent: [{ personID: \"alcyone\" }, { personID: \"thomfhalvorsen\" }] }\n  ]) {\n    person {\n      personID\n      name\n      nonBioParent {\n        personID\n      }\n    }\n  }\n}","variables":null}' \
+  --compressed
+
+# curl 'http://localhost:8080/graphql' \
+#   -H 'Content-Type: application/json' \
+#   --data-binary '{"query":"mutation {\n  addPerson(input: [\n    { name: \"TestPerson1\", story: { storyID: \"0xa\" } },\n    { name: \"TestPerson2\", story: { storyID: \"0xa\" } }\n  ]) {\n    person {\n      personID\n      name\n      story {\n        title\n      }\n    }\n  }\n}","variables":null}' \
+#   --compressed
+
+# Test add for inversion relationmutation 
+# {
+#   addPerson(input: [
+#     { personID:"tp1", name: "TestPerson1", nonBioParentParent: { personID: "pasalt" } },
+#     { personID:"tp2", name: "TestPerson2", nonBioParentParent: { personID: "pasalt" } }
+#   ]) {
+#     person {
+#       personID
+#       name
+#       nonBioParentParent {
+#         personID
+#       }
+#     }
+#   }
+# }
+
+# Test query inverse relation
+# {
+#   queryPerson {
+#     __typename
+#     personID
+#     name
+#     nonBioParent {
+#       name
+#     }
+#     nonBioParentParent {
+#       name
+#     }
+#   }
+# }
 
 # https://dgraph.io/docs/mutations/json-mutation-format/#json-syntax-using-raw-http-or-ratel-ui
 # https://dgraph.io/docs/mutations/json-mutation-format/
