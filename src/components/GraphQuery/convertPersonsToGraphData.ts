@@ -1,6 +1,7 @@
+import { Maybe } from "graphql/jsutils/Maybe";
 import { GraphLink } from "react-d3-graph";
 import {
-  Maybe,
+  // Maybe,
   PersonFieldsFragment,
   PersonWithLinksFieldsFragment,
 } from "../../generated/graphql";
@@ -31,10 +32,10 @@ export function isJustVal<T>(val: Maybe<T>): val is T {
 }
 
 const relationTypeColor = (type: string): string | undefined => {
-  if (type === "parent") {
+  if (type === "children" || type === "parents") {
     return "#141823";
   }
-  if (type === "nonBioParent") {
+  if (type === "nonBioChildren" || type === "nonBioParents") {
     return "#3f51b5";
   }
   if (type === "physicalRelation") {
@@ -64,10 +65,20 @@ export const convertPersonsToGraphData = (
   const allNodes = nodes.concat(relatedNodes);
 
   const links = justPersons.flatMap(
-    ({ personID, parent, nonBioParent, physicalRelation, otherRelation }) => {
+    ({
+      personID,
+      children,
+      parents,
+      nonBioChildren,
+      nonBioParents,
+      physicalRelation,
+      otherRelation,
+    }) => {
       const allRelations = {
-        parent,
-        nonBioParent,
+        children,
+        parents,
+        nonBioChildren,
+        nonBioParents,
         physicalRelation,
         otherRelation,
       };
@@ -84,6 +95,7 @@ export const convertPersonsToGraphData = (
     }
   );
 
+  // TODO when "Zed" is added (e.g. by clicking "Maia"), the edge to "Electra" should be added directly.
   const linksToExistingNodes = links.filter(
     (link) =>
       allNodes.some((n) => n.id === link.source) &&
@@ -94,17 +106,23 @@ export const convertPersonsToGraphData = (
 };
 
 const convertRelatedToNodes = ({
-  parent,
-  nonBioParent,
+  children,
+  parents,
+  nonBioChildren,
+  nonBioParents,
   physicalRelation,
   otherRelation,
 }: PersonWithLinksFieldsFragment): CustomNode[] => {
-  const justParents = parent?.filter(isJustVal) ?? [];
-  const justNonBioParents = nonBioParent?.filter(isJustVal) ?? [];
-  const justPhysical = physicalRelation?.filter(isJustVal) ?? [];
-  const justOther = otherRelation?.filter(isJustVal) ?? [];
-  const nodes = justParents
-    .concat(justNonBioParents, justPhysical, justOther)
-    .map<CustomNode>(convertPersonToNode);
-  return nodes;
+  const allRelations = {
+    children,
+    parents,
+    nonBioChildren,
+    nonBioParents,
+    physicalRelation,
+    otherRelation,
+  };
+  const allRelatedPersons = Object.entries(allRelations)
+    .flatMap(([relationType, relatedPersons]) => relatedPersons)
+    .filter(isJustVal);
+  return allRelatedPersons.map<CustomNode>(convertPersonToNode)
 };
