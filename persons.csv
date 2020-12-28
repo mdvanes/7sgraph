@@ -1,0 +1,7 @@
+personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,parents,nonBioChildren,nonBioParents,physicalRelation,otherRelation,story
+zed,Zed Eszu,,male,,,,zedjr,,,,,,
+kreeg,Kreeg Eszu,,male,,2007,,zed,,,,,,
+maia,Maia d'Apliése,,female,,,,zedjr,,,,,,
+alcyone,Alcyone d'Apliése,"Ally,Storm",female,1980,,,,,,,,,
+thomfhalvorsen,Thom Felix Halvorsen,,male,1980,,,,,,,,,
+felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,
