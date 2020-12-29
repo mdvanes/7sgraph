@@ -71,7 +71,7 @@ const convertRelatedPersonToEdge = (type: string, personID: string) => (
 export const convertPersonsToGraphData = (
   persons: PersonWithLinksFieldsFragment[],
   originNode?: CustomNode
-) => {
+): [CustomNode[], GraphLink[]] => {
   const justPersons = persons?.filter(isJustVal) ?? [];
 
   const nodes = justPersons.map<CustomNode>(convertPersonToNode(originNode));

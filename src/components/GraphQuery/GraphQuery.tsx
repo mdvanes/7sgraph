@@ -1,4 +1,4 @@
-import { Graph } from "react-d3-graph";
+import { Graph, GraphData, GraphLink } from "react-d3-graph";
 import { getSdk } from "../../generated/graphql";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
 import { GraphQLClient } from "graphql-request";
@@ -20,29 +20,52 @@ const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
 });
 
 const GraphQuery: FC = () => {
-  // TODO fix any type
-  const [graphData, setGraphData] = useState<any>();
-  const { getPersonByName, getPersonByUid } = getSdk(client);
+  const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
+    nodes: [],
+    links: [],
+  });
+  const { getPersonByUid, getStartNodes } = getSdk(client);
   const graphRef = useRef();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { queryPerson } = await getPersonByName({ name: "Pa Salt" });
+  const initialize = async () => {
+    try {
+      const { queryPerson } = await getStartNodes();
 
-        const justPersons = queryPerson?.filter(isJustVal) ?? [];
+      const justPersons = queryPerson?.filter(isJustVal) ?? [];
 
-        const [nodes, links] = convertPersonsToGraphData(justPersons);
+      const [nodes, links] = convertPersonsToGraphData(justPersons);
 
-        setGraphData({
-          nodes,
-          links,
-        });
-        // console.log(nodes, links);
-      } catch (err) {
-        console.error(err);
+      // TODO use filterUniqueNodes(nodes) and filterUniqueLinks(links)
+      setGraphData({
+        nodes,
+        links,
+      });
+      // console.log(nodes, links);
+
+      const getElem = document.getElementById(
+        "graph-id-graph-container-zoomable"
+      );
+      if (getElem) {
+        // const graphInst = graphRef.current;
+        // if (graphInst) {
+        //   (graphRef.current as any).focusAnimationTimeout = 1000;
+        //   console.log("graphref", graphRef.current);
+        //   // (graphInst as any).resetNodesPositions();
+        //   // (graphRef.current as any).restartSimulation();
+        // }        console.log("elem found");
+        // TODO focusedNodeId does not work with async, but this does. Fix to use ref instead of getElementById. Also calculate translate based on canvas size.
+        // TODO also fix when dragging
+        getElem.setAttribute("transform", "translate(790,334) scale(1)");
+      } else {
+        console.log("no elem");
       }
-    })();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    initialize();
   }, []);
 
   const onClickNode = (uid: string, originNode: CustomNode) => {
@@ -57,9 +80,10 @@ const GraphQuery: FC = () => {
           ? convertPersonsToGraphData(persons, originNode)
           : [[], []];
 
+        // TODO use filterUniqueNodes(nodes) and filterUniqueLinks(links)
         setGraphData({
-          nodes: graphData.nodes.concat(nodes),
-          links: graphData.links.concat(links),
+          nodes: graphData?.nodes ? graphData.nodes.concat(nodes) : [],
+          links: graphData?.links ? graphData.links.concat(links) : [],
         });
 
         // const graphInst = graphRef.current;
@@ -97,12 +121,15 @@ const GraphQuery: FC = () => {
         <Graph
           id="graph-id" // id is mandatory
           ref={graphRef as any}
-          data={{ ...graphData }} // , focusedNodeId: "pasalt" }}
+          data={{ ...graphData }}
           config={appGraphConfig(
             window.innerWidth,
             window.innerHeight - 64 - 5
           )}
           onClickNode={onClickNode as any}
+          onClickGraph={() => {
+            console.log("click");
+          }}
           //   onClickLink={onClickLink}
           // onNodePositionChange={(n, x, y) => {
           //   console.log(`Node ${n} moved to ${x},${y}`);
