@@ -1,10 +1,11 @@
 personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,parents,nonBioChildren,nonBioParents,physicalRelation,otherRelation,story
+zedjr,Zed Jr.,,male,1995,,,,,,,,,book1
 zed,Zed Eszu,,male,,,,zedjr,,,,,,
 kreeg,Kreeg Eszu,,male,,2007,,zed,,,,,,
-maia,Maia d'Apliése,,female,,,,zedjr,,,,zed,,
-alcyone,Alcyone d'Apliése,"Ally,Storm",female,1980,,,,,,,,,
-thomfhalvorsen,Thom Felix Halvorsen,,male,1980,,,,,,,,,
-felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,
-electra,Electra d'Apliése,Sun,female,,,,,,,,zed,,
+maia,Maia d'Apliése,,female,,,,zedjr,,,,zed,,book1
+alcyone,Alcyone d'Apliése,"Ally,Storm",female,1980,,,,,,,,,book2
+thomfhalvorsen,Thom Felix Halvorsen,,male,1980,,,,,,,,,book2
+felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,book2
+electra,Electra d'Apliése,Sun,female,,,,,,,,zed,,book6
 marina,Marina,Ma,female,,,,,,,,,,
 pasalt,Pa Salt,,male,,2007,,,,"maia,alcyone,electra",,,marina,

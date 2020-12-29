@@ -75,9 +75,11 @@ curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -
 {
   set {
    _:book1 <Story.title> "The Seven Sisters" .
+   _:book1 <Story.storyID> "book1" .
    _:book1 <dgraph.type> "Story" .
 
    _:book2 <Story.title> "The Storm Sister" .
+   _:book2 <Story.storyID> "book2" .
    _:book2 <dgraph.type> "Story" .
 
    _:zed <Person.name> "Zed Eszu" .
