@@ -86,6 +86,22 @@ query getPersonByName($name: String!) {
   }
 }
 
+# Get story by title and all persons in it
+query getStoryByTitle($title: String!) {
+  queryStory(filter: { title: {allofterms: $title}}) {
+    storyID
+    title
+    persons {
+      name
+    }
+  }
+}
++
+{
+  "title": "Storm"
+}
+
+# Gets all persons and than filters stories, so non matching persons will still show up, but with story: null
 query getPersonsByStoryTitle($title: String!) {
   queryPerson(filter: { has:story}) {
     __typename
