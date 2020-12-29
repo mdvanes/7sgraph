@@ -19,7 +19,7 @@ type Person {
 }
 
 type Story {
-    storyID: ID!
+    storyID: String! @id
     title: String @search(by: [term])
     persons: [Person] @hasInverse(field: story)
 }
