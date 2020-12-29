@@ -2,6 +2,11 @@ const csv = require("csv-parser");
 const fs = require("fs");
 const results = [];
 
+// Bash escape single quote
+const escape = (str) => str.replace(/'/g, "'\\''");
+
+const escapeMutationStr = (str) => str.replace(/"/g, "\\\"").replace(/\n|\s{2}/g, " ");
+
 fs.createReadStream("persons.csv")
   .pipe(csv())
   .on("data", (data) => results.push(data))
@@ -11,35 +16,38 @@ fs.createReadStream("persons.csv")
 
     const curlStrings = results.map((person) => {
       const mutationStr = `mutation {
-            addPerson(input: [
-              { personID:"${person.personID}"
-              , name: "${person.name}"
-              , nickNames: [${person.nickNames
-                .split(",")
-                .map((n) => `"${n}"`)
-                .join(", ")}]
-              , dateOfBirth: ${person.dateOfBirth} },
-              , children: [${person.children
-                .split(",")
-                .map((n) => `{ personID: "${n}" }`)
-                .join(", ")}]
-            ]) {
-              person {
-                personID
-                name
-                nickNames
-                dateOfBirth
-                children {
-                  personID
-                }
-                nonBioChildren {
-                  personID
-                }
-              }
-            }
-          }`;
+addPerson(input: [
+    { personID:"${person.personID}"
+    , name: "${escape(person.name)}"
+    , nickNames: [${person.nickNames
+      .split(",")
+      .map((n) => `"${n}"`)
+      .join(", ")}]
+    , dateOfBirth: ${person.dateOfBirth || 0}
+    , children: [${person.children
+      .split(",")
+      .map((n) => `{ personID: "${n}" }`)
+      .join(", ")}]
+}]) {
+    person {
+    personID
+    name
+    nickNames
+    dateOfBirth
+    children {
+        personID
+    }
+    nonBioChildren {
+        personID
+    }
+    }
+}
+}`;
+      console.log(mutationStr);
       //   return mutationStr;
-      return `curl 'http://localhost:8080/graphql' -H 'Content-Type: application/json' --data-binary '{"query":"${mutationStr}","variables":null}' --compressed`;
+      return `curl 'http://localhost:8080/graphql' -H 'Content-Type: application/json' --compressed --data-binary '{"query":"${escapeMutationStr(
+        mutationStr
+      )}","variables":null}'`;
     });
     // console.log(curlStrings);
 
@@ -47,7 +55,7 @@ fs.createReadStream("persons.csv")
       fs.writeFileSync("populate2.sh", "");
       console.log("emptied populate2.sh");
     } catch (err) {
-        console.log("error emptying: " + err);
+      console.log("error emptying: " + err);
     }
 
     const stream = fs.createWriteStream("populate2.sh", { flags: "a" });
@@ -57,6 +65,8 @@ fs.createReadStream("persons.csv")
     console.log("wrote populate2.sh");
     stream.end();
   });
+
+//   TODO add escaping for e.g. name
 
 //   _:maia <Person.name> "Maia d\'Apliése" .
 //   _:maia <Person.personID> "maia" .
