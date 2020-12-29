@@ -40,6 +40,9 @@ const AppToolbar = () => {
       <Button color="inherit" href="http://localhost:8001/?latest">
         Ratel
       </Button>
+      <Button color="inherit" href="https://github.com/mdvanes/7sgraph/issues">
+        Github (issues)
+      </Button>
     </Toolbar>
   );
 };

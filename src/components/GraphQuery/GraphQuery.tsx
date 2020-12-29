@@ -7,6 +7,7 @@ import {
   convertPersonsToGraphData,
   isJustVal,
 } from "./convertPersonsToGraphData";
+import GraphTools from "./GraphTools";
 // import getConnectedToNameDQL from "../../dql/getPersonsByRelation";
 
 // const client = new ApolloClient({
@@ -72,6 +73,11 @@ const GraphQuery: FC = () => {
     })();
   };
 
+  useEffect(() => {
+    console.log(graphData);
+    // TODO deduplicate nodes and edges
+  }, [graphData]);
+
   return (
     <>
       {/* <div className={classes.root}>
@@ -86,11 +92,12 @@ const GraphQuery: FC = () => {
           getAriaValueText={valuetext}
         />
       </div> */}
+      <GraphTools />
       {graphData && graphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory
           ref={graphRef as any}
-          data={{ ...graphData, focusedNodeId: "pasalt" }}
+          data={{ ...graphData }} // , focusedNodeId: "pasalt" }}
           config={appGraphConfig(
             window.innerWidth,
             window.innerHeight - 64 - 5
