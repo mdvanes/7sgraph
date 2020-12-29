@@ -57,9 +57,13 @@ const relationTypeColor = (type: string): string | undefined => {
 const convertRelatedPersonToEdge = (type: string, personID: string) => (
   person: PersonFieldsFragment | null
 ): GraphLink => {
+  const otherPersonID = person?.personID ?? "INVALID_PERSON_ID";
+  const isInverted = type === "parents" || type === "nonBioParents";
+  const source = isInverted ? otherPersonID : personID;
+  const target = isInverted ? personID : otherPersonID;
   return {
-    source: personID,
-    target: person?.personID ?? "INVALID_PERSON_ID",
+    source,
+    target,
     color: relationTypeColor(type),
   };
 };
