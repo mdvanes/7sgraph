@@ -6,6 +6,11 @@ maia,Maia d'Apliése,,female,,,,zedjr,,,,zed,,book1
 alcyone,Alcyone d'Apliése,"Ally,Storm",female,1980,,,,,,,,,book2
 thomfhalvorsen,Thom Felix Halvorsen,,male,1980,,,,,,,,,book2
 felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,book2
+piphalvorsen,Jens Halvorsen,Pip,male,,,,felixmhalvorsen,,,,,,
+asterope,Asterope d'Apliése,"Star,Shadow",female,,,,,,,,,,book3
+celeano,Celeano d'Apliése,"CeCe,Pearl",female,,,,,,,,,,book4
+taygete,Taygete d'Apliése,"Tiggy,Moon",female,,,,,,,,,,book5
 electra,Electra d'Apliése,Sun,female,,,,,,,,zed,,book6
+merope,Merope d'Apliése,Missing,female,,,,,,,,,,
 marina,Marina,Ma,female,,,,,,,,,,
-pasalt,Pa Salt,,male,,2007,,,,"maia,alcyone,electra",,,marina,
+pasalt,Pa Salt,,male,,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,marina,
