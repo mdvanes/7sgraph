@@ -134,7 +134,7 @@ addPerson(input: [
 
     const stream = fs.createWriteStream(OUTPUT_FILE_NAME, { flags: "a" });
     curlStrings.forEach((str) => {
-      stream.write(str + "\n\n\n");
+      stream.write(str + "\n");
     });
     stream.write("echo ;");
     stream.write("echo 🎉 Finished curl scripts with graphql mutate statements");

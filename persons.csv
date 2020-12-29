@@ -1,16 +1,41 @@
 personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,parents,nonBioChildren,nonBioParents,physicalRelation,otherRelation,story
 zedjr,Zed Jr.,,male,1995,,,,,,,,,book1
 zed,Zed Eszu,,male,,,,zedjr,,,,,,
-kreeg,Kreeg Eszu,,male,,2007,,zed,,,,,,
-maia,Maia d'Apliése,,female,,,,zedjr,,,,zed,,book1
-alcyone,Alcyone d'Apliése,"Ally,Storm",female,1980,,,,,,,,,book2
-thomfhalvorsen,Thom Felix Halvorsen,,male,1980,,,,,,,,,book2
+kreeg,Kreeg Eszu,Greek Zeus,male,,2007,,zed,,,,,,
+valentinaquintelas,Valentina,,female,2001,,,,,,,,,book1
+florianoquintelas,Floriano Quintelas,,male,,,,valentinaquintelas,,,,,,book1
+motherofvalentina,Mother of Valentina,,female,,2001,,valentinaquintelas,,,,florianoquintelas,,book1
+maia,Maia d'Apliése,,female,1974,,,zedjr,,,,"zed,florianoquintelas",,book1
+cristinacarvalho,Cristina Izabela Carvalho,,female,1956,,,maia,,,,,,book1
+beatrizac,Beatriz Luiza Aires Cabral,,female,1930,2007,,cristinacarvalho,,,,,,book1
+evandrocarvalho,Evandro Carvalho,,male,,,,cristinacarvalho,,,,beatrizac,,book1
+izabela,Izabela Rosa Bonifacio,Bel,female,1910,1931,,beatrizac,,,,,,book1
+laurentbrouilly,Laurent Brouilly,,male,,,,beatrizac,,,,izabela,,book1
+antoniobonifacio,Antonio Bonifacio,,male,,,,izabela,,,,,,book1
+carlabonifacio,Carla,,female,,1930,,izabela,,,,antoniobonifacio,,book1
+gustavoac,Gustavo Aires Cabral,,male,,,,,,beatrizac,,izabela,,book1
+luizaac,Luiza,,female,,1931,,gustavoac,,,,,,book1
+mauricioac,Maurício Aires Cabral,,male,,1953,,gustavoac,,,,luizaac,,book1
+yaracanterino,Yara Canterino,,female,1930,,,,,,,,beatrizac,book1
+loenfagundes,Loen Fagundes,,female,1879,,,yaracanterino,,,,,izabela,book1
+brunocanterino,Bruno Canterino,,male,,,,yaracanterino,,,,loenfagundes,,book1
+fabianacanterino,Fabiana,,female,,,,brunocanterino,,,,,,book1
+sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1
+mariaelisadsc,Maria Elisa da Silva Costa,,female,,,,,,,,,izabela,book1
+heitordsc,Heitor da Silva Costa,,male,,,,mariaelisadsc,,,,,,book1
+bear,Bear,,male,2007,,,,,,,,,book2
+theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2
+alcyone,Alcyone d'Apliése,"Ally,Storm",female,1977,,,bear,,,,theofalyskings,,book2
+thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2
 felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,book2
 piphalvorsen,Jens Halvorsen,Pip,male,,,,felixmhalvorsen,,,,,,
-asterope,Asterope d'Apliése,"Star,Shadow",female,,,,,,,,,,book3
-celeano,Celeano d'Apliése,"CeCe,Pearl",female,,,,,,,,,,book4
-taygete,Taygete d'Apliése,"Tiggy,Moon",female,,,,,,,,,,book5
-electra,Electra d'Apliése,Sun,female,,,,,,,,zed,,book6
+asterope,Asterope d'Apliése,"Star,Shadow",female,1980,,,,,,,,,book3
+celeano,Celeano d'Apliése,"CeCe,Pearl",female,1980,,,,,,,,,book4
+taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5
+electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6
 merope,Merope d'Apliése,Missing,female,,,,,,,,,,
 marina,Marina,Ma,female,,,,,,,,,,
-pasalt,Pa Salt,,male,,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,marina,
+claudia,Claudia,,female,,,,,,,,,,
+georghoffman,Georg Hoffman,,male,,,,,,,,,,
+christian,Christian,,male,,,,,,,,,,
+pasalt,Pa Salt,Atlas P,male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly",
