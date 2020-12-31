@@ -60,25 +60,26 @@ Visit http://localhost:3011/ for web UI
 
 ## Technical stack
 
-- CRA TypeScript
-- react-d3-graph
-- graphql-codegen
-- graphql-request
-- DGraph
-- GraphiQL
-- https://github.com/graphql/vscode-graphql
+- [CRA TypeScript](https://create-react-app.dev/) for setting up a React app
+- [react-d3-graph](https://danielcaldas.github.io/react-d3-graph/docs/index.html) graph visualisation library
+- [graphql-codegen](https://graphql-code-generator.com/docs/getting-started/installation) GraphQL code generator
+- [graphql-request](https://github.com/prisma-labs/graphql-request) to query a Graphql backend from React
+- [DGraph](https://dgraph.io/docs/graphql/quick-start/) graph database with automatic GraphQL endpoint
+- [GraphiQL](https://github.com/graphql/graphiql/blob/main/packages/graphiql/README.md) GraphQL query debugger
+- [VSCode GraphQL extension](https://github.com/graphql/vscode-graphql) for Graphql syntax highlighting
 
 
 ## Notes
 
 Create a schema:
 
-yarn schema:push
+`yarn schema:push`
 or
-curl -X POST localhost:8080/admin/schema --data-binary '@prepare_schema.graphql'
+`curl -X POST localhost:8080/admin/schema --data-binary '@prepare_schema.graphql'`
 
 Populate with mutation query (in GraphiQL):
 
+```
 mutation {
   addPerson(input: [
     { name: "Pa Salt"},
@@ -95,18 +96,21 @@ mutation {
     }
   }
 }
+```
 
 and retrieve them (in GraphiQL):
 
+```
 query {
   queryPerson {
     name
   }
 }
+```
 
 Populate the database with ./populate.sh
 
-In Ratel, try 
+In Ratel (DQL), try 
 
 ```
 query {
