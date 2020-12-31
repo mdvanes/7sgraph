@@ -27,8 +27,19 @@ bear,Bear,,male,2007,,,,,,,,,book2
 theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2
 alcyone,Alcyone d'Apliése,"Ally,Storm",female,1977,,,bear,,,,theofalyskings,,book2
 thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2
-felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,,,,"alcyone,thomfhalvorsen",,,,,,book2
-piphalvorsen,Jens Halvorsen,Pip,male,,,,felixmhalvorsen,,,,,,
+felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,,,book2
+karinerosenblum,Karine Rosenblum,,female,1921,1940,,felixmhalvorsen,,,,,,book2
+piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2
+astridthorsen,Astrid Thorsen,,female,1899,1995,,piphalvorsen,,,,,,book2
+edvardhalvorsen,Edvard Horst Halvorsen,,male,1884,1985,,piphalvorsen,,,,astridthorsen,,book2
+solveighalvorsen,Solveig Anna Halvorsen,,female,1877,1877,,,,,,,,book2
+annalandvik,Anna Tomasdatter Landvik,,female,1857,1907,,"solveighalvorsen,edvardhalvorsen",,,,,,book2
+beritlandvik,Berit Landvik,,female,,,,annalandvik,,,,,,book2
+anderslandvik,Anders Landvik,,male,,,,annalandvik,,,,beritlandvik,,book2
+jenshalvorsen,Jens Halvorsen,,male,1855,1921,,solveighalvorsen,,edvardhalvorsen,,annalandvik,,book2
+margaretetrolle,Margarete Trolle,,female,1834,1887,,jenshalvorsen,,,,,,book2
+jonashalvorsen,Jonas Halvorsen,,male,1830,1890,,jenshalvorsen,,,,margaretetrolle,,book2
+edvardgrieg,Edvard Grieg,,male,1843,1907,,edvardhalvorsen,,,,annalandvik,,book2
 asterope,Asterope d'Apliése,"Star,Shadow",female,1980,,,,,,,,,book3
 celeano,Celeano d'Apliése,"CeCe,Pearl",female,1980,,,,,,,,,book4
 taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5
@@ -38,4 +49,4 @@ marina,Marina,Ma,female,,,,,,,,,,
 claudia,Claudia,,female,,,,,,,,,,
 georghoffman,Georg Hoffman,,male,,,,,,,,,,
 christian,Christian,,male,,,,,,,,,,
-pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly",
+pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen",
