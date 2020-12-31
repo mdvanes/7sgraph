@@ -19,6 +19,12 @@ const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
 });
 
+const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
+  const uniqueByCompoundId = Object.values(Object.fromEntries(links.map(l => ([`${l.source},${l.target}`, l]))));
+  console.log("filterUniqueLinks", uniqueByCompoundId);
+  return uniqueByCompoundId;
+};
+
 const GraphQuery: FC = () => {
   const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
     nodes: [],
@@ -35,12 +41,10 @@ const GraphQuery: FC = () => {
 
       const [nodes, links] = convertPersonsToGraphData(justPersons);
 
-      // TODO use filterUniqueNodes(nodes) and filterUniqueLinks(links)
       setGraphData({
         nodes,
-        links,
+        links: filterUniqueLinks(links),
       });
-      // console.log(nodes, links);
 
       const getElem = document.getElementById(
         "graph-id-graph-container-zoomable"
@@ -69,7 +73,6 @@ const GraphQuery: FC = () => {
   }, []);
 
   const onClickNode = (uid: string, originNode: CustomNode) => {
-    // console.log("onclicknode", uid, originNode);
     // getConnectedToNameDQL(name);
 
     (async () => {
@@ -80,10 +83,9 @@ const GraphQuery: FC = () => {
           ? convertPersonsToGraphData(persons, originNode)
           : [[], []];
 
-        // TODO use filterUniqueNodes(nodes) and filterUniqueLinks(links)
         setGraphData({
           nodes: graphData?.nodes ? graphData.nodes.concat(nodes) : [],
-          links: graphData?.links ? graphData.links.concat(links) : [],
+          links: filterUniqueLinks(graphData?.links ? graphData.links.concat(links) : []),
         });
 
         // const graphInst = graphRef.current;
