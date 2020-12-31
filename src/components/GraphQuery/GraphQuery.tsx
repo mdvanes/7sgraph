@@ -8,20 +8,14 @@ import {
   isJustVal,
 } from "./convertPersonsToGraphData";
 import GraphTools from "./GraphTools";
-// import getConnectedToNameDQL from "../../dql/getPersonsByRelation";
-
-// const client = new ApolloClient({
-//   cache: new InMemoryCache(),
-//   uri: "http://localhost:8080/graphql",
-// });
 
 const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
 });
 
 const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
-  const uniqueByCompoundId = Object.values(Object.fromEntries(links.map(l => ([`${l.source},${l.target}`, l]))));
-  console.log("filterUniqueLinks", uniqueByCompoundId);
+  const compoundIdsToLinks: [string, GraphLink][] = links.map(l => ([`${l.source},${l.target}`, l]));
+  const uniqueByCompoundId = Object.values(Object.fromEntries(compoundIdsToLinks));
   return uniqueByCompoundId;
 };
 
@@ -46,23 +40,23 @@ const GraphQuery: FC = () => {
         links: filterUniqueLinks(links),
       });
 
-      const getElem = document.getElementById(
-        "graph-id-graph-container-zoomable"
-      );
-      if (getElem) {
-        // const graphInst = graphRef.current;
-        // if (graphInst) {
-        //   (graphRef.current as any).focusAnimationTimeout = 1000;
-        //   console.log("graphref", graphRef.current);
-        //   // (graphInst as any).resetNodesPositions();
-        //   // (graphRef.current as any).restartSimulation();
-        // }        console.log("elem found");
-        // TODO focusedNodeId does not work with async, but this does. Fix to use ref instead of getElementById. Also calculate translate based on canvas size.
-        // TODO also fix when dragging
-        getElem.setAttribute("transform", "translate(790,334) scale(1)");
-      } else {
-        console.log("no elem");
-      }
+      // const getElem = document.getElementById(
+      //   "graph-id-graph-container-zoomable"
+      // );
+      // if (getElem) {
+      //   // const graphInst = graphRef.current;
+      //   // if (graphInst) {
+      //   //   (graphRef.current as any).focusAnimationTimeout = 1000;
+      //   //   console.log("graphref", graphRef.current);
+      //   //   // (graphInst as any).resetNodesPositions();
+      //   //   // (graphRef.current as any).restartSimulation();
+      //   // }        console.log("elem found");
+      //   // TODO focusedNodeId does not work with async, but this does. Fix to use ref instead of getElementById. Also calculate translate based on canvas size.
+      //   // TODO also fix when dragging
+      //   getElem.setAttribute("transform", "translate(790,334) scale(1)");
+      // } else {
+      //   console.log("no elem");
+      // }
     } catch (err) {
       console.error(err);
     }
@@ -99,10 +93,10 @@ const GraphQuery: FC = () => {
     })();
   };
 
-  useEffect(() => {
-    console.log(graphData);
-    // TODO deduplicate nodes and edges
-  }, [graphData]);
+  // useEffect(() => {
+  //   console.log(graphData);
+  //   // TODO deduplicate nodes and edges
+  // }, [graphData]);
 
   return (
     <>
