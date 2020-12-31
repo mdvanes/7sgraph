@@ -8,34 +8,37 @@ motherofvalentina,Mother of Valentina,,female,,2001,,valentinaquintelas,,,,flori
 maia,Maia d'Apliése,,female,1974,,,zedjr,,,,"zed,florianoquintelas",,book1
 cristinacarvalho,Cristina Izabela Carvalho,,female,1956,,,maia,,,,,,book1
 beatrizac,Beatriz Luiza Aires Cabral,,female,1930,2007,,cristinacarvalho,,,,,,book1
-evandrocarvalho,Evandro Carvalho,,male,,,,cristinacarvalho,,,,beatrizac,,book1
+evandrocarvalho,Evandro Carvalho,,male,,1,,cristinacarvalho,,,,beatrizac,,book1
 izabela,Izabela Rosa Bonifacio,Bel,female,1910,1931,,beatrizac,,,,,,book1
-laurentbrouilly,Laurent Brouilly,,male,,,,beatrizac,,,,izabela,,book1
-antoniobonifacio,Antonio Bonifacio,,male,,,,izabela,,,,,,book1
+laurentbrouilly,Laurent Brouilly,,male,,1,,beatrizac,,,,izabela,,book1
+antoniobonifacio,Antonio Bonifacio,,male,,1,,izabela,,,,,,book1
 carlabonifacio,Carla,,female,,1930,,izabela,,,,antoniobonifacio,,book1
-gustavoac,Gustavo Aires Cabral,,male,,,,,,beatrizac,,izabela,,book1
+gustavoac,Gustavo Aires Cabral,,male,,1,,,,beatrizac,,izabela,,book1
 luizaac,Luiza,,female,,1931,,gustavoac,,,,,,book1
 mauricioac,Maurício Aires Cabral,,male,,1953,,gustavoac,,,,luizaac,,book1
 yaracanterino,Yara Canterino,,female,1930,,,,,,,,beatrizac,book1
-loenfagundes,Loen Fagundes,,female,1879,,,yaracanterino,,,,,izabela,book1
+loenfagundes,Loen Fagundes,,female,1879,1,,yaracanterino,,,,,izabela,book1
 brunocanterino,Bruno Canterino,,male,,,,yaracanterino,,,,loenfagundes,,book1
 fabianacanterino,Fabiana,,female,,,,brunocanterino,,,,,,book1
 sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1
-mariaelisadsc,Maria Elisa da Silva Costa,,female,,,,,,,,,izabela,book1
-heitordsc,Heitor da Silva Costa,,male,,,,mariaelisadsc,,,,,,book1
+mariaelisadsc,Maria Elisa da Silva Costa,,female,,1,,,,,,,izabela,book1
+heitordsc,Heitor da Silva Costa,,male,,1,,mariaelisadsc,,,,,,book1
 bear,Bear,,male,2007,,,,,,,,,book2
 theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2
-alcyone,Alcyone d'Apliése,"Ally,Storm",female,1977,,,bear,,,,theofalyskings,,book2
+celiafalyskings,Celia Falys-Kings,,female,,,,theofalyskings,,,,,,book2
+peterfalyskings,Peter Falys-Kings,,male,,,,theofalyskings,,,,,,book2
+alcyone,Alcyone d'Apliése,"Ally,Storm,Felicia",female,1977,,,bear,,,,theofalyskings,,book2
 thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2
-felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,,,book2
+martha,Martha,,female,,1,,"alcyone,thomfhalvorsen",,,,,,book2
+felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,martha,,book2
 karinerosenblum,Karine Rosenblum,,female,1921,1940,,felixmhalvorsen,,,,,,book2
 piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2
 astridthorsen,Astrid Thorsen,,female,1899,1995,,piphalvorsen,,,,,,book2
 edvardhalvorsen,Edvard Horst Halvorsen,,male,1884,1985,,piphalvorsen,,,,astridthorsen,,book2
 solveighalvorsen,Solveig Anna Halvorsen,,female,1877,1877,,,,,,,,book2
 annalandvik,Anna Tomasdatter Landvik,,female,1857,1907,,"solveighalvorsen,edvardhalvorsen",,,,,,book2
-beritlandvik,Berit Landvik,,female,,,,annalandvik,,,,,,book2
-anderslandvik,Anders Landvik,,male,,,,annalandvik,,,,beritlandvik,,book2
+beritlandvik,Berit Landvik,,female,,1,,annalandvik,,,,,,book2
+anderslandvik,Anders Landvik,,male,,1,,annalandvik,,,,beritlandvik,,book2
 jenshalvorsen,Jens Halvorsen,,male,1855,1921,,solveighalvorsen,,edvardhalvorsen,,annalandvik,,book2
 margaretetrolle,Margarete Trolle,,female,1834,1887,,jenshalvorsen,,,,,,book2
 jonashalvorsen,Jonas Halvorsen,,male,1830,1890,,jenshalvorsen,,,,margaretetrolle,,book2
