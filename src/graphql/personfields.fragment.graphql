@@ -1,7 +1,0 @@
-fragment PersonFields on Person {
-  personID
-  name
-  dateOfBirth
-  nickNames
-  gender
-}
