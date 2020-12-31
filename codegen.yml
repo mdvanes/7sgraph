@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://localhost:8080/graphql"
+schema: "schema.graphql.json"
 documents: "src/**/*.graphql"
 generates:
   src/generated/graphql.ts:
@@ -18,6 +18,6 @@ generates:
   #     - "typescript-react-apollo"
   #   # config:
   #   #   withComponent: true  
-  ./schema.graphql.json:
-    plugins:
-      - "introspection"
+  # ./schema.graphql.json:
+  #   plugins:
+  #     - "introspection"
