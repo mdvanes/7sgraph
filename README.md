@@ -1,24 +1,16 @@
 # 7sgraph
 
-> Graph of characters from the Seven Sisters books
+> Graph of characters from The Seven Sisters series of books
 
-Stack:
+**Spoiler alert**: this app contains spoilers for The Seven Sisters series of books.
 
-* CRA TypeScript
-* react-d3-graph
-* graphql-codegen
-* graphql-request
-* DGraph
-* GraphiQL
-* https://github.com/graphql/vscode-graphql
+I do not own any rights to these characters or books. For more information about the series of books see [the site by the author, Lucinda Riley](http://lucindariley.co.uk/seven-sisters-series/).
 
-TODO
+## TODO
 
-* prevent duplicate edges/nodes
 * when the schema is stable: script to convert JSON to addMutation CURL statements to be able to bulk update
 * Try out Geo tab in Ratel
 * add Material UI slider for time selection (see GraphQuery)
-* fix codegen stable sorting
 * filter/query by story/date/geo
 * fix codegen for graphql-request
 * fix should this not for tail too? in convertPersonsToGraphData
@@ -31,28 +23,53 @@ TODO
 
 ## Set up the backend
 
-mkdir dgraph
+- Clean checkout of repo
+- mkdir dgraph
+- Create Docker container:
 
 map outside:inside port if needed
 
 Persistent data:
+
+```
 docker run --rm -it \
     -p 8080:8080 \
     -p 9080:9080 \
     -p 8001:8000 \
     -v $(pwd)/dgraph:/dgraph \
     dgraph/standalone:v20.11.0
+```
 
 Non persistent data:
+
+```
 docker run --rm -it \
     -p 8080:8080 \
     -p 9080:9080 \
     -p 8001:8000 \
     dgraph/standalone:v20.11.0
-
+```
 
 Visit http://localhost:8001 for Ratel UI
 Visit http://localhost:3011/ for web UI
+
+- Create a schema: `yarn schema:push`
+- Seed database with data from persons.csv: `yarn populate && ./populate.sh`
+- Start client: `yarn start`
+
+
+## Technical stack
+
+- CRA TypeScript
+- react-d3-graph
+- graphql-codegen
+- graphql-request
+- DGraph
+- GraphiQL
+- https://github.com/graphql/vscode-graphql
+
+
+## Notes
 
 Create a schema:
 
