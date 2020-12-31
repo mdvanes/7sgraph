@@ -1,3 +1,0 @@
-{
-    "ignorePatterns": ["src/generated/*.ts", "src/generated/*.tsx"],
-}

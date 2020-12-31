@@ -1,5 +1,0 @@
-query getPersonByUid($uid: String!) {
-  getPerson(personID: $uid) {
-    ...PersonWithLinksFields
-  }
-}
