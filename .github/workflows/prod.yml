@@ -25,7 +25,8 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
-        CI: false # true -> fails on warning
+        env:
+          CI: false # true -> fails on warning
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
