@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.464a2800.chunk.css",
-    "main.js": "/static/js/main.d95225f7.chunk.js",
-    "main.js.map": "/static/js/main.d95225f7.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.69626f5c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.69626f5c.js.map",
-    "static/css/2.df744089.chunk.css": "/static/css/2.df744089.chunk.css",
-    "static/js/2.1634fde2.chunk.js": "/static/js/2.1634fde2.chunk.js",
-    "static/js/2.1634fde2.chunk.js.map": "/static/js/2.1634fde2.chunk.js.map",
-    "static/js/3.2aaaed15.chunk.js": "/static/js/3.2aaaed15.chunk.js",
-    "static/js/3.2aaaed15.chunk.js.map": "/static/js/3.2aaaed15.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.df744089.chunk.css.map": "/static/css/2.df744089.chunk.css.map",
-    "static/css/main.464a2800.chunk.css.map": "/static/css/main.464a2800.chunk.css.map",
-    "static/js/2.1634fde2.chunk.js.LICENSE.txt": "/static/js/2.1634fde2.chunk.js.LICENSE.txt",
-    "static/media/armillarysphere.3317b928.svg": "/static/media/armillarysphere.3317b928.svg"
+    "main.css": "/7sgraph/static/css/main.464a2800.chunk.css",
+    "main.js": "/7sgraph/static/js/main.d95225f7.chunk.js",
+    "main.js.map": "/7sgraph/static/js/main.d95225f7.chunk.js.map",
+    "runtime-main.js": "/7sgraph/static/js/runtime-main.09b834f6.js",
+    "runtime-main.js.map": "/7sgraph/static/js/runtime-main.09b834f6.js.map",
+    "static/css/2.df744089.chunk.css": "/7sgraph/static/css/2.df744089.chunk.css",
+    "static/js/2.704a9964.chunk.js": "/7sgraph/static/js/2.704a9964.chunk.js",
+    "static/js/2.704a9964.chunk.js.map": "/7sgraph/static/js/2.704a9964.chunk.js.map",
+    "static/js/3.2aaaed15.chunk.js": "/7sgraph/static/js/3.2aaaed15.chunk.js",
+    "static/js/3.2aaaed15.chunk.js.map": "/7sgraph/static/js/3.2aaaed15.chunk.js.map",
+    "index.html": "/7sgraph/index.html",
+    "static/css/2.df744089.chunk.css.map": "/7sgraph/static/css/2.df744089.chunk.css.map",
+    "static/css/main.464a2800.chunk.css.map": "/7sgraph/static/css/main.464a2800.chunk.css.map",
+    "static/js/2.704a9964.chunk.js.LICENSE.txt": "/7sgraph/static/js/2.704a9964.chunk.js.LICENSE.txt",
+    "static/media/armillarysphere.3317b928.svg": "/7sgraph/static/media/armillarysphere.3317b928.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.69626f5c.js",
+    "static/js/runtime-main.09b834f6.js",
     "static/css/2.df744089.chunk.css",
-    "static/js/2.1634fde2.chunk.js",
+    "static/js/2.704a9964.chunk.js",
     "static/css/main.464a2800.chunk.css",
     "static/js/main.d95225f7.chunk.js"
   ]
