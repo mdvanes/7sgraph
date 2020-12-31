@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.3.6",
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.4",
@@ -30,7 +29,10 @@
     "start": "PORT=3011 BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "schema:push": "curl -X POST localhost:8080/admin/schema --data-binary '@prepare_schema.graphql'",
+    "populate": "node populate.js",
+    "schema:get": "node getSortedSchema.js http://localhost:8080/graphql schema.graphql.json",
+    "codegen": "yarn schema:get && graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {
     "extends": [
@@ -56,8 +58,10 @@
     "@graphql-codegen/typescript": "1.19.0",
     "@graphql-codegen/typescript-graphql-request": "^2.0.3",
     "@graphql-codegen/typescript-operations": "1.17.12",
-    "@graphql-codegen/typescript-react-apollo": "^2.2.1",
     "@types/react-d3-graph": "^2.3.4",
-    "@types/react-router-dom": "^5.1.6"
+    "@types/react-router-dom": "^5.1.6",
+    "csv-parser": "^3.0.0",
+    "got": "^11.8.1",
+    "sort-graphql-schema": "^1.0.0"
   }
 }
