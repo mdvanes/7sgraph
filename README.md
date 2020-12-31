@@ -14,15 +14,19 @@ Stack:
 
 TODO
 
-* fix stable positions when adding nodes
-* add Material UI slider for time selection (see GraphQuery)
+* prevent duplicate edges/nodes
 * when the schema is stable: script to convert JSON to addMutation CURL statements to be able to bulk update
+* Try out Geo tab in Ratel
+* add Material UI slider for time selection (see GraphQuery)
+* fix codegen stable sorting
+* filter/query by story/date/geo
 * fix codegen for graphql-request
 * fix should this not for tail too? in convertPersonsToGraphData
 * filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
 * show details on node (right) click
-* filter/query by story/date/geo
-* Try out Geo tab in Ratel
+* start view should be centered on initial node
+* add interests: e.g. Botany, Singing, Modelling
+* implement removing/hiding nodes
 
 
 ## Set up the backend
@@ -52,6 +56,8 @@ Visit http://localhost:3011/ for web UI
 
 Create a schema:
 
+yarn schema:push
+or
 curl -X POST localhost:8080/admin/schema --data-binary '@prepare_schema.graphql'
 
 Populate with mutation query (in GraphiQL):
