@@ -2,7 +2,7 @@ import { Graph, GraphData, GraphLink } from "react-d3-graph";
 import { getSdk } from "../../generated/graphql";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
 import { GraphQLClient } from "graphql-request";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   convertPersonsToGraphData,
   isJustVal,
@@ -24,10 +24,11 @@ const GraphQuery: FC = () => {
     nodes: [],
     links: [],
   });
-  const { getPersonByUid, getStartNodes } = getSdk(client);
+  const { getPersonByUid } = getSdk(client);
   const graphRef = useRef();
 
-  const initialize = async () => {
+  const memoizedInitialize = useCallback(async () => {
+    const { getStartNodes } = getSdk(client);
     try {
       const { queryPerson } = await getStartNodes();
 
@@ -60,11 +61,11 @@ const GraphQuery: FC = () => {
     } catch (err) {
       console.error(err);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    initialize();
-  }, []);
+    memoizedInitialize();
+  }, [memoizedInitialize]);
 
   const onClickNode = (uid: string, originNode: CustomNode) => {
     // getConnectedToNameDQL(name);
