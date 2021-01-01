@@ -1,5 +1,5 @@
 import { createContext, FC, useContext, useReducer } from "react";
-import { initialState, reducer, ContextType } from "./reducer";
+import { initialState, reducer } from "./reducer";
 
 // const GraphSettingsContext = createContext<ContextType | null>(null);
 const GraphSettingsContext = createContext<any>(null);
