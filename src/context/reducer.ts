@@ -1,6 +1,6 @@
 import { SET_BOOK_FILTER } from "./actions";
 
-interface GraphSettingsState {
+export interface GraphSettingsState {
   searchByBook: string;
 }
 
