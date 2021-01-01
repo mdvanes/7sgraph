@@ -26,7 +26,7 @@ heitordsc,Heitor da Silva Costa,,male,,1,,mariaelisadsc,,,,,,book1
 bear,Bear,,male,2007,,,,,,,,,book2
 theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2
 celiafalyskings,Celia Falys-Kings,,female,,,,theofalyskings,,,,,,book2
-peterfalyskings,Peter Falys-Kings,,male,,,,theofalyskings,,,,,,book2
+peterfalyskings,Peter Falys-Kings,,male,,,,theofalyskings,,,,celiafalyskings,,book2
 alcyone,Alcyone d'Apliése,"Ally,Storm,Felicia",female,1977,,,bear,,,,theofalyskings,,book2
 thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2
 martha,Martha,,female,,1,,"alcyone,thomfhalvorsen",,,,,,book2
