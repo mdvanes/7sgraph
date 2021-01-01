@@ -12,11 +12,10 @@ I do not own any rights to these characters or books. For more information about
 * Try out Geo tab in Ratel
 * add Material UI slider for time selection (see GraphQuery)
 * filter/query by story/date/geo
-* fix codegen for graphql-request
 * fix should this not for tail too? in convertPersonsToGraphData
 * filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
 * show details on node (right) click
-* start view should be centered on initial node
+* start view should be centered on initial node: replace react-d3-graph by https://github.com/vasturiano/react-force-graph ? 
 * add interests: e.g. Botany, Singing, Modelling
 * implement removing/hiding nodes
 
@@ -40,7 +39,7 @@ docker run --rm -it \
     dgraph/standalone:v20.11.0
 ```
 
-Non persistent data:
+Non persistent (volatile) data:
 
 ```
 docker run --rm -it \
@@ -57,6 +56,34 @@ Visit http://localhost:3011/ for web UI
 - Seed database with data from persons.csv: `yarn populate && ./populate.sh`
 - Start client: `yarn start`
 
+## Deploying
+
+The front-end is deployed to Github pages with the workflow defined in .github/workflows
+
+The back-end can be deployed to Azure ACI:
+
+- install Docker ACI Integration CLI for Linux https://docs.docker.com/engine/context/aci-integration/#install-the-docker-compose-cli-on-linux
+    - now integrated in Docker Compose CLI
+    - https://docs.docker.com/engine/context/aci-integration/#install-script
+    - restart terminal
+- docker login azure
+    - browser should pop up to select account
+- docker context create aci mdworldacicontext
+    - e.g. select AzureFunctionsQuickstart-rg
+- docker context ls (manual switching with `docker context use mdworldacicontext`)
+- run & deploy (-p port mappings are not supported on ACI):
+
+```
+docker --context mdworldacicontext run \
+    --name dgraph \
+    -p 8080:8080 \
+    dgraph/standalone:v20.11.0
+```
+
+- get IP from https://portal.azure.com > Container instances > dgraph > IP address, this will be referred to as CONTAINER_IP in following steps
+- push schema: `curl -X POST http://CONTAINER_IP:8080/admin/schema --data-binary '@prepare_schema.graphql'`
+- populate: replace `localhost:8080/` by `CONTAINER_IP:8080/` in populate.sh and run `./populate.sh`
+- set CONTAINER_IP in `.env` and push front-end
 
 ## Technical stack
 
