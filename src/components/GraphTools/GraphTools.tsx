@@ -30,7 +30,6 @@ const GraphTools = () => {
 
   const value = [min, max];
 
-  // TODO add "details" view Card in corner
   return (
     <div className={classes.root}>
       <Card classes={{ root: classes.cardRoot }}>
