@@ -7,7 +7,8 @@ import {
   convertPersonsToGraphData,
   isJustVal,
 } from "./convertPersonsToGraphData";
-import GraphTools from "./GraphTools";
+import GraphTools from "../GraphTools/GraphTools";
+import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 
 const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
@@ -24,7 +25,21 @@ const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
   return uniqueByCompoundId;
 };
 
+const getMaybePersons = async (searchByBook: string) => {
+  const { getStartNodes, getStoryById } = getSdk(client);
+  if (searchByBook) {
+    const { getStory } = await getStoryById({ id: searchByBook });
+    return getStory?.persons;
+  } else {
+    const { queryPerson } = await getStartNodes();
+    return queryPerson;
+  }
+}
+
 const GraphQuery: FC = () => {
+  const {
+    state: { searchByBook },
+  } = useGraphSettingsContext();
   const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
     nodes: [],
     links: [],
@@ -33,12 +48,9 @@ const GraphQuery: FC = () => {
   const graphRef = useRef();
 
   const memoizedInitialize = useCallback(async () => {
-    const { getStartNodes } = getSdk(client);
     try {
-      const { queryPerson } = await getStartNodes();
-
-      const justPersons = queryPerson?.filter(isJustVal) ?? [];
-
+      const maybePersons = await getMaybePersons(searchByBook);
+      const justPersons = maybePersons?.filter(isJustVal) ?? [];
       const [nodes, links] = convertPersonsToGraphData(justPersons);
 
       setGraphData({
@@ -64,7 +76,7 @@ const GraphQuery: FC = () => {
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  }, [searchByBook]);
 
   useEffect(() => {
     memoizedInitialize();

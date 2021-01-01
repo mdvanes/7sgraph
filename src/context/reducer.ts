@@ -1,19 +1,14 @@
 import { SET_BOOK_FILTER } from "./actions";
 
 interface GraphSettingsState {
-  searchByBook: string | null;
+  searchByBook: string;
 }
 
 export const initialState: GraphSettingsState = {
-  searchByBook: null,
+  searchByBook: "",
 };
 
-// interface Action {
-//   type: typeof SET_BOOK_FILTER;
-//   payload: unknown;
-// }
-
-type Action = { type: typeof SET_BOOK_FILTER; payload: string | null };
+type Action = { type: typeof SET_BOOK_FILTER; payload: string } | { type: typeof SET_BOOK_FILTER; payload: string };
 
 export type ContextType = { state: GraphSettingsState; dispatch: React.Dispatch<Action>; }
 
