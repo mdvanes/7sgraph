@@ -1,0 +1,9 @@
+query getStoryById($id: String!) {
+  getStory(storyID:$id) {
+    storyID
+    title
+    persons {
+      ...PersonWithLinksFields
+    }
+  }
+}

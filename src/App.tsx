@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import "graphiql/graphiql.css";
 import AppBar from "@material-ui/core/AppBar/AppBar";
@@ -7,6 +7,7 @@ import GraphDebugger from "./components/GraphDebugger/GraphDebugger";
 import GraphQuery from "./components/GraphQuery/GraphQuery";
 import AppToolbar from "./components/AppToolbar/AppToolbar";
 import StartDialog from "./components/StartDialog/StartDialog";
+import { GraphSettingsProvider } from "./context/GraphSettingsContext";
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
             <GraphDebugger />
           </Route>
           <Route path="/">
-            <GraphQuery />
+            <GraphSettingsProvider>
+              <GraphQuery />
+            </GraphSettingsProvider>
           </Route>
         </Switch>
       </div>
