@@ -5,7 +5,7 @@ const results = [];
 const OUTPUT_FILE_NAME = "populate.sh";
 
 const staticMutations = `
-curl -H "Content-Type: application/rdf" "localhost:8080/mutate?commitNow=true" -X POST -d $'
+curl -H "Content-Type: application/rdf" "http://localhost:8080/mutate?commitNow=true" -X POST -d $'
 {
   set {
    _:book1 <Story.title> "The Seven Sisters" .
