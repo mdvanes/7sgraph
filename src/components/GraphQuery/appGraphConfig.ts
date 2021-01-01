@@ -11,7 +11,7 @@ const appGraphConfig = (width: number, height: number): GraphConfiguration<Custo
   automaticRearrangeAfterDropNode: false,
   collapsible: false,
   directed: true,
-  focusAnimationDuration: 0.75,
+  focusAnimationDuration: 0, // 0.75,
   focusZoom: 1,
   //   freezeAllDragEvents: false,
   height,

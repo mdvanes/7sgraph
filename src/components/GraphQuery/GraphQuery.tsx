@@ -14,8 +14,13 @@ const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
 });
 
 const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
-  const compoundIdsToLinks: [string, GraphLink][] = links.map(l => ([`${l.source},${l.target}`, l]));
-  const uniqueByCompoundId = Object.values(Object.fromEntries(compoundIdsToLinks));
+  const compoundIdsToLinks: [string, GraphLink][] = links.map((l) => [
+    `${l.source},${l.target}`,
+    l,
+  ]);
+  const uniqueByCompoundId = Object.values(
+    Object.fromEntries(compoundIdsToLinks)
+  );
   return uniqueByCompoundId;
 };
 
@@ -41,23 +46,21 @@ const GraphQuery: FC = () => {
         links: filterUniqueLinks(links),
       });
 
-      // const getElem = document.getElementById(
-      //   "graph-id-graph-container-zoomable"
-      // );
-      // if (getElem) {
-      //   // const graphInst = graphRef.current;
-      //   // if (graphInst) {
-      //   //   (graphRef.current as any).focusAnimationTimeout = 1000;
-      //   //   console.log("graphref", graphRef.current);
-      //   //   // (graphInst as any).resetNodesPositions();
-      //   //   // (graphRef.current as any).restartSimulation();
-      //   // }        console.log("elem found");
-      //   // TODO focusedNodeId does not work with async, but this does. Fix to use ref instead of getElementById. Also calculate translate based on canvas size.
-      //   // TODO also fix when dragging
-      //   getElem.setAttribute("transform", "translate(790,334) scale(1)");
-      // } else {
-      //   console.log("no elem");
-      // }
+      const getElem = document.getElementById(
+        "graph-id-graph-container-zoomable"
+      );
+      if (getElem) {
+        const graphInst = graphRef.current;
+        const hi = 630;
+        const wi = 1862;
+        const { width, height } = { width: 200, height: 100 }; // TODO doesn't work because the dimensions are not done yet. getElem.getBoundingClientRect();
+        const xOffset = Math.round(wi / 2 - width / 2);
+        const yOffset = Math.round(hi / 2 - height / 2);
+        const transformationConfig = `translate(${xOffset},${yOffset}) scale(1)`;
+        (graphInst as any).state.focusTransformation = transformationConfig;
+      } else {
+        console.log("no elem");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -80,24 +83,15 @@ const GraphQuery: FC = () => {
 
         setGraphData({
           nodes: graphData?.nodes ? graphData.nodes.concat(nodes) : [],
-          links: filterUniqueLinks(graphData?.links ? graphData.links.concat(links) : []),
+          links: filterUniqueLinks(
+            graphData?.links ? graphData.links.concat(links) : []
+          ),
         });
-
-        // const graphInst = graphRef.current;
-        // if (graphInst) {
-        //   console.log("graphref", graphRef.current);
-        //   // (graphInst as any).resetNodesPositions();
-        // }
       } catch (err) {
         console.error(err);
       }
     })();
   };
-
-  // useEffect(() => {
-  //   console.log(graphData);
-  //   // TODO deduplicate nodes and edges
-  // }, [graphData]);
 
   return (
     <>
@@ -124,13 +118,6 @@ const GraphQuery: FC = () => {
             window.innerHeight - 64 - 5
           )}
           onClickNode={onClickNode as any}
-          onClickGraph={() => {
-            console.log("click");
-          }}
-          //   onClickLink={onClickLink}
-          // onNodePositionChange={(n, x, y) => {
-          //   console.log(`Node ${n} moved to ${x},${y}`);
-          // }}
         />
       )}
     </>
