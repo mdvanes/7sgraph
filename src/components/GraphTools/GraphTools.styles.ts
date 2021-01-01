@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
     width: `calc(100% - ${theme.spacing(4)}px)`,
     margin: `${theme.spacing(1)}px ${theme.spacing(2)}px`,
   },
+  gridRoot: {
+    flexGrow: 1,
+  },
   cardRoot: {
     backgroundColor: "rgba(255,255,255,0.5)",
   },
@@ -15,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   formControlRoot: {
-    width: "200px",
+    width: "100%",
   },
 }));
 
