@@ -1,3 +1,4 @@
+import React from "react";
 import { Graph, GraphData, GraphLink } from "react-d3-graph";
 import { getSdk } from "../../generated/graphql";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
@@ -9,6 +10,7 @@ import {
 } from "./convertPersonsToGraphData";
 import GraphTools from "../GraphTools/GraphTools";
 import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
+import GraphDetails from "../GraphDetails/GraphDetails";
 
 const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
   headers: {},
@@ -107,19 +109,8 @@ const GraphQuery: FC = () => {
 
   return (
     <>
-      {/* <div className={classes.root}>
-        <Typography id="range-slider" gutterBottom>
-          Time range
-        </Typography>
-        <Slider
-          value={value}
-          onChange={handleChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-          getAriaValueText={valuetext}
-        />
-      </div> */}
       <GraphTools />
+      <GraphDetails name="e.g. Pa Salt ♂️" />
       {graphData && graphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory
