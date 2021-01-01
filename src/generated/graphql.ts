@@ -782,6 +782,23 @@ export type GetStartNodesQuery = (
   )>>> }
 );
 
+export type GetStoryByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type GetStoryByIdQuery = (
+  { __typename?: 'Query' }
+  & { getStory?: Maybe<(
+    { __typename?: 'Story' }
+    & Pick<Story, 'storyID' | 'title'>
+    & { persons?: Maybe<Array<Maybe<(
+      { __typename?: 'Person' }
+      & PersonWithLinksFieldsFragment
+    )>>> }
+  )> }
+);
+
 export type PersonWithLinksFieldsFragment = (
   { __typename?: 'Person' }
   & { story?: Maybe<(
@@ -889,6 +906,17 @@ export const GetStartNodesDocument = gql`
   }
 }
     ${PersonFieldsFragmentDoc}`;
+export const GetStoryByIdDocument = gql`
+    query getStoryById($id: String!) {
+  getStory(storyID: $id) {
+    storyID
+    title
+    persons {
+      ...PersonWithLinksFields
+    }
+  }
+}
+    ${PersonWithLinksFieldsFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 
@@ -907,6 +935,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getStartNodes(variables?: GetStartNodesQueryVariables): Promise<GetStartNodesQuery> {
       return withWrapper(() => client.request<GetStartNodesQuery>(print(GetStartNodesDocument), variables));
+    },
+    getStoryById(variables: GetStoryByIdQueryVariables): Promise<GetStoryByIdQuery> {
+      return withWrapper(() => client.request<GetStoryByIdQuery>(print(GetStoryByIdDocument), variables));
     }
   };
 }
