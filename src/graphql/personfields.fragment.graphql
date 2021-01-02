@@ -4,4 +4,6 @@ fragment PersonFields on Person {
   dateOfBirth
   nickNames
   gender
+  cx
+  cy
 }
