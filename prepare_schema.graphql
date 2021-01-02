@@ -16,6 +16,8 @@ type Person {
     physicalRelation: [Person] @hasInverse(field: physicalRelation)
     otherRelation: [Person] @hasInverse(field: otherRelation)
     story: Story
+    cx: Float
+    cy: Float
 }
 
 type Story {

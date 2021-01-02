@@ -26,6 +26,8 @@ export type Scalars = {
 
 export type AddPersonInput = {
   children?: Maybe<Array<Maybe<PersonRef>>>;
+  cx?: Maybe<Scalars['Float']>;
+  cy?: Maybe<Scalars['Float']>;
   dateOfBirth?: Maybe<Scalars['Int']>;
   dateOfDeath?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
@@ -294,6 +296,8 @@ export type Person = {
   __typename?: 'Person';
   children?: Maybe<Array<Maybe<Person>>>;
   childrenAggregate?: Maybe<PersonAggregateResult>;
+  cx?: Maybe<Scalars['Float']>;
+  cy?: Maybe<Scalars['Float']>;
   dateOfBirth?: Maybe<Scalars['Int']>;
   dateOfDeath?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
@@ -400,6 +404,14 @@ export type PersonStoryArgs = {
 export type PersonAggregateResult = {
   __typename?: 'PersonAggregateResult';
   count?: Maybe<Scalars['Int']>;
+  cxAvg?: Maybe<Scalars['Float']>;
+  cxMax?: Maybe<Scalars['Float']>;
+  cxMin?: Maybe<Scalars['Float']>;
+  cxSum?: Maybe<Scalars['Float']>;
+  cyAvg?: Maybe<Scalars['Float']>;
+  cyMax?: Maybe<Scalars['Float']>;
+  cyMin?: Maybe<Scalars['Float']>;
+  cySum?: Maybe<Scalars['Float']>;
   dateOfBirthAvg?: Maybe<Scalars['Float']>;
   dateOfBirthMax?: Maybe<Scalars['Int']>;
   dateOfBirthMin?: Maybe<Scalars['Int']>;
@@ -427,6 +439,8 @@ export type PersonFilter = {
 
 export enum PersonHasFilter {
   Children = 'children',
+  Cx = 'cx',
+  Cy = 'cy',
   DateOfBirth = 'dateOfBirth',
   DateOfDeath = 'dateOfDeath',
   Gender = 'gender',
@@ -449,6 +463,8 @@ export type PersonOrder = {
 };
 
 export enum PersonOrderable {
+  Cx = 'cx',
+  Cy = 'cy',
   DateOfBirth = 'dateOfBirth',
   DateOfDeath = 'dateOfDeath',
   Gender = 'gender',
@@ -458,6 +474,8 @@ export enum PersonOrderable {
 
 export type PersonPatch = {
   children?: Maybe<Array<Maybe<PersonRef>>>;
+  cx?: Maybe<Scalars['Float']>;
+  cy?: Maybe<Scalars['Float']>;
   dateOfBirth?: Maybe<Scalars['Int']>;
   dateOfDeath?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
@@ -474,6 +492,8 @@ export type PersonPatch = {
 
 export type PersonRef = {
   children?: Maybe<Array<Maybe<PersonRef>>>;
+  cx?: Maybe<Scalars['Float']>;
+  cy?: Maybe<Scalars['Float']>;
   dateOfBirth?: Maybe<Scalars['Int']>;
   dateOfDeath?: Maybe<Scalars['Int']>;
   gender?: Maybe<Scalars['String']>;
@@ -828,7 +848,7 @@ export type PersonWithLinksFieldsFragment = (
 
 export type PersonFieldsFragment = (
   { __typename?: 'Person' }
-  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'nickNames' | 'gender'>
+  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'nickNames' | 'gender' | 'cx' | 'cy'>
 );
 
 export const PersonFieldsFragmentDoc = gql`
@@ -838,6 +858,8 @@ export const PersonFieldsFragmentDoc = gql`
   dateOfBirth
   nickNames
   gender
+  cx
+  cy
 }
     `;
 export const PersonWithLinksFieldsFragmentDoc = gql`

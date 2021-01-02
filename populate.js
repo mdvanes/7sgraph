@@ -85,6 +85,8 @@ addPerson(input: [
     ${createRelationsField("physicalRelation", "personID", person.physicalRelation)}
     ${createRelationsField("otherRelation", "personID", person.otherRelation)}
     ${createRelationField("story", "storyID", person.story)}
+    ${createField("cx", person.cx)}
+    ${createField("cy", person.cy)}
 }]) {
     person {
     personID
@@ -114,6 +116,8 @@ addPerson(input: [
     story {
         storyID
     }
+    cx
+    cy
     }
 }
 }`;
