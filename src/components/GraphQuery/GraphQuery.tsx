@@ -53,7 +53,6 @@ const GraphQuery: FC = () => {
       const justPersons = maybePersons?.filter(isJustVal) ?? [];
       const [nodes, links] = convertPersonsToGraphData(justPersons);
 
-      console.log(nodes[nodes.length - 1])
       const lastNode = nodes[nodes.length - 1];
 
       setGraphData({

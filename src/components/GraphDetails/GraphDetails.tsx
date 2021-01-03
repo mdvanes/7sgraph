@@ -45,7 +45,6 @@ const GraphDetails: FC<Props> = ({ uid }) => {
       if (getPerson) {
         setPerson(getPerson);
       }
-      console.log(getPerson);
     } catch (err) {
       console.error(err);
     }
