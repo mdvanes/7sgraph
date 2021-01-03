@@ -8,7 +8,7 @@ const useStyles = makeStyles(({ spacing }) => ({
   },
   cardRoot: {
     backgroundColor: "rgba(255,255,255,0.5)",
-    height: 225,
+    height: 275,
     width: 200,
   },
 }));
