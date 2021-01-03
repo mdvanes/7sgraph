@@ -1,4 +1,9 @@
-type Person {
+type Person @auth(
+    # no query rule, query is available for all
+    # add: { rule: "{$isAuthenticated: { eq: \"true\" } }" }
+    # update: { rule: "{$isAuthenticated: { eq: \"true\" } }" }
+    # delete: { rule: "{$isAuthenticated: { eq: \"true\" } }" }
+) {
     personID: String! @id
     name: String @search(by: [term])
     nickNames: [String]
