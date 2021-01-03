@@ -1,17 +1,14 @@
 import {
   Card,
   CardContent,
-  FormControl,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
   Slider,
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import { SET_BOOK_FILTER } from "../../context/actions";
+import { SET_BOOK_FILTER, SET_TIME_RANGE } from "../../context/actions";
 import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
+import { TIME_RANGE_MAX, TIME_RANGE_MIN } from "../../context/reducer";
 import BookSelector from "./BookSelector";
 import useStyles from "./GraphTools.styles";
 
@@ -22,13 +19,8 @@ const GraphTools = () => {
 
   const {
     dispatch,
-    state: { searchByBook },
+    state: { searchByBook, timeRange },
   } = useGraphSettingsContext();
-
-  const min = 1800;
-  const max = 2008;
-
-  const value = [min, max];
 
   return (
     <div className={classes.root}>
@@ -52,15 +44,18 @@ const GraphTools = () => {
                   Time range
                 </Typography>
                 <Slider
-                  value={value}
-                  onChange={() => {
-                    console.log("change");
+                  value={timeRange}
+                  onChange={(event, newValue: number | number[]) => {
+                    dispatch({
+                      type: SET_TIME_RANGE,
+                      payload: newValue as number[],
+                    });
                   }}
                   valueLabelDisplay="on"
                   aria-labelledby="range-slider"
                   getAriaValueText={valuetext}
-                  min={min}
-                  max={max}
+                  min={TIME_RANGE_MIN}
+                  max={TIME_RANGE_MAX}
                 />
               </div>
             </Grid>
