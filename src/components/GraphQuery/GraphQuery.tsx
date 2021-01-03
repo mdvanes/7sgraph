@@ -2,7 +2,6 @@ import React from "react";
 import { Graph, GraphData, GraphLink } from "react-d3-graph";
 import { getSdk } from "../../generated/graphql";
 import appGraphConfig, { CustomNode } from "./appGraphConfig";
-import { GraphQLClient } from "graphql-request";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   convertPersonsToGraphData,
@@ -11,10 +10,8 @@ import {
 import GraphTools from "../GraphTools/GraphTools";
 import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 import GraphDetails from "../GraphDetails/GraphDetails";
-
-const client = new GraphQLClient(process.env["REACT_APP_GRAPHQL_URL"] || "", {
-  headers: {},
-});
+import { SET_DETAILS_FOR } from "../../context/actions";
+import client from "./graphClient";
 
 const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
   const compoundIdsToLinks: [string, GraphLink][] = links.map((l) => [
@@ -40,7 +37,8 @@ const getMaybePersons = async (searchByBook: string) => {
 
 const GraphQuery: FC = () => {
   const {
-    state: { searchByBook },
+    dispatch,
+    state: { searchByBook, detailsFor },
   } = useGraphSettingsContext();
   const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
     nodes: [],
@@ -90,6 +88,11 @@ const GraphQuery: FC = () => {
 
   const onClickNode = (uid: string, originNode: CustomNode) => {
     // getConnectedToNameDQL(name);
+
+    dispatch({
+      type: SET_DETAILS_FOR,
+      payload: uid,
+    });
 
     (async () => {
       try {
@@ -188,7 +191,7 @@ const GraphQuery: FC = () => {
   return (
     <>
       <GraphTools />
-      <GraphDetails name="e.g. Pa Salt ♂️" />
+      <GraphDetails uid={detailsFor} />
       {graphData && graphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory

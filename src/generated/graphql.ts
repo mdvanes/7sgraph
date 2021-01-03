@@ -778,6 +778,24 @@ export type GetPersonByUidQuery = (
   )> }
 );
 
+export type GetPersonDetailsByUidQueryVariables = Exact<{
+  uid: Scalars['String'];
+}>;
+
+
+export type GetPersonDetailsByUidQuery = (
+  { __typename?: 'Query' }
+  & { getPerson?: Maybe<(
+    { __typename?: 'Person' }
+    & Pick<Person, 'dateOfDeath'>
+    & { story?: Maybe<(
+      { __typename?: 'Story' }
+      & Pick<Story, 'title'>
+    )> }
+    & PersonFieldsFragment
+  )> }
+);
+
 export type GetStartNodesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -909,6 +927,17 @@ export const GetPersonByUidDocument = gql`
   }
 }
     ${PersonWithLinksFieldsFragmentDoc}`;
+export const GetPersonDetailsByUidDocument = gql`
+    query getPersonDetailsByUid($uid: String!) {
+  getPerson(personID: $uid) {
+    ...PersonFields
+    dateOfDeath
+    story {
+      title
+    }
+  }
+}
+    ${PersonFieldsFragmentDoc}`;
 export const GetStartNodesDocument = gql`
     query getStartNodes {
   queryPerson(filter: {name: {allofterms: "Pa Salt"}}) {
@@ -954,6 +983,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getPersonByUid(variables: GetPersonByUidQueryVariables): Promise<GetPersonByUidQuery> {
       return withWrapper(() => client.request<GetPersonByUidQuery>(print(GetPersonByUidDocument), variables));
+    },
+    getPersonDetailsByUid(variables: GetPersonDetailsByUidQueryVariables): Promise<GetPersonDetailsByUidQuery> {
+      return withWrapper(() => client.request<GetPersonDetailsByUidQuery>(print(GetPersonDetailsByUidDocument), variables));
     },
     getStartNodes(variables?: GetStartNodesQueryVariables): Promise<GetStartNodesQuery> {
       return withWrapper(() => client.request<GetStartNodesQuery>(print(GetStartNodesDocument), variables));

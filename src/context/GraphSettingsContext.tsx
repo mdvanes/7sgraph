@@ -1,13 +1,18 @@
 import { createContext, FC, useContext, useReducer } from "react";
-import { initialState, reducer } from "./reducer";
+import { GraphSettingsState, initialState, reducer } from "./reducer";
 
-// const GraphSettingsContext = createContext<ContextType | null>(null);
-const GraphSettingsContext = createContext<any>(null);
+const GraphSettingsContext = createContext<{
+  state: GraphSettingsState;
+  dispatch: React.Dispatch<any>;
+}>({
+  state: initialState,
+  dispatch: () => null,
+});
 
 export const GraphSettingsProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <GraphSettingsContext.Provider value={{state, dispatch}}>
+    <GraphSettingsContext.Provider value={{ state, dispatch }}>
       {children}
     </GraphSettingsContext.Provider>
   );

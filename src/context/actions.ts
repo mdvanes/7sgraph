@@ -1,1 +1,2 @@
 export const SET_BOOK_FILTER = "SET_BOOK_FILTER";
+export const SET_DETAILS_FOR = "SET_DETAILS_FOR";

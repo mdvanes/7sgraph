@@ -1,0 +1,9 @@
+query getPersonDetailsByUid($uid: String!) {
+  getPerson(personID: $uid) {
+    ...PersonFields
+    dateOfDeath
+    story {
+      title
+    }
+  }
+}
