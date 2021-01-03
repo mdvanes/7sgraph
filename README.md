@@ -9,9 +9,7 @@ I do not own any rights to these characters or books. For more information about
 ## TODO
 
 - add Material UI slider for time selection (see GraphQuery)
-- show details on node click
 - fix "book selector" alignment & start view should be centered on initial node: replace react-d3-graph by https://github.com/vasturiano/react-force-graph ? 
-- fix SSL on ACI and use HSTS https://stackoverflow.com/questions/60958057/how-to-add-ssl-to-azure-container-instance-app
 - Try out Geo tab in Ratel
 - filter/query by story/date/geo
 - fix should this not for tail too? in convertPersonsToGraphData
