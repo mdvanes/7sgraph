@@ -8,16 +8,16 @@ I do not own any rights to these characters or books. For more information about
 
 ## TODO
 
-* when the schema is stable: script to convert JSON to addMutation CURL statements to be able to bulk update
-* Try out Geo tab in Ratel
-* add Material UI slider for time selection (see GraphQuery)
-* filter/query by story/date/geo
-* fix should this not for tail too? in convertPersonsToGraphData
-* filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
-* show details on node (right) click
-* start view should be centered on initial node: replace react-d3-graph by https://github.com/vasturiano/react-force-graph ? 
-* add interests: e.g. Botany, Singing, Modelling
-* implement removing/hiding nodes
+- add Material UI slider for time selection (see GraphQuery)
+- show details on node click
+- fix "book selector" alignment & start view should be centered on initial node: replace react-d3-graph by https://github.com/vasturiano/react-force-graph ? 
+- fix SSL on ACI and use HSTS https://stackoverflow.com/questions/60958057/how-to-add-ssl-to-azure-container-instance-app
+- Try out Geo tab in Ratel
+- filter/query by story/date/geo
+- fix should this not for tail too? in convertPersonsToGraphData
+- filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
+- add interests: e.g. Botany, Singing, Modelling
+- implement removing/hiding nodes
 
 
 ## Set up the backend

@@ -20,7 +20,7 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 19,loenfagundes,Loen Fagundes,,female,1879,1,,yaracanterino,,,,,izabela,book1,-325.3757759247781,-219.65517124689882
 20,brunocanterino,Bruno Canterino,,male,,,,yaracanterino,,,,loenfagundes,,book1,-396.48557601097366,-160.88150464496783
 21,fabianacanterino,Fabiana,,female,,,,brunocanterino,,,,,,book1,-413.56760528613336,-216.6226321579264
-22,sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1,,
+22,sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1,-508,-183
 23,mariaelisadsc,Maria Elisa da Silva Costa,,female,,1,,,,,,,izabela,book1,-667.5578184740689,-169.72379260054302
 24,heitordsc,Heitor da Silva Costa,,male,,1,,mariaelisadsc,,,,,,book1,-672.5657877697449,-218.8593737696422
 25,bear,Bear,,male,2007,,,,,,,,,book2,178.16115689974794,13.53239317801178
@@ -32,7 +32,7 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 31,martha,Martha,,female,,1,,"alcyone,thomfhalvorsen",,,,,,book2,360.3978326021927,-103.11077249957833
 32,felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,martha,,book2,370.8676789736711,-36.86633007479051
 33,karinerosenblum,Karine Rosenblum,,female,1921,1940,,felixmhalvorsen,,,,,,book2,393.2593821066296,-147.36038636149686
-34,piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2,-456.199822816918,-202.28283240290259
+34,piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2,449.800177,6.717167999999987
 35,astridthorsen,Astrid Thorsen,,female,1899,1995,,piphalvorsen,,,,,,book2,567.4407858045583,27.666939872648058
 36,edvardhalvorsen,Edvard Horst Halvorsen,,male,1884,1985,,piphalvorsen,,,,astridthorsen,,book2,489.1212593118445,-59.37561100340156
 37,solveighalvorsen,Solveig Anna Halvorsen,,female,1877,1877,,,,,,,,book2,607.8130331851104,-22.78575336870003
