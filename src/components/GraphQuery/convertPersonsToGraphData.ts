@@ -23,11 +23,15 @@ const convertPersonToNode = (originNode?: CustomNode) => ({
   gender,
   cx,
   cy,
+  dateOfBirth,
+  dateOfDeath,
 }: PersonWithLinksFieldsFragment): CustomNode => {
   const node = {
     id: personID || "INVALID_PERSON_ID",
     name: name || "INVALID_PERSON_NAME",
     color: genderColor(gender),
+    dateOfBirth: dateOfBirth || undefined,
+    dateOfDeath: dateOfDeath || undefined,
   };
   if (cx && cy) {
     return {

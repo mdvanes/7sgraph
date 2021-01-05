@@ -2,6 +2,7 @@ fragment PersonFields on Person {
   personID
   name
   dateOfBirth
+  dateOfDeath
   nickNames
   gender
   cx

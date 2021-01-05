@@ -866,7 +866,7 @@ export type PersonWithLinksFieldsFragment = (
 
 export type PersonFieldsFragment = (
   { __typename?: 'Person' }
-  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'nickNames' | 'gender' | 'cx' | 'cy'>
+  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'dateOfDeath' | 'nickNames' | 'gender' | 'cx' | 'cy'>
 );
 
 export const PersonFieldsFragmentDoc = gql`
@@ -874,6 +874,7 @@ export const PersonFieldsFragmentDoc = gql`
   personID
   name
   dateOfBirth
+  dateOfDeath
   nickNames
   gender
   cx

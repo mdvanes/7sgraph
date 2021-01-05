@@ -4,6 +4,8 @@ export interface CustomNode extends GraphNode {
   name: string;
   x?: number,
   y?: number,
+  dateOfBirth?: number,
+  dateOfDeath?: number,
 }
 
 // the graph configuration, just override the ones you need
