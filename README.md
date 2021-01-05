@@ -16,6 +16,8 @@ I do not own any rights to these characters or books. For more information about
 - filter by story does not seem to work well, still returns all nodes that have a story even though Story.title is filtered correctly
 - add interests: e.g. Botany, Singing, Modelling
 - implement removing/hiding nodes
+- Deploy backend to private server. Disable mutations with `dgraph alpha --mutations disallow`, does this work for standalone?
+  https://dgraph.io/docs/deploy/dgraph-administration/#restricting-mutation-operations or see https://dgraph.io/docs/graphql/authorization/directive/#public-data -> so do `yarn schema:push`, `./populate.sh`, and secure by enabling @auth in prepare_schema.graphql and `yarn schema:push` again
 
 
 ## Set up the backend
