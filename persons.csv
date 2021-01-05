@@ -43,13 +43,43 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 42,margaretetrolle,Margarete Trolle,,female,1834,1887,,jenshalvorsen,,,,,,book2,777.2302482881735,-121.87675969045827
 43,jonashalvorsen,Jonas Halvorsen,,male,1830,1890,,jenshalvorsen,,,,margaretetrolle,,book2,787.9432537638105,-49.425221419422556
 44,edvardgrieg,Edvard Grieg,,male,1843,1907,,edvardhalvorsen,,,,annalandvik,,book2,503.69116318339456,-175.6865588640361
-45,asterope,Asterope d'Apliése,"Star,Shadow",female,1980,,,,,,,,,book3,-10.334345578019622,79.24242054601132
-46,celeano,Celeano d'Apliése,"CeCe,Pearl",female,1980,,,,,,,,,book4,275.13568867186984,121.28544631708857
-47,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-15.43622677379011,191.18814121748528
-48,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,333.1187367418578,203.90522441465885
-49,merope,Merope d'Apliése,Missing,female,,,,,,,,,,,139.64217485563643,257.8713581651615
-50,marina,Marina,Ma,female,,,,,,,,,,,180.44517283612993,222.3129597475458
-51,claudia,Claudia,,female,,,,,,,,,,,167.77078746270058,189.1170909328535
-52,georghoffman,Georg Hoffman,,male,,,,,,,,,,,253.76835795360307,234.0969152869901
-53,christian,Christian,,male,,,,,,,,,,,195.4307232975308,172.76993630097786
-54,pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen",,143.37941937218255,95.64324753402214
+45,asterope,Asterope d'Apliése,"Star,Sia,Shadow,Lucy Charlotte",female,1980,,,,,,,,,book3,-10.334345578019622,79.24242054601132
+46,roryforbes,Rory Forbes,,male,2000,,,,,,,,,book3,,
+47,annieforbes,Annie Forbes,,female,,2000,,roryforbes,,,,,,book3,,
+48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,,,,roryforbes,,,,"annieforbes,asterope",,book3,,
+49,orlandoforbes,Orlando Forbes,,male,,,,,,,,,,book3,,
+50,helene,Hélène,,female,,,,,,,,,,book3,,
+51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,,
+52,michaelvaughan,Michael Vaughan,,male,,1,,margueritevaughan,,,,,,book3,,
+53,annastein,Anna Stein,,female,,,,,,,,,,book3,,
+54,scottstein,Scott Stein,,male,,,,,,,,,,book3,,
+55,jamesstein,James Stein,,male,,,,,,,,,,book3,,
+56,robertstein,Robert Stein,,male,,,,"jamesstein,scottstein,annastein",,,,,,book3,,
+57,petulabrown,Petula Brown,Professor Sylvia Gray,female,1962,,,"asterope,jamesstein,scottstein,annastein",,,,robertstein,,book3,,
+58,alfredbrown,Alfred Brown,,male,,1980,,petulabrown,,,,,,book3,,
+59,patryciasmith,Patrycia Smith,,female,1944,2007,,petulabrown,,,,alfredbrown,,book3,,
+60,tessiesmith,Tessie Eleanor Smith,,female,,1975,,patryciasmith,,,,,,book3,,
+61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,,1,,michaelvaughan,,,,,,book3,,
+62,teddyvaughan,Teddy Vaughan,,male,1919,1,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,,
+63,laurenceforbes,Laurence Forbes,,male,,2002,,"mouseforbes,orlandoforbes",,,,,,book3,,
+64,louisevaughan,Louise Vaughan,,female,1919,1,,laurenceforbes,,,,,,book3,,
+65,rupertforbes,Rupert Forbes,,male,,1,,laurenceforbes,,,,louisevaughan,,book3,,
+66,beatrixpotter,Beatrix Potter,,female,1866,1943,,,,,,,,book3,,
+67,floramacnichol,Flora Rose MacNichol,,female,1890,1965,,,,"louisevaughan,teddyvaughan",,,beatrixpotter,book3,,
+68,aureliamacnichol,Aurelia MacNichol,,female,1891,1919,,louisevaughan,,,,,,book3,,
+69,archievaughan,Archie Vaughan,,male,1888,,,louisevaughan,,teddyvaughan,,"aureliamacnichol,floramacnichol",,book3,,
+70,rosemacnichol,Rose MacNichol,,female,,1,,"aureliamacnichol,floramacnichol",,,,,,book3,,
+71,alistairmacnichol,Alistair MacNichol,,male,,1917,,aureliamacnichol,,floramacnichol,,rosemacnichol,,book3,,
+72,aliceedmonstone,Alice Frederica Edmonstone,Alice Keppel,female,1868,1947,,,,,,,floramacnichol,book3,,
+73,georgekeppel,George Keppel,,male,1865,1947,,,,,,aliceedmonstone,,book3,,
+74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,,
+75,shanti,Shanti,,female,,,,,,,,,asterope,book3,,
+76,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,,,book4,275.13568867186984,121.28544631708857
+77,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-15.43622677379011,191.18814121748528
+78,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,333.1187367418578,203.90522441465885
+79,merope,Merope d'Apliése,Missing,female,,,,,,,,,,,139.64217485563643,257.8713581651615
+80,marina,Marina,Ma,female,,,,,,,,,,,180.44517283612993,222.3129597475458
+81,claudia,Claudia,,female,,,,,,,,,,,167.77078746270058,189.1170909328535
+82,georghoffman,Georg Hoffman,,male,,,,,,,,,,,253.76835795360307,234.0969152869901
+83,christian,Christian,,male,,,,,,,,,,,195.4307232975308,172.76993630097786
+84,pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen",,143.37941937218255,95.64324753402214
