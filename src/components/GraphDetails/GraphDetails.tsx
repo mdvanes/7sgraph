@@ -61,9 +61,11 @@ const GraphDetails: FC<Props> = ({ uid }) => {
       <Card classes={{ root: classes.cardRoot }}>
         <CardHeader title={title} />
         <CardContent>
-          <Typography variant="body1">
-            Nicknames: <em>{person.nickNames?.join(", ")}</em>
-          </Typography>
+          {person.nickNames && person.nickNames.length > 0 && (
+            <Typography variant="body1">
+              Nicknames: <em>{person.nickNames?.join(", ")}</em>
+            </Typography>
+          )}
           <Typography variant="body1">
             Main book: <em>{person.story?.title}</em>
           </Typography>
