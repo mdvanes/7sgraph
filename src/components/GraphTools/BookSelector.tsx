@@ -32,6 +32,7 @@ const BookSelector: FC<Props> = ({ searchByBook, onChange }) => {
         <MenuItem value="book4">The Pearl Sisters</MenuItem>
         <MenuItem value="book5">The Moon Sister</MenuItem>
         <MenuItem value="book6">The Sun Sister</MenuItem>
+        <MenuItem value="all">All</MenuItem>
       </Select>
     </FormControl>
   );

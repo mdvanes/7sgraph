@@ -56,7 +56,31 @@ Visit http://localhost:3011/ for web UI
 - Seed database with data from persons.csv: `yarn populate && ./populate.sh`
 - Start client: `yarn start`
 
-## Deploying
+## Deploying to local server
+
+The front-end is deployed to Github pages with the workflow defined in .github/workflows
+
+The back-end can be deployed to local server:
+
+- log in to server with SSH
+- mkdir 7sgraph-data
+- run & deploy:
+
+```
+docker run -d \
+    --name dgraph \
+    -p 8088:8080 \
+    -v $(pwd)/7sgraph-data:/dgraph \
+    dgraph/standalone:v20.11.0
+```
+
+- get IP with ifconfig, this will be referred to as CONTAINER_IP in following steps
+- push schema: `curl -X POST http://CONTAINER_IP:8088/admin/schema --data-binary '@prepare_schema.graphql'`
+- populate: replace `localhost:8080/` by `CONTAINER_IP:8088/` in populate.sh and run `./populate.sh`
+- set CONTAINER_IP in `.env` and push front-end
+- it might be needed to set up a reverse proxy to refer a hostname to the CONTAINER_IP inside a network
+
+## Deploying to Azure
 
 The front-end is deployed to Github pages with the workflow defined in .github/workflows
 
