@@ -8,9 +8,8 @@ I do not own any rights to these characters or books. For more information about
 
 ## TODO
 
-- convert dateOfBirth/death from number for year to string that allows "year" and "BET year AND otheryear" inclusive.
 - Try out Geo tab in Ratel
-- filter/query by story/date/geo
+- filter/query by geo
 - fix should this not for tail too? in convertPersonsToGraphData
 - add interests: e.g. Botany, Singing, Modelling
 - implement removing/hiding nodes
