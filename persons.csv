@@ -51,19 +51,19 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 50,helene,Hélène,,female,,,,,,,,,,book3,-82,105
 51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,-150,171
 52,michaelvaughan,Michael Vaughan,,male,,1,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968
-53,annastein,Anna Stein,,female,,,,,,,,,,book3,-73.11021505344542,304.4377575291637
-54,scottstein,Scott Stein,,male,,,,,,,,,,book3,-72.50360409105367,256.2635786196595
-55,jamesstein,James Stein,,male,,,,,,,,,,book3,-70.95398000319881,225.42559314735615
-56,robertstein,Robert Stein,,male,,,,"jamesstein,scottstein,annastein",,,,,,book3,-147.94728421417685,286.26162703394556
+53,annastein,Anna Stein,,female,BET 1986 AND 2006,,,,,,,,,book3,-73.11021505344542,304.4377575291637
+54,scottstein,Scott Stein,,male,BET 1985 AND 2005,,,,,,,,,book3,-72.50360409105367,256.2635786196595
+55,jamesstein,James Stein,,male,BET 1984 AND 2004,,,,,,,,,book3,-70.95398000319881,225.42559314735615
+56,robertstein,Robert Stein,,male,BET 1952 AND 1965,,,"jamesstein,scottstein,annastein",,,,,,book3,-147.94728421417685,286.26162703394556
 57,petulabrown,Petula Brown,Professor Sylvia Gray,female,1962,,,"asterope,jamesstein,scottstein,annastein",,,,robertstein,,book3,-150.50499434564415,211.13527463574746
 58,alfredbrown,Alfred Brown,,male,,1980,,petulabrown,,,,,,book3,-208.40469603636728,183.3796395857679
 59,patryciasmith,Patrycia Smith,,female,1944,2007,,petulabrown,,,,alfredbrown,,book3,-211.39150884976172,229.7790963311288
 60,tessiesmith,Tessie Eleanor Smith,,female,,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306
-61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,,1,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
+61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,BET 1919 AND 1927,1,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
 62,teddyvaughan,Teddy Vaughan,,male,1919,1,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924
 63,laurenceforbes,Laurence Forbes,,male,BET 1945 AND 1958,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618
-64,louisevaughan,Louise Vaughan,,female,1919,1,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953
-65,rupertforbes,Rupert Forbes,,male,,1,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659
+64,louisevaughan,Louise Vaughan,,female,1919,BET 1970 AND 2007,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953
+65,rupertforbes,Rupert Forbes,,male,BET 1915 AND 1920,BET 1970 AND 2007,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659
 66,beatrixpotter,Beatrix Potter,,female,1866,1943,,,,,,,,book3,-454.2244633211329,35.791162088118455
 67,floramacnichol,Flora Rose MacNichol,,female,1890,BET 1965 AND 1969,,,,"louisevaughan,teddyvaughan",,,beatrixpotter,book3,-454.6951327706565,78.39164787285729
 68,aureliamacnichol,Aurelia MacNichol,,female,1891,1919,,louisevaughan,,,,,,book3,-459.2787546303279,223.77934251566325
@@ -86,4 +86,4 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 ,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,
-,,,1962,,,,,,,,,,,,,
+,,,1984,,,,,,,,,,,,,
