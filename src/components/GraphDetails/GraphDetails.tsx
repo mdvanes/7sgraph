@@ -1,4 +1,11 @@
-import { Card, CardContent, CardHeader, Typography } from "@material-ui/core";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  IconButton,
+  Typography,
+} from "@material-ui/core";
+import { Close as CloseIcon } from "@material-ui/icons";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 import { GetPersonDetailsByUidQuery, getSdk } from "../../generated/graphql";
@@ -59,7 +66,18 @@ const GraphDetails: FC<Props> = ({ uid }) => {
   return person ? (
     <div className={classes.root}>
       <Card classes={{ root: classes.cardRoot }}>
-        <CardHeader title={title} />
+        <CardHeader
+          title={title}
+          action={
+            <IconButton
+              onClick={() => {
+                setPerson(null);
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          }
+        />
         <CardContent>
           {person.nickNames && person.nickNames.length > 0 && (
             <Typography variant="body1">
