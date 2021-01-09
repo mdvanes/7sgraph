@@ -14,12 +14,14 @@ import { SET_DETAILS_FOR } from "../../context/actions";
 import client from "./graphClient";
 import { getIsAliveAfterStart, getIsBornBeforeEnd } from "./parseDate";
 import { filterUniqueLinks, getMaybePersons } from "./graphQueryUtils";
+import { useMediaQuery } from "@material-ui/core";
 
 const GraphQuery: FC = () => {
   const {
     dispatch,
     state: { searchByBook, detailsFor, timeRange },
   } = useGraphSettingsContext();
+  const isSmall = useMediaQuery("(max-width:600px)");
   const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
     nodes: [],
     links: [],
@@ -33,7 +35,7 @@ const GraphQuery: FC = () => {
   });
 
   const { getPersonByUid } = getSdk(client);
-  const graphRef = useRef();
+  const graphRef = useRef(null);
 
   const memoizedInitialize = useCallback(async () => {
     try {
@@ -74,14 +76,17 @@ const GraphQuery: FC = () => {
   }, [memoizedInitialize]);
 
   useEffect(() => {
-    // console.log("timerange is now", timeRange); TODO fix rerenderings/choppy slider?
+    // console.log("timerange is now", timeRange);
 
     const [startDate, endDate] = timeRange;
     const { nodes, links } = graphData;
 
     const filteredNodes = nodes.filter((node) => {
       const isBornBeforeEnd = getIsBornBeforeEnd(endDate, node.dateOfBirth);
-      const isAliveAfterStart = getIsAliveAfterStart(startDate, node.dateOfDeath);
+      const isAliveAfterStart = getIsAliveAfterStart(
+        startDate,
+        node.dateOfDeath
+      );
       return isAliveAfterStart && isBornBeforeEnd;
     });
 
@@ -141,6 +146,11 @@ const GraphQuery: FC = () => {
     }
   };
 
+  // 48 is height of the topbar (on desktop, 22 mobile)
+  const graphHeight = isSmall
+    ? window.innerHeight - 22
+    : window.innerHeight - 48;
+
   return (
     <>
       <GraphTools />
@@ -148,12 +158,9 @@ const GraphQuery: FC = () => {
       {filteredGraphData && filteredGraphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory
-          ref={graphRef as any}
+          ref={graphRef}
           data={{ ...filteredGraphData }}
-          config={appGraphConfig(
-            window.innerWidth,
-            window.innerHeight - 64 - 5
-          )}
+          config={appGraphConfig(window.innerWidth, graphHeight)}
           onClickNode={onClickNode as any}
           onClickGraph={dumpData}
         />
