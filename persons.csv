@@ -46,8 +46,8 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 45,asterope,Asterope d'Apliése,"Star,Sia,Shadow,Lucy Charlotte",female,1980,,,,,,,,,book3,-63.334346,91.24242099999998
 46,roryforbes,Rory Forbes,,male,2000,,,,,,,,,book3,-34.87168840991578,25.729839070888758
 47,annieforbes,Annie Forbes,,female,,2000,,roryforbes,,,,,,book3,-152.56254045737884,132.21121468107543
-48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,,,,roryforbes,,,,"annieforbes,asterope",,book3,-150.97118371640937,60.797398811705335
-49,orlandoforbes,Orlando Forbes,,male,,,,,,,,,,book3,-153.05069424843927,-7.010392710087544
+48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,BET 1965 AND 1970,,,roryforbes,,,,"annieforbes,asterope",,book3,-150.97118371640937,60.797398811705335
+49,orlandoforbes,Orlando Forbes,,male,BET 1970 AND 1975,,,,,,,,,book3,-153.05069424843927,-7.010392710087544
 50,helene,Hélène,,female,,,,,,,,,,book3,-82,105
 51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,-150,171
 52,michaelvaughan,Michael Vaughan,,male,,1,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968
@@ -61,25 +61,29 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 60,tessiesmith,Tessie Eleanor Smith,,female,,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306
 61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,,1,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
 62,teddyvaughan,Teddy Vaughan,,male,1919,1,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924
-63,laurenceforbes,Laurence Forbes,,male,,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618
+63,laurenceforbes,Laurence Forbes,,male,BET 1945 AND 1958,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618
 64,louisevaughan,Louise Vaughan,,female,1919,1,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953
 65,rupertforbes,Rupert Forbes,,male,,1,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659
 66,beatrixpotter,Beatrix Potter,,female,1866,1943,,,,,,,,book3,-454.2244633211329,35.791162088118455
 67,floramacnichol,Flora Rose MacNichol,,female,1890,BET 1965 AND 1969,,,,"louisevaughan,teddyvaughan",,,beatrixpotter,book3,-454.6951327706565,78.39164787285729
 68,aureliamacnichol,Aurelia MacNichol,,female,1891,1919,,louisevaughan,,,,,,book3,-459.2787546303279,223.77934251566325
-69,archievaughan,Archie Vaughan,,male,1888,,,louisevaughan,,teddyvaughan,,"aureliamacnichol,floramacnichol",,book3,-455.2699602003484,151.757057826423
-70,rosemacnichol,Rose MacNichol,,female,,1,,"aureliamacnichol,floramacnichol",,,,,,book3,-610.4668645584931,247.28335563313647
-71,alistairmacnichol,Alistair MacNichol,,male,,1917,,aureliamacnichol,,floramacnichol,,rosemacnichol,,book3,-610.3235029453547,60.81745149556339
+69,archievaughan,Archie Vaughan,,male,1888,1945,,louisevaughan,,teddyvaughan,,"aureliamacnichol,floramacnichol",,book3,-455.2699602003484,151.757057826423
+70,rosemacnichol,Rose MacNichol,,female,BET 1860 AND 1872,BET 1943 AND 1972,,"aureliamacnichol,floramacnichol",,,,,,book3,-610.4668645584931,247.28335563313647
+71,alistairmacnichol,Alistair MacNichol,,male,BET 1860 AND 1872,1917,,aureliamacnichol,,floramacnichol,,rosemacnichol,,book3,-610.3235029453547,60.81745149556339
 72,aliceedmonstone,Alice Frederica Edmonstone,Alice Keppel,female,1868,1947,,,,,,,floramacnichol,book3,-633.7777349807868,101.29844312861704
 73,georgekeppel,George Keppel,,male,1865,1947,,,,,,aliceedmonstone,,book3,-636.9183377307046,23.72410864298405
 74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,-634.9842092596451,179.5702576316932
-75,shanti,Shanti,,female,,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197
+75,shanthi,Shanthi,,female,BET 1979 AND 1981,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197
 76,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,,,book4,275.13568867186984,121.28544631708857
 77,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,38.563773,223.188141
 78,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,333.1187367418578,203.90522441465885
-79,merope,Merope d'Apliése,Missing,female,,,,,,,,,,,139.64217485563643,257.8713581651615
-80,marina,Marina,Ma,female,BET 1919 AND 1956,,,,,,,,,,180.44517283612993,222.3129597475458
-81,claudia,Claudia,,female,,,,,,,,,,,167.77078746270058,189.1170909328535
-82,georghoffman,Georg Hoffman,,male,,,,,,,,,,,253.76835795360307,234.0969152869901
-83,christian,Christian,,male,,,,,,,,,,,195.4307232975308,172.76993630097786
+79,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,139.64217485563643,257.8713581651615
+80,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,180.44517283612993,222.3129597475458
+81,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,167.77078746270058,189.1170909328535
+82,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.76835795360307,234.0969152869901
+83,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,195.4307232975308,172.76993630097786
 84,pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,1962,,,,,,,,,,,,,
