@@ -12,60 +12,8 @@ import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 import GraphDetails from "../GraphDetails/GraphDetails";
 import { SET_DETAILS_FOR } from "../../context/actions";
 import client from "./graphClient";
-
-const filterUniqueLinks = (links: GraphLink[]): GraphLink[] => {
-  const compoundIdsToLinks: [string, GraphLink][] = links.map((l) => [
-    `${l.source},${l.target}`,
-    l,
-  ]);
-  const uniqueByCompoundId = Object.values(
-    Object.fromEntries(compoundIdsToLinks)
-  );
-  return uniqueByCompoundId;
-};
-
-const getMaybePersons = async (searchByBook: string) => {
-  const { getStartNodes, getStoryById, getAllPersons } = getSdk(client);
-  if (searchByBook && searchByBook === "all") {
-    const { queryPerson } = await getAllPersons();
-    return queryPerson;
-  } else if (searchByBook) {
-    const { getStory } = await getStoryById({ id: searchByBook });
-    return getStory?.persons;
-  } else {
-    const { queryPerson } = await getStartNodes();
-    return queryPerson;
-  }
-};
-
-const isDateRange = (date: string): boolean => date.indexOf("BET") === 0;
-
-const parseDateRange = (dateRange: string): [number, number] => {
-  const [, fromStr, , toStr] = dateRange.split(" ");
-  return [parseInt(fromStr, 10), parseInt(toStr, 10)];
-};
-
-const getIsBornBeforeEnd = (endDate: number, dateOfBirth?: string) => {
-  if (!dateOfBirth) {
-    return false;
-  }
-  if (!isDateRange(dateOfBirth)) {
-    return parseInt(dateOfBirth, 10) <= endDate;
-  }
-  const [minDate] = parseDateRange(dateOfBirth);
-  return minDate <= endDate;
-};
-
-const getIsAliveAfterStart = (startDate: number, dateOfDeath?: string) => {
-  if (!dateOfDeath) {
-    return true;
-  }
-  if (!isDateRange(dateOfDeath)) {
-    return parseInt(dateOfDeath, 10) >= startDate;
-  }
-  const [,maxDate] = parseDateRange(dateOfDeath);
-  return maxDate >= startDate;
-};
+import { getIsAliveAfterStart, getIsBornBeforeEnd } from "./parseDate";
+import { filterUniqueLinks, getMaybePersons } from "./graphQueryUtils";
 
 const GraphQuery: FC = () => {
   const {
@@ -126,7 +74,7 @@ const GraphQuery: FC = () => {
   }, [memoizedInitialize]);
 
   useEffect(() => {
-    // console.log("timerange is now", timeRange);
+    // console.log("timerange is now", timeRange); TODO fix rerenderings/choppy slider?
 
     const [startDate, endDate] = timeRange;
     const { nodes, links } = graphData;
