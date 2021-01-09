@@ -45,22 +45,22 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 44,edvardgrieg,Edvard Grieg,,male,1843,1907,,edvardhalvorsen,,,,annalandvik,,book2,503.69116318339456,-175.6865588640361
 45,asterope,Asterope d'Apliése,"Star,Sia,Shadow,Lucy Charlotte",female,1980,,,,,,,,,book3,-63.334346,91.24242099999998
 46,roryforbes,Rory Forbes,,male,2000,,,,,,,,,book3,-34.87168840991578,25.729839070888758
-47,annieforbes,Annie Forbes,,female,,2000,,roryforbes,,,,,,book3,-152.56254045737884,132.21121468107543
+47,annieforbes,Annie Forbes,,female,BET 1965 AND 1970,2000,,roryforbes,,,,,,book3,-152.56254045737884,132.21121468107543
 48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,BET 1965 AND 1970,,,roryforbes,,,,"annieforbes,asterope",,book3,-150.97118371640937,60.797398811705335
 49,orlandoforbes,Orlando Forbes,,male,BET 1970 AND 1975,,,,,,,,,book3,-153.05069424843927,-7.010392710087544
-50,helene,Hélène,,female,,,,,,,,,,book3,-82,105
+50,helene,Hélène,,female,BET 1965 AND 1980,,,,,,,,,book3,-82,105
 51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,-150,171
-52,michaelvaughan,Michael Vaughan,,male,,1,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968
+52,michaelvaughan,Michael Vaughan,,male,BET 1944 AND 1946,BET 1964 AND 2007,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968
 53,annastein,Anna Stein,,female,BET 1986 AND 2006,,,,,,,,,book3,-73.11021505344542,304.4377575291637
 54,scottstein,Scott Stein,,male,BET 1985 AND 2005,,,,,,,,,book3,-72.50360409105367,256.2635786196595
 55,jamesstein,James Stein,,male,BET 1984 AND 2004,,,,,,,,,book3,-70.95398000319881,225.42559314735615
 56,robertstein,Robert Stein,,male,BET 1952 AND 1965,,,"jamesstein,scottstein,annastein",,,,,,book3,-147.94728421417685,286.26162703394556
 57,petulabrown,Petula Brown,Professor Sylvia Gray,female,1962,,,"asterope,jamesstein,scottstein,annastein",,,,robertstein,,book3,-150.50499434564415,211.13527463574746
-58,alfredbrown,Alfred Brown,,male,,1980,,petulabrown,,,,,,book3,-208.40469603636728,183.3796395857679
+58,alfredbrown,Alfred Brown,,male,BET 1934 AND 1950,1980,,petulabrown,,,,,,book3,-208.40469603636728,183.3796395857679
 59,patryciasmith,Patrycia Smith,,female,1944,2007,,petulabrown,,,,alfredbrown,,book3,-211.39150884976172,229.7790963311288
-60,tessiesmith,Tessie Eleanor Smith,,female,,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306
-61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,BET 1919 AND 1927,1,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
-62,teddyvaughan,Teddy Vaughan,,male,1919,1,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924
+60,tessiesmith,Tessie Eleanor Smith,,female,BET 1922 AND 1926,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306
+61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,BET 1919 AND 1927,BET 1954 AND 2007,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
+62,teddyvaughan,Teddy Vaughan,,male,1919,BET 1954 AND 2007,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924
 63,laurenceforbes,Laurence Forbes,,male,BET 1945 AND 1958,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618
 64,louisevaughan,Louise Vaughan,,female,1919,BET 1970 AND 2007,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953
 65,rupertforbes,Rupert Forbes,,male,BET 1915 AND 1920,BET 1970 AND 2007,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659
@@ -82,8 +82,4 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 81,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,167.77078746270058,189.1170909328535
 82,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.76835795360307,234.0969152869901
 83,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,195.4307232975308,172.76993630097786
-84,pasalt,Pa Salt,"Atlas P,Bo",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
-,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,
-,,,1984,,,,,,,,,,,,,
+84,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,1919,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214

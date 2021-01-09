@@ -1,4 +1,5 @@
 .App {
+  background-color: antiquewhite;
   height: 100vh;
 }
 
@@ -7,7 +8,6 @@
 }
 
 #graph-id-graph-wrapper > svg {
-  background-color: antiquewhite;
   width: 100% !important;
   cursor: grab;
 }

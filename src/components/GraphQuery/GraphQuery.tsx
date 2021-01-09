@@ -76,7 +76,7 @@ const GraphQuery: FC = () => {
   }, [memoizedInitialize]);
 
   useEffect(() => {
-    // console.log("timerange is now", timeRange);
+    // TODO fix rerenderings/choppy slider?
 
     const [startDate, endDate] = timeRange;
     const { nodes, links } = graphData;
