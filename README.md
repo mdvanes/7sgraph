@@ -8,6 +8,7 @@ I do not own any rights to these characters or books. For more information about
 
 ## TODO
 
+- Fixes for mobile
 - Try out Geo tab in Ratel
 - filter/query by geo
 - fix should this not for tail too? in convertPersonsToGraphData
@@ -261,6 +262,17 @@ mutation {
       personID
       name
       story
+    }
+  }
+}
+
+DQL automatic recurse:
+
+{
+  node(func: anyofterms(Person.name, "Maia")) @recurse(depth: 3) {
+    uid
+    expand(_all_) {
+      
     }
   }
 }

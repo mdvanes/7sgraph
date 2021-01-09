@@ -137,6 +137,16 @@ query getPersonsByStoryTitle($title: String!) {
     }
   }
 }
+
+# DQL automatic recurse
+{
+  node(func: anyofterms(Person.name, "Maia")) @recurse(depth: 3) {
+    uid
+    expand(_all_) {
+      
+    }
+  }
+}
 `}
       </pre>
     </>
