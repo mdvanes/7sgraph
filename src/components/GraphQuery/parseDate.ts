@@ -7,7 +7,7 @@ const parseDateRange = (dateRange: string): [number, number] => {
 
 export const getIsBornBeforeEnd = (endDate: number, dateOfBirth?: string) => {
   if (!dateOfBirth) {
-    return false;
+    return true;
   }
   if (!isDateRange(dateOfBirth)) {
     return parseInt(dateOfBirth, 10) <= endDate;
