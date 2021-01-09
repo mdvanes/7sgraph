@@ -18,8 +18,8 @@ const getGenderIcon = (gender?: string | null) => {
   return "";
 };
 
-const getDodValue = (dod?: number | null) => {
-  if (dod && dod === 1) {
+const getDodValue = (dod?: string | null) => {
+  if (dod && dod === "1") {
     return "dead";
   }
   if (dod) {

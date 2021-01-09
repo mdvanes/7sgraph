@@ -9,9 +9,9 @@ type Person @auth(
     nickNames: [String]
     gender: String
     # just year for now
-    dateOfBirth: Int 
+    dateOfBirth: String
     # just year for now
-    dateOfDeath: Int
+    dateOfDeath: String
     # should be Geo/geo/Point/Point[]
     location: [Int]
     children: [Person] @hasInverse(field: parents)

@@ -452,7 +452,7 @@
             "name": "dateOfBirth",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -462,7 +462,7 @@
             "name": "dateOfDeath",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -2430,7 +2430,7 @@
             "name": "dateOfBirth",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -2442,7 +2442,7 @@
             "name": "dateOfDeath",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3065,22 +3065,10 @@
             "deprecationReason": null,
             "description": "",
             "isDeprecated": false,
-            "name": "dateOfBirthAvg",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
-              "ofType": null
-            }
-          },
-          {
-            "args": [],
-            "deprecationReason": null,
-            "description": "",
-            "isDeprecated": false,
             "name": "dateOfBirthMax",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3092,31 +3080,7 @@
             "name": "dateOfBirthMin",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            }
-          },
-          {
-            "args": [],
-            "deprecationReason": null,
-            "description": "",
-            "isDeprecated": false,
-            "name": "dateOfBirthSum",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            }
-          },
-          {
-            "args": [],
-            "deprecationReason": null,
-            "description": "",
-            "isDeprecated": false,
-            "name": "dateOfDeathAvg",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Float",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3128,7 +3092,7 @@
             "name": "dateOfDeathMax",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3140,19 +3104,7 @@
             "name": "dateOfDeathMin",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            }
-          },
-          {
-            "args": [],
-            "deprecationReason": null,
-            "description": "",
-            "isDeprecated": false,
-            "name": "dateOfDeathSum",
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3560,7 +3512,7 @@
             "name": "dateOfBirth",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3570,7 +3522,7 @@
             "name": "dateOfDeath",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3753,7 +3705,7 @@
             "name": "dateOfBirth",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
@@ -3763,7 +3715,7 @@
             "name": "dateOfDeath",
             "type": {
               "kind": "SCALAR",
-              "name": "Int",
+              "name": "String",
               "ofType": null
             }
           },
