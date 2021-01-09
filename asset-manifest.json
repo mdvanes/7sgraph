@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/7sgraph/static/css/main.202a21c0.chunk.css",
-    "main.js": "/7sgraph/static/js/main.1c3a4da5.chunk.js",
-    "main.js.map": "/7sgraph/static/js/main.1c3a4da5.chunk.js.map",
-    "runtime-main.js": "/7sgraph/static/js/runtime-main.35c883ea.js",
-    "runtime-main.js.map": "/7sgraph/static/js/runtime-main.35c883ea.js.map",
+    "main.css": "/7sgraph/static/css/main.0a6a9be9.chunk.css",
+    "main.js": "/7sgraph/static/js/main.8a2523d6.chunk.js",
+    "main.js.map": "/7sgraph/static/js/main.8a2523d6.chunk.js.map",
+    "runtime-main.js": "/7sgraph/static/js/runtime-main.2bd7c71f.js",
+    "runtime-main.js.map": "/7sgraph/static/js/runtime-main.2bd7c71f.js.map",
     "static/css/2.df744089.chunk.css": "/7sgraph/static/css/2.df744089.chunk.css",
-    "static/js/2.ad0d0b06.chunk.js": "/7sgraph/static/js/2.ad0d0b06.chunk.js",
-    "static/js/2.ad0d0b06.chunk.js.map": "/7sgraph/static/js/2.ad0d0b06.chunk.js.map",
-    "static/js/3.ec147cd9.chunk.js": "/7sgraph/static/js/3.ec147cd9.chunk.js",
-    "static/js/3.ec147cd9.chunk.js.map": "/7sgraph/static/js/3.ec147cd9.chunk.js.map",
+    "static/js/2.da4fdf10.chunk.js": "/7sgraph/static/js/2.da4fdf10.chunk.js",
+    "static/js/2.da4fdf10.chunk.js.map": "/7sgraph/static/js/2.da4fdf10.chunk.js.map",
+    "static/js/3.c851f8bf.chunk.js": "/7sgraph/static/js/3.c851f8bf.chunk.js",
+    "static/js/3.c851f8bf.chunk.js.map": "/7sgraph/static/js/3.c851f8bf.chunk.js.map",
     "index.html": "/7sgraph/index.html",
     "static/css/2.df744089.chunk.css.map": "/7sgraph/static/css/2.df744089.chunk.css.map",
-    "static/css/main.202a21c0.chunk.css.map": "/7sgraph/static/css/main.202a21c0.chunk.css.map",
-    "static/js/2.ad0d0b06.chunk.js.LICENSE.txt": "/7sgraph/static/js/2.ad0d0b06.chunk.js.LICENSE.txt",
+    "static/css/main.0a6a9be9.chunk.css.map": "/7sgraph/static/css/main.0a6a9be9.chunk.css.map",
+    "static/js/2.da4fdf10.chunk.js.LICENSE.txt": "/7sgraph/static/js/2.da4fdf10.chunk.js.LICENSE.txt",
     "static/media/armillarysphere.3317b928.svg": "/7sgraph/static/media/armillarysphere.3317b928.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.35c883ea.js",
+    "static/js/runtime-main.2bd7c71f.js",
     "static/css/2.df744089.chunk.css",
-    "static/js/2.ad0d0b06.chunk.js",
-    "static/css/main.202a21c0.chunk.css",
-    "static/js/main.1c3a4da5.chunk.js"
+    "static/js/2.da4fdf10.chunk.js",
+    "static/css/main.0a6a9be9.chunk.css",
+    "static/js/main.8a2523d6.chunk.js"
   ]
 }
