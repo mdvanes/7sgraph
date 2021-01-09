@@ -76,8 +76,8 @@ addPerson(input: [
     , name: "${escape(person.name)}"
     ${createNickNamesField(person.nickNames)}
     ${createStrField("gender", person.gender)}
-    ${createField("dateOfBirth", person.dateOfBirth)}
-    ${createField("dateOfDeath", person.dateOfDeath)}
+    ${createStrField("dateOfBirth", person.dateOfBirth)}
+    ${createStrField("dateOfDeath", person.dateOfDeath)}
     ${createRelationsField("children", "personID", person.children)}
     ${createRelationsField("nonBioChildren", "personID", person.nonBioChildren)}
     ${createRelationsField("parents", "personID", person.parents)}
