@@ -29,7 +29,7 @@ const BookSelector: FC<Props> = ({ searchByBook, onChange }) => {
         <MenuItem value="book1">The Seven Sisters</MenuItem>
         <MenuItem value="book2">The Storm Sister</MenuItem>
         <MenuItem value="book3">The Shadow Sister</MenuItem>
-        <MenuItem value="book4">The Pearl Sisters</MenuItem>
+        <MenuItem value="book4">The Pearl Sister</MenuItem>
         <MenuItem value="book5">The Moon Sister</MenuItem>
         <MenuItem value="book6">The Sun Sister</MenuItem>
         <MenuItem value="all">All</MenuItem>
