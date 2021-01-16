@@ -74,33 +74,33 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 73,georgekeppel,George Keppel,,male,1865,1947,,,,,,aliceedmonstone,,book3,-636.9183377307046,23.72410864298405
 74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,-634.9842092596451,179.5702576316932
 75,shanthi,Shanthi,,female,BET 1979 AND 1981,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197
-76,anandchangrok,Anand Changrok,Ace,male,BET 1970 AND 1985,,,,,,,,,book4,,
-77,motherchangrok,Mother Changrok,,female,,BET 1982 AND 1997,,,,,,,,book4,,
-78,davidrutter,David Rutter,,male,,,,,,,,,,book4,,
-79,chrissie,Chrissie,,female,BET 1979 AND 1981,,,,,,,,,book4,,
-80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,"anandchangrok,chrissie",,book4,275.13568867186984,121.28544631708857
-81,toba,Toba,,male,,,,celeano,,,,,,book4,,
-82,elizabethabraham,Elizabeth Abraham,Lizzie,female,,,,celeano,,,,toba,,book4,,
-83,albertnamatjira,Albert Namatjira,,male,1902,1959,,,,,,,,book4,,
-84,sarah,Sarah,,female,1934,BET 2005 AND 2007,,elizabethabraham,,,,,,book4,,
-85,francisabraham,Francis Abraham,,male,1928,,,elizabethabraham,,,,,albertnamatjira,book4,,
-86,eliseforsythe,Elise Forsythe,,female,,,,,,,,,,book4,,
-87,stefanmercerjr,Stefan Mercer Jr,,male,1913,1913,,,,,,,,book4,,
-88,charliemercer,Charlie Mercer,,male,1908,1942,,francisabraham,,,,eliseforsythe,,book4,,
-89,alkina,Alkina,Cat,female,1907,1928,,francisabraham,,,,charliemercer,,book4,,
-90,camira,Camira,,female,BET 1880 AND 1900,BET 1948 AND 1950,,alkina,,,,,,book4,,
-91,drummondmercer,Drummond Mercer,,male,,,,stefanmercerjr,,,,,,book4,,
-92,andrewmercer,Andrew Mercer,,male,,1912,,,,,,,,book4,,
-93,ralphmackenzie,Ralph Mackenzie,,male,1906,,,,,,,,,book4,,
-94,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,,,,,,,,,book4,,
-95,marymcbride,Mary McBride,,female,1898,,,,,,,,,book4,,
-96,marthamcbride,Martha McBride,,female,,,,,,,,,,book4,,
-97,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer",camira,book4,,
-98,miriammcbride,Miriam McBride,,female,,,,,,,,,,book4,,
-99,adelemcbride,Adele McBride,,female,,,,,,,,,,book4,,
-100,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,,,,,,,,,book4,,
-101,edithmercer,Edith Mercer,,female,,,,"andrewmercer,drummondmercer",,,,,,book4,,
-102,stefanmercer,Stefan Mercer,,male,,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,,
+76,anandchangrok,Anand Changrok,Ace,male,BET 1970 AND 1985,,,,,,,,,book4,374,269
+77,motherchangrok,Mother Changrok,,female,,BET 1982 AND 1997,,anandchangrok,,,,,,book4,464,247
+78,davidrutter,David Rutter,,male,,,,anandchangrok,,,,motherchangrok,,book4,464,303
+79,chrissie,Chrissie,,female,BET 1979 AND 1981,,,,,,,,,book4,375,99
+80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,"anandchangrok,chrissie",,book4,373.8147691847511,175.13284202416094
+81,toba,Toba,,male,,,,celeano,,,,,,book4,481,135
+82,elizabethabraham,Elizabeth Abraham,Lizzie,female,,,,celeano,,,,toba,,book4,481,217
+83,albertnamatjira,Albert Namatjira,,male,1902,1959,,,,,,,,book4,528,120
+84,sarah,Sarah,,female,1934,BET 2005 AND 2007,,elizabethabraham,,,,,,book4,576,198
+85,francisabraham,Francis Abraham,,male,1928,,,elizabethabraham,,,,,albertnamatjira,book4,588,141
+86,eliseforsythe,Elise Forsythe,,female,,,,,,,,,,book4,682,100
+87,stefanmercerjr,Stefan Mercer Jr,,male,1913,1913,,,,,,,,book4,677,275
+88,charliemercer,Charlie Mercer,,male,1908,1942,,francisabraham,,,,eliseforsythe,,book4,665,162
+89,alkina,Alkina,Cat,female,1907,1928,,francisabraham,,,,charliemercer,,book4,659,241
+90,camira,Camira,,female,BET 1880 AND 1900,BET 1948 AND 1950,,alkina,,,,,,book4,778,219
+91,drummondmercer,Drummond Mercer,,male,,,,stefanmercerjr,,,,,,book4,824,248
+92,andrewmercer,Andrew Mercer,,male,,1912,,,,,,,,book4,822,54
+93,ralphmackenzie,Ralph Mackenzie,,male,1906,,,,,,,,,book4,828,346
+94,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,,,ralphmackenzie,,,,,,book4,1076,374
+95,marymcbride,Mary McBride,,female,1898,,,,,,,,,book4,982,46
+96,marthamcbride,Martha McBride,,female,,,,,,,,,,book4,986,100
+97,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer",camira,book4,822,137
+98,miriammcbride,Miriam McBride,,female,,,,,,,,,,book4,989,148
+99,adelemcbride,Adele McBride,,female,,,,,,,,,,book4,1073,106
+100,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1080,230
+101,edithmercer,Edith Mercer,,female,,,,"andrewmercer,drummondmercer",,,,,,book4,930,270
+102,stefanmercer,Stefan Mercer,,male,,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,929,181
 103,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,38.563773,223.188141
 104,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,333.1187367418578,203.90522441465885
 105,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,139.64217485563643,257.8713581651615
