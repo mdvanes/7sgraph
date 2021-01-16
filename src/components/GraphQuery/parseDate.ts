@@ -17,7 +17,7 @@ export const getIsBornBeforeEnd = (endDate: number, dateOfBirth?: string) => {
 };
 
 export const getIsAliveAfterStart = (startDate: number, dateOfDeath?: string) => {
-  if (!dateOfDeath) {
+  if (!dateOfDeath || dateOfDeath === "1") {
     return true;
   }
   if (!isDateRange(dateOfDeath)) {
