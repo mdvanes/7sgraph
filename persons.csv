@@ -75,41 +75,41 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,-634.9842092596451,179.5702576316932
 75,shanthi,Shanthi,,female,BET 1979 AND 1981,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197
 76,anandchangrok,Anand Changrok,Ace,male,BET 1970 AND 1985,,,,,,,,,book4,374,269
-77,motherchangrok,Mother Changrok,,female,,BET 1982 AND 1997,,anandchangrok,,,,,,book4,464,247
-78,davidrutter,David Rutter,,male,,,,anandchangrok,,,,motherchangrok,,book4,464,303
+77,motherchangrok,Mother Changrok,,female,BET 1952 AND 1979,BET 1982 AND 1997,,anandchangrok,,,,,,book4,464,247
+78,davidrutter,David Rutter,,male,BET 1942 AND 1969,,,anandchangrok,,,,motherchangrok,,book4,464,303
 79,chrissie,Chrissie,,female,BET 1979 AND 1981,,,,,,,,,book4,375,99
-80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,"anandchangrok,chrissie",,book4,373.8147691847511,175.13284202416094
-81,toba,Toba,,male,,,,celeano,,,,,,book4,481,135
-82,elizabethabraham,Elizabeth Abraham,Lizzie,female,,,,celeano,,,,toba,,book4,481,217
+80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,"anandchangrok,chrissie",,book4,374.13846218621944,175.4596893047354
+81,toba,Toba,,male,BET 1950 AND 1962,,,celeano,,,,,,book4,481,135
+82,elizabethabraham,Elizabeth Abraham,Lizzie,female,BET 1962 AND 1964,1980,,celeano,,,,toba,,book4,481,217
 83,albertnamatjira,Albert Namatjira,,male,1902,1959,,,,,,,,book4,528,120
 84,sarah,Sarah,,female,1934,BET 2005 AND 2007,,elizabethabraham,,,,,,book4,576,198
 85,francisabraham,Francis Abraham,,male,1928,,,elizabethabraham,,,,,albertnamatjira,book4,588,141
-86,eliseforsythe,Elise Forsythe,,female,,,,,,,,,,book4,682,100
+86,eliseforsythe,Elise Forsythe,,female,BET 1906 AND 1913,BET 1943 AND 2007,,,,,,,,book4,682,100
 87,stefanmercerjr,Stefan Mercer Jr,,male,1913,1913,,,,,,,,book4,677,275
 88,charliemercer,Charlie Mercer,,male,1908,1942,,francisabraham,,,,eliseforsythe,,book4,665,162
 89,alkina,Alkina,Cat,female,1907,1928,,francisabraham,,,,charliemercer,,book4,659,241
-90,camira,Camira,,female,BET 1880 AND 1900,BET 1948 AND 1950,,alkina,,,,,,book4,778,219
-91,drummondmercer,Drummond Mercer,,male,,,,stefanmercerjr,,,,,,book4,824,248
-92,andrewmercer,Andrew Mercer,,male,,1912,,,,,,,,book4,822,54
+90,camira,Camira,,female,BET 1880 AND 1900,1949,,alkina,,,,,,book4,778,219
+91,drummondmercer,Drummond Mercer,,male,BET 1883 AND 1887,BET 1950 AND 1987,,stefanmercerjr,,,,,,book4,824,248
+92,andrewmercer,Andrew Mercer,,male,BET 1883 AND 1887,1912,,charliemercer,,,,,,book4,822,54
 93,ralphmackenzie,Ralph Mackenzie,,male,1906,,,,,,,,,book4,828,346
 94,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,,,ralphmackenzie,,,,,,book4,1076,374
 95,marymcbride,Mary McBride,,female,1898,,,,,,,,,book4,982,46
-96,marthamcbride,Martha McBride,,female,,,,,,,,,,book4,986,100
-97,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer",camira,book4,822,137
-98,miriammcbride,Miriam McBride,,female,,,,,,,,,,book4,989,148
-99,adelemcbride,Adele McBride,,female,,,,,,,,,,book4,1073,106
-100,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1080,230
-101,edithmercer,Edith Mercer,,female,,,,"andrewmercer,drummondmercer",,,,,,book4,930,270
+96,marthamcbride,Martha McBride,,female,1892,,,,,,,,,book4,986,100
+97,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer","camira,sarah",book4,822,137
+98,miriammcbride,Miriam McBride,,female,1885,,,,,,,,,book4,989,148
+99,adelemcbride,Adele McBride,,female,BET 1866 AND 1867,,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride",,,,,,book4,1073,106
+100,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,1948,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1080,230
+101,edithmercer,Edith Mercer,,female,,1929,,"andrewmercer,drummondmercer",,,,,,book4,930,270
 102,stefanmercer,Stefan Mercer,,male,,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,929,181
-103,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,38.563773,223.188141
-104,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,333.1187367418578,203.90522441465885
-105,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,139.64217485563643,257.8713581651615
-106,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,180.44517283612993,222.3129597475458
-107,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,167.77078746270058,189.1170909328535
-108,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.76835795360307,234.0969152869901
-109,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,195.4307232975308,172.76993630097786
-110,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,,
-111,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,,
-112,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,,
-113,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,,
+103,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-7.242899380928108,439.4832392334421
+104,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,308.3790079046136,434.989961524004
+105,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,180.78213177632864,482.454449898609
+106,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,62.44517300000001,227.31296
+107,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,140.770787,245.11709099999996
+108,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.768358,234.096915
+109,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,208.430723,267.76993600000003
+110,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,443.7900266647339,34.90483117103577
+111,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,401.4055739045143,72.30286407470703
+112,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,573.4365073442459,110.94750213623047
+113,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,573.4365301132202,56.09705376625061
 114,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,BET 1917 AND 1921,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,elle,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
