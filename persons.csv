@@ -91,25 +91,31 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 90,camira,Camira,,female,BET 1880 AND 1900,1949,,alkina,,,,,,book4,778,219
 91,drummondmercer,Drummond Mercer,,male,BET 1883 AND 1887,BET 1950 AND 1987,,stefanmercerjr,,,,,,book4,822,248
 92,andrewmercer,Andrew Mercer,,male,BET 1883 AND 1887,1912,,charliemercer,,,,,,book4,822,54
-93,ralphmackenzie,Ralph Mackenzie,,male,1906,,,,,,,,,book4,828,346
-94,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,,,ralphmackenzie,,,,,,book4,930,374
-95,marymcbride,Mary McBride,,female,1898,,,,,,,,,book4,930,176
-96,marthamcbride,Martha McBride,,female,1892,,,,,,,,,book4,930,226
-97,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer","camira,sarah",book4,822,137
-98,miriammcbride,Miriam McBride,,female,1885,,,,,,,,,book4,930,276
-99,adelemcbride,Adele McBride,,female,BET 1866 AND 1867,,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride",,,,,,book4,1077,178
-100,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,1948,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1077,301
-101,edithmercer,Edith Mercer,,female,,1929,,"andrewmercer,drummondmercer",,,,,,book4,1077,28
-102,stefanmercer,Stefan Mercer,,male,,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,1077,-70
-103,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-7.242899380928108,439.4832392334421
-104,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,308.3790079046136,434.989961524004
-105,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,180.78213177632864,482.454449898609
-106,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,62.44517300000001,227.31296
-107,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,140.770787,245.11709099999996
-108,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.768358,234.096915
-109,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,208.430723,267.76993600000003
-110,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,443.7900266647339,34.90483117103577
-111,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,401.4055739045143,72.30286407470703
-112,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,573.4365073442459,110.94750213623047
-113,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,573.4365301132202,56.09705376625061
-114,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,BET 1917 AND 1921,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,elle,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
+93,eddiemackenzie,Eddie Mackenzie,,male,1944,,,,,,,,,,,
+94,ralphmackenzie,Ralph Mackenzie,,male,1906,1,,,,eddiemackenzie,,,,book4,828,346
+95,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,1,,ralphmackenzie,,,,,,book4,930,374
+96,marymcbride,Mary McBride,,female,1898,1,,,,,,,,book4,930,176
+97,marthamcbride,Martha McBride,,female,1892,1,,,,,,,,book4,930,226
+98,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer","camira,sarah",book4,822,137
+99,miriammcbride,Miriam McBride,,female,1885,1,,,,,,,,book4,930,276
+100,adelemcbride,Adele McBride,,female,BET 1866 AND 1867,1,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride",,,,,,book4,1077,178
+101,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,1948,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1077,301
+102,edithmercer,Edith Mercer,,female,BET 1853 AND 1869,1929,,"andrewmercer,drummondmercer",,,,,,book4,1077,28
+103,stefanmercer,Stefan Mercer,,male,BET 1853 AND 1869,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,1077,-70
+104,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-7.242899380928108,439.4832392334421
+105,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,308.3790079046136,434.989961524004
+106,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,180.78213177632864,482.454449898609
+107,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,62.44517300000001,227.31296
+108,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,140.770787,245.11709099999996
+109,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.768358,234.096915
+110,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,208.430723,267.76993600000003
+111,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,443.7900266647339,34.90483117103577
+112,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,401.4055739045143,72.30286407470703
+113,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,573.4365073442459,110.94750213623047
+114,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,573.4365301132202,56.09705376625061
+115,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,BET 1917 AND 1921,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,elle,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,annie is alive in 1949,,,,,,,,,,,,,,
