@@ -1,121 +1,116 @@
-id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,parents,nonBioChildren,nonBioParents,physicalRelation,otherRelation,story,cx,cy
-1,zedjr,Zed Jr.,,male,1995,,,,,,,,,book1,99.67764208725814,-132.15066242785937
-2,zed,Zed Eszu,,male,,,,zedjr,,,,,,,190.5833974204404,-123.94777334567428
-3,kreeg,Kreeg Eszu,Greek Zeus,male,,2007,,zed,,,,,,,190.74323155940067,-186.2139442768826
-4,valentinaquintelas,Valentina,,female,2001,,,,,,,,,book1,-52.905878143046685,-102.86614748269014
-5,florianoquintelas,Floriano Quintelas,,male,,,,valentinaquintelas,,,,,,book1,-54.80631505973065,-28.108250987180682
-6,motherofvalentina,Mother of Valentina,,female,,2001,,valentinaquintelas,,,,florianoquintelas,,book1,-174.87455821412755,-73.81944611880274
-7,maia,Maia d'Apliése,,female,1974,,,zedjr,,,,"zed,florianoquintelas",,book1,95.46599894316034,-66.37937718877299
-8,cristinacarvalho,Cristina Izabela Carvalho,,female,1956,,,maia,,,,,,book1,-10.735214197328105,-119.21877143961831
-9,beatrizac,Beatriz Luiza Aires Cabral,,female,1930,2007,,cristinacarvalho,,,,,,book1,-108.01295851700723,-156.59797227075157
-10,evandrocarvalho,Evandro Carvalho,,male,,1,,cristinacarvalho,,,,beatrizac,,book1,-12.070334844648954,-190.54297746465926
-11,izabela,Izabela Rosa Bonifacio,Bel,female,1910,1931,,beatrizac,,,,,,book1,-331.2830388259747,-139.71683866270772
-12,laurentbrouilly,Laurent Brouilly,,male,,1,,beatrizac,,,,izabela,,book1,-222.19244002388712,-175.60083828350878
-13,antoniobonifacio,Antonio Bonifacio,,male,,1,,izabela,,,,,,book1,-526.3790711613892,-124.45112817800123
-14,carlabonifacio,Carla,,female,,1930,,izabela,,,,antoniobonifacio,,book1,-509.1397354433733,-84.86354569730506
-15,gustavoac,Gustavo Aires Cabral,,male,,1,,,,beatrizac,,izabela,,book1,-383.1619137979127,-66.91881734909123
-16,luizaac,Luiza,,female,,1931,,gustavoac,,,,,,book1,-532.2032409739666,-25.718574338413475
-17,mauricioac,Maurício Aires Cabral,,male,,1953,,gustavoac,,,,luizaac,,book1,-488.9807380658985,11.013688397852036
-18,yaracanterino,Yara Canterino,,female,1930,,,,,,,,beatrizac,book1,-144.35958601018137,-203.99322819015424
-19,loenfagundes,Loen Fagundes,,female,1879,1,,yaracanterino,,,,,izabela,book1,-325.3757759247781,-219.65517124689882
-20,brunocanterino,Bruno Canterino,,male,,,,yaracanterino,,,,loenfagundes,,book1,-396.48557601097366,-160.88150464496783
-21,fabianacanterino,Fabiana,,female,,,,brunocanterino,,,,,,book1,-413.56760528613336,-216.6226321579264
-22,sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1,-508,-183
-23,mariaelisadsc,Maria Elisa da Silva Costa,,female,,1,,,,,,,izabela,book1,-667.5578184740689,-169.72379260054302
-24,heitordsc,Heitor da Silva Costa,,male,,1,,mariaelisadsc,,,,,,book1,-672.5657877697449,-218.8593737696422
-25,bear,Bear,,male,2007,,,,,,,,,book2,178.16115689974794,13.53239317801178
-26,theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2,270.9684433965274,-148.899282119852
-27,celiafalyskings,Celia Falys-Kings,,female,,,,theofalyskings,,,,,,book2,213.00000762939453,-220
-28,peterfalyskings,Peter Falys-Kings,,male,,,,theofalyskings,,,,celiafalyskings,,book2,325.31857,-201.814044
-29,alcyone,Alcyone d'Apliése,"Ally,Storm,Felicia",female,1977,,,bear,,,,theofalyskings,,book2,282.55778648375406,-14.437604568957937
-30,thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2,288.9455632389319,-61.87225826461295
-31,martha,Martha,,female,,1,,"alcyone,thomfhalvorsen",,,,,,book2,360.3978326021927,-103.11077249957833
-32,felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,martha,,book2,370.8676789736711,-36.86633007479051
-33,karinerosenblum,Karine Rosenblum,,female,1921,1940,,felixmhalvorsen,,,,,,book2,393.2593821066296,-147.36038636149686
-34,piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2,449.800177,6.717167999999987
-35,astridthorsen,Astrid Thorsen,,female,1899,1995,,piphalvorsen,,,,,,book2,567.4407858045583,27.666939872648058
-36,edvardhalvorsen,Edvard Horst Halvorsen,,male,1884,1985,,piphalvorsen,,,,astridthorsen,,book2,489.1212593118445,-59.37561100340156
-37,solveighalvorsen,Solveig Anna Halvorsen,,female,1877,1877,,,,,,,,book2,607.8130331851104,-22.78575336870003
-38,annalandvik,Anna Tomasdatter Landvik,,female,1857,1907,,"solveighalvorsen,edvardhalvorsen",,,,,,book2,585.4555751239442,-147.6746690233786
-39,beritlandvik,Berit Landvik,,female,,1,,annalandvik,,,,,,book2,673.947359478187,-183.8830464453238
-40,anderslandvik,Anders Landvik,,male,,1,,annalandvik,,,,beritlandvik,,book2,687.8367712207979,-136.2438401130496
-41,jenshalvorsen,Jens Halvorsen,,male,1855,1921,,solveighalvorsen,,edvardhalvorsen,,annalandvik,,book2,649.985216659303,-80.35759617851511
-42,margaretetrolle,Margarete Trolle,,female,1834,1887,,jenshalvorsen,,,,,,book2,777.2302482881735,-121.87675969045827
-43,jonashalvorsen,Jonas Halvorsen,,male,1830,1890,,jenshalvorsen,,,,margaretetrolle,,book2,787.9432537638105,-49.425221419422556
-44,edvardgrieg,Edvard Grieg,,male,1843,1907,,edvardhalvorsen,,,,annalandvik,,book2,503.69116318339456,-175.6865588640361
-45,asterope,Asterope d'Apliése,"Star,Sia,Shadow,Lucy Charlotte",female,1980,,,,,,,,,book3,-63.334346,91.24242099999998
-46,roryforbes,Rory Forbes,,male,2000,,,,,,,,,book3,-34.87168840991578,25.729839070888758
-47,annieforbes,Annie Forbes,,female,BET 1965 AND 1970,2000,,roryforbes,,,,,,book3,-152.56254045737884,132.21121468107543
-48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,BET 1965 AND 1970,,,roryforbes,,,,"annieforbes,asterope",,book3,-150.97118371640937,60.797398811705335
-49,orlandoforbes,Orlando Forbes,,male,BET 1970 AND 1975,,,,,,,,,book3,-153.05069424843927,-7.010392710087544
-50,helene,Hélène,,female,BET 1965 AND 1980,,,,,,,,,book3,-82,105
-51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,-150,171
-52,michaelvaughan,Michael Vaughan,,male,BET 1944 AND 1946,BET 1964 AND 2007,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968
-53,annastein,Anna Stein,,female,BET 1986 AND 2006,,,,,,,,,book3,-73.11021505344542,304.4377575291637
-54,scottstein,Scott Stein,,male,BET 1985 AND 2005,,,,,,,,,book3,-72.50360409105367,256.2635786196595
-55,jamesstein,James Stein,,male,BET 1984 AND 2004,,,,,,,,,book3,-70.95398000319881,225.42559314735615
-56,robertstein,Robert Stein,,male,BET 1952 AND 1965,,,"jamesstein,scottstein,annastein",,,,,,book3,-147.94728421417685,286.26162703394556
-57,petulabrown,Petula Brown,Professor Sylvia Gray,female,1962,,,"asterope,jamesstein,scottstein,annastein",,,,robertstein,,book3,-150.50499434564415,211.13527463574746
-58,alfredbrown,Alfred Brown,,male,BET 1934 AND 1950,1980,,petulabrown,,,,,,book3,-208.40469603636728,183.3796395857679
-59,patryciasmith,Patrycia Smith,,female,1944,2007,,petulabrown,,,,alfredbrown,,book3,-211.39150884976172,229.7790963311288
-60,tessiesmith,Tessie Eleanor Smith,,female,BET 1922 AND 1926,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306
-61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,BET 1919 AND 1927,BET 1954 AND 2007,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832
-62,teddyvaughan,Teddy Vaughan,,male,1919,BET 1954 AND 2007,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924
-63,laurenceforbes,Laurence Forbes,,male,BET 1945 AND 1958,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618
-64,louisevaughan,Louise Vaughan,,female,1919,BET 1970 AND 2007,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953
-65,rupertforbes,Rupert Forbes,,male,BET 1915 AND 1920,BET 1970 AND 2007,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659
-66,beatrixpotter,Beatrix Potter,,female,1866,1943,,,,,,,,book3,-454.2244633211329,35.791162088118455
-67,floramacnichol,Flora Rose MacNichol,,female,1890,BET 1965 AND 1969,,,,"louisevaughan,teddyvaughan",,,beatrixpotter,book3,-454.6951327706565,78.39164787285729
-68,aureliamacnichol,Aurelia MacNichol,,female,1891,1919,,louisevaughan,,,,,,book3,-459.2787546303279,223.77934251566325
-69,archievaughan,Archie Vaughan,,male,1888,1945,,louisevaughan,,teddyvaughan,,"aureliamacnichol,floramacnichol",,book3,-455.2699602003484,151.757057826423
-70,rosemacnichol,Rose MacNichol,,female,BET 1860 AND 1872,BET 1943 AND 1972,,"aureliamacnichol,floramacnichol",,,,,,book3,-610.4668645584931,247.28335563313647
-71,alistairmacnichol,Alistair MacNichol,,male,BET 1860 AND 1872,1917,,aureliamacnichol,,floramacnichol,,rosemacnichol,,book3,-610.3235029453547,60.81745149556339
-72,aliceedmonstone,Alice Frederica Edmonstone,Alice Keppel,female,1868,1947,,,,,,,floramacnichol,book3,-633.7777349807868,101.29844312861704
-73,georgekeppel,George Keppel,,male,1865,1947,,,,,,aliceedmonstone,,book3,-636.9183377307046,23.72410864298405
-74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,-634.9842092596451,179.5702576316932
-75,shanthi,Shanthi,,female,BET 1979 AND 1981,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197
-76,anandchangrok,Anand Changrok,Ace,male,BET 1970 AND 1985,,,,,,,,,book4,374,269
-77,motherchangrok,Mother Changrok,,female,BET 1952 AND 1979,BET 1982 AND 1997,,anandchangrok,,,,,,book4,523,247
-78,davidrutter,David Rutter,,male,BET 1942 AND 1969,,,anandchangrok,,,,motherchangrok,,book4,523,313
-79,chrissie,Chrissie,,female,BET 1979 AND 1981,,,,,,,,,book4,375,99
-80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl",female,1980,,,,,,,"anandchangrok,chrissie",,book4,374.13846218621944,175.4596893047354
-81,toba,Toba,,male,BET 1950 AND 1962,,,celeano,,,,,,book4,481,135
-82,elizabethabraham,Elizabeth Abraham,Lizzie,female,BET 1962 AND 1964,1980,,celeano,,,,toba,,book4,481,217
-83,albertnamatjira,Albert Namatjira,,male,1902,1959,,,,,,,,book4,528,120
-84,sarah,Sarah,,female,1934,BET 2005 AND 2007,,elizabethabraham,,,,,,book4,576,198
-85,francisabraham,Francis Abraham,,male,1928,,,elizabethabraham,,,,sarah,albertnamatjira,book4,576,141
-86,eliseforsythe,Elise Forsythe,,female,BET 1906 AND 1913,BET 1943 AND 2007,,,,,,,,book4,665,100
-87,stefanmercerjr,Stefan Mercer Jr,,male,1913,1913,,,,,,,,book4,677,275
-88,charliemercer,Charlie Mercer,,male,1908,1942,,francisabraham,,,,eliseforsythe,,book4,665,162
-89,alkina,Alkina,Cat,female,1907,1928,,francisabraham,,,,charliemercer,,book4,665,241
-90,camira,Camira,,female,BET 1880 AND 1900,1949,,alkina,,,,,,book4,778,219
-91,drummondmercer,Drummond Mercer,,male,BET 1883 AND 1887,BET 1950 AND 1987,,stefanmercerjr,,,,,,book4,822,248
-92,andrewmercer,Andrew Mercer,,male,BET 1883 AND 1887,1912,,charliemercer,,,,,,book4,822,54
-93,eddiemackenzie,Eddie Mackenzie,,male,1944,,,,,,,,,,,
-94,ralphmackenzie,Ralph Mackenzie,,male,1906,1,,,,eddiemackenzie,,,,book4,828,346
-95,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,1,,ralphmackenzie,,,,,,book4,930,374
-96,marymcbride,Mary McBride,,female,1898,1,,,,,,,,book4,930,176
-97,marthamcbride,Martha McBride,,female,1892,1,,,,,,,,book4,930,226
-98,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer","camira,sarah",book4,822,137
-99,miriammcbride,Miriam McBride,,female,1885,1,,,,,,,,book4,930,276
-100,adelemcbride,Adele McBride,,female,BET 1866 AND 1867,1,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride",,,,,,book4,1077,178
-101,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,1948,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1077,301
-102,edithmercer,Edith Mercer,,female,BET 1853 AND 1869,1929,,"andrewmercer,drummondmercer",,,,,,book4,1077,28
-103,stefanmercer,Stefan Mercer,,male,BET 1853 AND 1869,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,1077,-70
-104,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-7.242899380928108,439.4832392334421
-105,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,308.3790079046136,434.989961524004
-106,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,180.78213177632864,482.454449898609
-107,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,62.44517300000001,227.31296
-108,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,140.770787,245.11709099999996
-109,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.768358,234.096915
-110,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,208.430723,267.76993600000003
-111,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,443.7900266647339,34.90483117103577
-112,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,401.4055739045143,72.30286407470703
-113,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,573.4365073442459,110.94750213623047
-114,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,573.4365301132202,56.09705376625061
-115,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,BET 1917 AND 1921,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,elle,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214
-,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,
-,,annie is alive in 1949,,,,,,,,,,,,,,
+id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,parents,nonBioChildren,nonBioParents,physicalRelation,otherRelation,story,cx,cy,wiki
+1,zedjr,Zed Jr.,,male,1995,,,,,,,,,book1,99.67764208725814,-132.15066242785937,
+2,zed,Zed Eszu,,male,,,,zedjr,,,,,,,190.5833974204404,-123.94777334567428,
+3,kreeg,Kreeg Eszu,Greek Zeus,male,,2007,,zed,,,,,,,190.74323155940067,-186.2139442768826,
+4,valentinaquintelas,Valentina,,female,2001,,,,,,,,,book1,-52.905878143046685,-102.86614748269014,
+5,florianoquintelas,Floriano Quintelas,,male,,,,valentinaquintelas,,,,,,book1,-54.80631505973065,-28.108250987180682,
+6,motherofvalentina,Mother of Valentina,,female,,2001,,valentinaquintelas,,,,florianoquintelas,,book1,-174.87455821412755,-73.81944611880274,
+7,maia,Maia d'Apliése,,female,1974,,,zedjr,,,,"zed,florianoquintelas",,book1,95.46599894316034,-66.37937718877299,
+8,cristinacarvalho,Cristina Izabela Carvalho,,female,1956,,,maia,,,,,,book1,-10.735214197328105,-119.21877143961831,
+9,beatrizac,Beatriz Luiza Aires Cabral,,female,1930,2007,,cristinacarvalho,,,,,,book1,-108.01295851700723,-156.59797227075157,
+10,evandrocarvalho,Evandro Carvalho,,male,,1,,cristinacarvalho,,,,beatrizac,,book1,-12.070334844648954,-190.54297746465926,
+11,izabela,Izabela Rosa Bonifacio,Bel,female,1910,1931,,beatrizac,,,,,,book1,-331.2830388259747,-139.71683866270772,
+12,laurentbrouilly,Laurent Brouilly,,male,,1,,beatrizac,,,,izabela,,book1,-222.19244002388712,-175.60083828350878,
+13,antoniobonifacio,Antonio Bonifacio,,male,,1,,izabela,,,,,,book1,-526.3790711613892,-124.45112817800123,
+14,carlabonifacio,Carla,,female,,1930,,izabela,,,,antoniobonifacio,,book1,-509.1397354433733,-84.86354569730506,
+15,gustavoac,Gustavo Aires Cabral,,male,,1,,,,beatrizac,,izabela,,book1,-383.1619137979127,-66.91881734909123,
+16,luizaac,Luiza,,female,,1931,,gustavoac,,,,,,book1,-532.2032409739666,-25.718574338413475,
+17,mauricioac,Maurício Aires Cabral,,male,,1953,,gustavoac,,,,luizaac,,book1,-488.9807380658985,11.013688397852036,
+18,yaracanterino,Yara Canterino,,female,1930,,,,,,,,beatrizac,book1,-144.35958601018137,-203.99322819015424,
+19,loenfagundes,Loen Fagundes,,female,1879,1,,yaracanterino,,,,,izabela,book1,-325.3757759247781,-219.65517124689882,
+20,brunocanterino,Bruno Canterino,,male,,,,yaracanterino,,,,loenfagundes,,book1,-396.48557601097366,-160.88150464496783,
+21,fabianacanterino,Fabiana,,female,,,,brunocanterino,,,,,,book1,-413.56760528613336,-216.6226321579264,
+22,sandrocanterino,Sandro Canterino,,male,,,,brunocanterino,,,,fabianacanterino,,book1,-508,-183,
+23,mariaelisadsc,Maria Elisa da Silva Costa,,female,,1,,,,,,,izabela,book1,-667.5578184740689,-169.72379260054302,
+24,heitordsc,Heitor da Silva Costa,,male,,1,,mariaelisadsc,,,,,,book1,-672.5657877697449,-218.8593737696422,https://en.wikipedia.org/wiki/Heitor_da_Silva_Costa
+25,bear,Bear,,male,2007,,,,,,,,,book2,178.16115689974794,13.53239317801178,
+26,theofalyskings,Theo Falys-Kings,,male,,2007,,bear,,,,,zed,book2,270.9684433965274,-148.899282119852,
+27,celiafalyskings,Celia Falys-Kings,,female,,,,theofalyskings,,,,,,book2,213.00000762939453,-220,
+28,peterfalyskings,Peter Falys-Kings,,male,,,,theofalyskings,,,,celiafalyskings,,book2,325.31857,-201.814044,
+29,alcyone,Alcyone d'Apliése,"Ally,Storm,Felicia",female,1977,,,bear,,,,theofalyskings,,book2,282.55778648375406,-14.437604568957937,
+30,thomfhalvorsen,Thom Felix Halvorsen,,male,1977,,,,,,,,,book2,288.9455632389319,-61.87225826461295,
+31,martha,Martha,,female,,1,,"alcyone,thomfhalvorsen",,,,,,book2,360.3978326021927,-103.11077249957833,
+32,felixmhalvorsen,Felix Mendelssohn Halvorsen,,male,1938,,,"alcyone,thomfhalvorsen",,,,martha,,book2,370.8676789736711,-36.86633007479051,
+33,karinerosenblum,Karine Rosenblum,,female,1921,1940,,felixmhalvorsen,,,,,,book2,393.2593821066296,-147.36038636149686,
+34,piphalvorsen,Jens Halvorsen,Pip,male,1917,1940,,felixmhalvorsen,,,,karinerosenblum,,book2,449.800177,6.717167999999987,
+35,astridthorsen,Astrid Thorsen,,female,1899,1995,,piphalvorsen,,,,,,book2,567.4407858045583,27.666939872648058,
+36,edvardhalvorsen,Edvard Horst Halvorsen,,male,1884,1985,,piphalvorsen,,,,astridthorsen,,book2,489.1212593118445,-59.37561100340156,
+37,solveighalvorsen,Solveig Anna Halvorsen,,female,1877,1877,,,,,,,,book2,607.8130331851104,-22.78575336870003,
+38,annalandvik,Anna Tomasdatter Landvik,,female,1857,1907,,"solveighalvorsen,edvardhalvorsen",,,,,,book2,585.4555751239442,-147.6746690233786,
+39,beritlandvik,Berit Landvik,,female,,1,,annalandvik,,,,,,book2,673.947359478187,-183.8830464453238,
+40,anderslandvik,Anders Landvik,,male,,1,,annalandvik,,,,beritlandvik,,book2,687.8367712207979,-136.2438401130496,
+41,jenshalvorsen,Jens Halvorsen,,male,1855,1921,,solveighalvorsen,,edvardhalvorsen,,annalandvik,,book2,649.985216659303,-80.35759617851511,
+42,margaretetrolle,Margarete Trolle,,female,1834,1887,,jenshalvorsen,,,,,,book2,777.2302482881735,-121.87675969045827,
+43,jonashalvorsen,Jonas Halvorsen,,male,1830,1890,,jenshalvorsen,,,,margaretetrolle,,book2,787.9432537638105,-49.425221419422556,
+44,edvardgrieg,Edvard Grieg,,male,1843,1907,,edvardhalvorsen,,,,annalandvik,,book2,503.69116318339456,-175.6865588640361,https://en.wikipedia.org/wiki/Edvard_Grieg
+45,asterope,Asterope d'Apliése,"Star,Sia,Shadow,Lucy Charlotte",female,1980,,,,,,,,,book3,-63.334346,91.24242099999998,
+46,roryforbes,Rory Forbes,,male,2000,,,,,,,,,book3,-34.87168840991578,25.729839070888758,
+47,annieforbes,Annie Forbes,,female,BET 1965 AND 1970,2000,,roryforbes,,,,,,book3,-152.56254045737884,132.21121468107543,
+48,mouseforbes,"Oenomaus Forbes, Lord Vaughan of High Weald",Mouse,male,BET 1965 AND 1970,,,roryforbes,,,,"annieforbes,asterope",,book3,-150.97118371640937,60.797398811705335,
+49,orlandoforbes,Orlando Forbes,,male,BET 1970 AND 1975,,,,,,,,,book3,-153.05069424843927,-7.010392710087544,
+50,helene,Hélène,,female,BET 1965 AND 1980,,,,,,,,,book3,-82,105,
+51,margueritevaughan,Marguerite Vaughan,,female,1964,,,,,,,helene,,book3,-150,171,
+52,michaelvaughan,Michael Vaughan,,male,BET 1944 AND 1946,BET 1964 AND 2007,,margueritevaughan,,,,,,book3,-210.56224128718594,144.4212213492968,
+53,annastein,Anna Stein,,female,BET 1986 AND 2006,,,,,,,,,book3,-73.11021505344542,304.4377575291637,
+54,scottstein,Scott Stein,,male,BET 1985 AND 2005,,,,,,,,,book3,-72.50360409105367,256.2635786196595,
+55,jamesstein,James Stein,,male,BET 1984 AND 2004,,,,,,,,,book3,-70.95398000319881,225.42559314735615,
+56,robertstein,Robert Stein,,male,BET 1952 AND 1965,,,"jamesstein,scottstein,annastein",,,,,,book3,-147.94728421417685,286.26162703394556,
+57,petulabrown,Petula Brown,Professor Sylvia Gray,female,1962,,,"asterope,jamesstein,scottstein,annastein",,,,robertstein,,book3,-150.50499434564415,211.13527463574746,
+58,alfredbrown,Alfred Brown,,male,BET 1934 AND 1950,1980,,petulabrown,,,,,,book3,-208.40469603636728,183.3796395857679,
+59,patryciasmith,Patrycia Smith,,female,1944,2007,,petulabrown,,,,alfredbrown,,book3,-211.39150884976172,229.7790963311288,
+60,tessiesmith,Tessie Eleanor Smith,,female,BET 1922 AND 1926,1975,,patryciasmith,,,,,,book3,-308.9673875179061,254.65665381800306,
+61,ceciliaoreilly,Lady Cecilia O’Reilly,Dixie,female,BET 1919 AND 1927,BET 1954 AND 2007,,michaelvaughan,,,,,,book3,-308.39980296549163,119.1843953414832,
+62,teddyvaughan,Teddy Vaughan,,male,1919,BET 1954 AND 2007,,"michaelvaughan,patryciasmith",,,,"ceciliaoreilly,tessiesmith",,book3,-311.6971254323765,181.76524344492924,
+63,laurenceforbes,Laurence Forbes,,male,BET 1945 AND 1958,2002,,"mouseforbes,orlandoforbes",,,,,,book3,-203.05398937240298,16.505938907590618,
+64,louisevaughan,Louise Vaughan,,female,1919,BET 1970 AND 2007,,laurenceforbes,,,,,,book3,-305.0336070309402,39.17335386387953,
+65,rupertforbes,Rupert Forbes,,male,BET 1915 AND 1920,BET 1970 AND 2007,,laurenceforbes,,,,louisevaughan,,book3,-306.80163270379234,-7.00406262089659,
+66,beatrixpotter,Beatrix Potter,,female,1866,1943,,,,,,,,book3,-454.2244633211329,35.791162088118455,
+67,floramacnichol,Flora Rose MacNichol,,female,1890,BET 1965 AND 1969,,,,"louisevaughan,teddyvaughan",,,beatrixpotter,book3,-454.6951327706565,78.39164787285729,
+68,aureliamacnichol,Aurelia MacNichol,,female,1891,1919,,louisevaughan,,,,,,book3,-459.2787546303279,223.77934251566325,
+69,archievaughan,Archie Vaughan,,male,1888,1945,,louisevaughan,,teddyvaughan,,"aureliamacnichol,floramacnichol",,book3,-455.2699602003484,151.757057826423,
+70,rosemacnichol,Rose MacNichol,,female,BET 1860 AND 1872,BET 1943 AND 1972,,"aureliamacnichol,floramacnichol",,,,,,book3,-610.4668645584931,247.28335563313647,
+71,alistairmacnichol,Alistair MacNichol,,male,BET 1860 AND 1872,1917,,aureliamacnichol,,floramacnichol,,rosemacnichol,,book3,-610.3235029453547,60.81745149556339,
+72,aliceedmonstone,Alice Frederica Edmonstone,Alice Keppel,female,1868,1947,,,,,,,floramacnichol,book3,-633.7777349807868,101.29844312861704,
+73,georgekeppel,George Keppel,,male,1865,1947,,,,,,aliceedmonstone,,book3,-636.9183377307046,23.72410864298405,
+74,edwardvii,"Edward VII, King of the United Kingdom",Bertie,male,1841,1910,,floramacnichol,,,,"rosemacnichol,aliceedmonstone",,book3,-634.9842092596451,179.5702576316932,https://en.wikipedia.org/wiki/Edward_VII
+75,shanthi,Shanthi,,female,BET 1979 AND 1981,,,,,,,,asterope,book3,-40.09315331019614,149.15425352367197,
+76,anandchangrok,Anand Changrok,Ace,male,BET 1970 AND 1985,,,,,,,,,book4,374,269,
+77,motherchangrok,Mother Changrok,,female,BET 1952 AND 1979,BET 1982 AND 1997,,anandchangrok,,,,,,book4,523,247,
+78,davidrutter,David Rutter,,male,BET 1942 AND 1969,,,anandchangrok,,,,motherchangrok,,book4,523,313,
+79,chrissie,Chrissie,,female,BET 1979 AND 1981,,,,,,,,,book4,375,99,
+80,celeano,Celeano d'Apliése,"CeCe,Cee,Pearl,Celeano Mercer",female,1980,,,,,,,"anandchangrok,chrissie",,book4,374.13846218621944,175.4596893047354,
+81,toba,Toba,,male,BET 1950 AND 1962,,,celeano,,,,,,book4,481,135,
+82,elizabethabraham,Elizabeth Abraham,Lizzie,female,BET 1962 AND 1964,1980,,celeano,,,,toba,,book4,481,217,
+83,albertnamatjira,Albert Namatjira,,male,1902,1959,,,,,,,,book4,528,120,https://en.wikipedia.org/wiki/Albert_Namatjira
+84,sarah,Sarah,,female,1934,BET 2005 AND 2007,,elizabethabraham,,,,,,book4,576,198,
+85,francisabraham,Francis Abraham,,male,1929,,,elizabethabraham,,,,sarah,albertnamatjira,book4,576,141,
+86,eliseforsythe,Elise Forsythe,,female,BET 1906 AND 1913,BET 1943 AND 2007,,,,,,,,book4,665,100,
+87,stefanmercerjr,Stefan Mercer Jr,,male,1913,1913,,,,,,,,book4,677,275,
+88,charliemercer,Charlie Mercer,,male,1908,1942,,francisabraham,,,,eliseforsythe,,book4,665,162,
+89,alkina,Alkina,Cat,female,1907,1928,,francisabraham,,,,charliemercer,,book4,665,241,
+90,camira,Camira,,female,BET 1880 AND 1900,1949,,alkina,,,,,,book4,778,219,
+91,drummondmercer,Drummond Mercer,,male,BET 1883 AND 1887,BET 1950 AND 1987,,stefanmercerjr,,,,,,book4,822,248,
+92,andrewmercer,Andrew Mercer,,male,BET 1883 AND 1887,1912,,charliemercer,,,,,,book4,822,54,
+93,eddiemackenzie,Eddie Mackenzie,,male,1944,,,,,,,,,,,,
+94,ralphmackenzie,Ralph Mackenzie,,male,1906,BET 1949 AND 2006,,,,eddiemackenzie,,,,book4,828,346,
+95,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,BET 1949 AND 1990,,ralphmackenzie,,,,,,book4,930,374,
+96,marymcbride,Mary McBride,,female,1898,BET 1949 AND 1998,,,,,,,,book4,930,176,
+97,marthamcbride,Martha McBride,,female,1892,BET 1949 AND 1992,,,,,,,,book4,930,226,
+98,katherinemcbride,Katherine McBride,Kitty Mercer,female,1888,1978,,"charliemercer,stefanmercerjr",,,,"andrewmercer,drummondmercer","camira,sarah",book4,822,137,
+99,miriammcbride,Miriam McBride,,female,1885,BET 1949 AND 1985,,,,,,,,book4,930,276,
+100,adelemcbride,Adele McBride,,female,BET 1866 AND 1867,BET 1949 AND 1967,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride",,,,,,book4,1077,178,
+101,ralphmcbride,Ralph McBride,,male,BET 1859 AND 1864,1948,,"miriammcbride,katherinemcbride,marthamcbride,marymcbride,ralphmackenzie",,,,"adelemcbride,anniemackenzie",,book4,1077,301,
+102,edithmercer,Edith Mercer,,female,BET 1853 AND 1869,1929,,"andrewmercer,drummondmercer",,,,,,book4,1077,28,
+103,stefanmercer,Stefan Mercer,,male,BET 1853 AND 1869,1912,,"andrewmercer,drummondmercer",,,,edithmercer,,book4,1077,-70,
+104,taygete,Taygete d'Apliése,"Tiggy,Moon",female,1981,,,,,,,,,book5,-7.242899380928108,439.4832392334421,
+105,electra,Electra d'Apliése,Sun,female,1981,,,,,,,zed,,book6,308.3790079046136,434.989961524004,
+106,merope,Merope d'Apliése,Missing,female,BET 1981 AND 2008,,,,,,,,,,180.78213177632864,482.454449898609,
+107,marina,Marina,Ma,female,BET 1940 AND 1945,,,,,,,,,,62.44517300000001,227.31296,
+108,claudia,Claudia,,female,BET 1919 AND 1956,,,,,,,,,,140.770787,245.11709099999996,
+109,georghoffman,Georg Hoffman,,male,BET 1942 AND 1947,,,,,,,,,,253.768358,234.096915,
+110,christian,Christian,,male,BET 1965 AND 1975,,,,,,,,,,208.430723,267.76993600000003,
+111,brotherofelle,Brother of Elle,,male,BET 1914 AND 1918,,,,,,,,,book2,443.7900266647339,34.90483117103577,
+112,elle,Elle Tanit,,female,BET 1914 AND 1918,BET 1944 AND 1974,,,,,,,karinerosenblum,book2,401.4055739045143,72.30286407470703,
+113,motherofelle,Mother of Elle,,female,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,,,book2,573.4365073442459,110.94750213623047,
+114,fatherofelle,Father of Elle,,male,BET 1884 AND 1896,BET 1914 AND 1918,,"elle,brotherofelle",,,,motherofelle,,book2,573.4365301132202,56.09705376625061,
+115,pasalt,Pa Salt,"Atlas P,Bo,Mr. Tanit",male,BET 1917 AND 1921,2007,,,,"maia,alcyone,asterope,celeano,taygete,electra,merope",,elle,"marina,claudia,georghoffman,christian,izabela,laurentbrouilly,piphalvorsen,patryciasmith,martha",,143.37941937218255,95.64324753402214,
