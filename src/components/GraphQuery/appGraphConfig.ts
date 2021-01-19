@@ -32,7 +32,7 @@ const appGraphConfig = (width: number, height: number): GraphConfiguration<Custo
     gravity: -50,
     linkLength: 120,
     linkStrength: 2,
-    disableLinkForce: false,
+    disableLinkForce: true,
   },
   node: {
     color: "#d3d3d3",
