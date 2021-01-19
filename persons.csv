@@ -91,7 +91,7 @@ id,personID,name,nickNames,gender,dateOfBirth,dateOfDeath,location,children,pare
 90,camira,Camira,,female,BET 1880 AND 1900,1949,,alkina,,,,,,book4,778,219,
 91,drummondmercer,Drummond Mercer,,male,BET 1883 AND 1887,BET 1950 AND 1987,,stefanmercerjr,,,,,,book4,822,248,
 92,andrewmercer,Andrew Mercer,,male,BET 1883 AND 1887,1912,,charliemercer,,,,,,book4,822,54,
-93,eddiemackenzie,Eddie Mackenzie,,male,1944,,,,,,,,,,,,
+93,eddiemackenzie,Eddie Mackenzie,,male,1944,,,,,,,,,book4,812,54,
 94,ralphmackenzie,Ralph Mackenzie,,male,1906,BET 1949 AND 2006,,,,eddiemackenzie,,,,book4,828,346,
 95,anniemackenzie,Annie Mackenzie,,female,BET 1886 AND 1890,BET 1949 AND 1990,,ralphmackenzie,,,,,,book4,930,374,
 96,marymcbride,Mary McBride,,female,1898,BET 1949 AND 1998,,,,,,,,book4,930,176,
