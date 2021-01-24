@@ -52,8 +52,7 @@ const createStrField = (name, v) => v && `, ${name}: "${v}"`;
 const createField = (name, v) => v && `, ${name}: ${v}`;
 
 const createRelationField = (name, key, val) =>
-  val &&
-  `, ${name}: { ${key}: "${val}" }`;
+  val && `, ${name}: { ${key}: "${val}" }`;
 
 const createRelationsField = (name, key, val) =>
   val &&
@@ -62,6 +61,94 @@ const createRelationsField = (name, key, val) =>
     .map((n) => `{ ${key}: "${n}" }`)
     .join(", ")}]`;
 
+const personsToPersonRdfs = (persons) =>
+  persons.map(
+    (person) => `    _:${person.personID} <Person.name> "${escape(person.name)}" .
+    _:${person.personID} <Person.nickNames> "${escape(person.nickNames)}" .
+    _:${person.personID} <Person.gender> "${escape(person.gender)}" .
+    _:${person.personID} <Person.dateOfBirth> "${escape(person.dateOfBirth)}" .
+    _:${person.personID} <Person.dateOfDeath> "${escape(person.dateOfDeath)}" .
+    _:${person.personID} <Person.cx> "${person.cx ? escape(person.cx) : 0}" .
+    _:${person.personID} <Person.cy> "${person.cy ? escape(person.cy) : 0}" .`
+  );
+
+const personsToCurlStrings = (persons) => {
+  const curlStrings = persons.map((person) => {
+    const mutationStr = `mutation {
+    addPerson(input: [
+        { personID:"${person.personID}"
+        , name: "${escape(person.name)}"
+        ${createNickNamesField(person.nickNames)}
+        ${createStrField("gender", person.gender)}
+        ${createStrField("dateOfBirth", person.dateOfBirth)}
+        ${createStrField("dateOfDeath", person.dateOfDeath)}
+        ${createRelationsField("children", "personID", person.children)}
+        ${createRelationsField(
+          "nonBioChildren",
+          "personID",
+          person.nonBioChildren
+        )}
+        ${createRelationsField("parents", "personID", person.parents)}
+        ${createRelationsField(
+          "nonBioParents",
+          "personID",
+          person.nonBioParents
+        )}
+        ${createRelationsField(
+          "physicalRelation",
+          "personID",
+          person.physicalRelation
+        )}
+        ${createRelationsField(
+          "otherRelation",
+          "personID",
+          person.otherRelation
+        )}
+        ${createRelationField("story", "storyID", person.story)}
+        ${createField("cx", person.cx)}
+        ${createField("cy", person.cy)}
+    }]) {
+        person {
+        personID
+        name
+        nickNames
+        gender
+        dateOfBirth
+        dateOfDeath
+        children {
+            personID
+        }
+        nonBioChildren {
+            personID
+        }
+        parents {
+            personID
+        }
+        nonBioParents {
+            personID
+        }
+        physicalRelation {
+            personID
+        }
+        otherRelation {
+            personID
+        }
+        story {
+            storyID
+        }
+        cx
+        cy
+        }
+    }
+    }`;
+    console.log(mutationStr);
+    return `curl 'http://localhost:8080/graphql' -H 'Content-Type: application/json' --compressed --data-binary '{"query":"${escapeMutationStr(
+      mutationStr
+    )}","variables":null}'`;
+  });
+  return curlStrings;
+};
+
 fs.createReadStream("persons.csv")
   .pipe(csv())
   .on("data", (data) => results.push(data))
@@ -69,63 +156,9 @@ fs.createReadStream("persons.csv")
     console.log(results);
     // TODO write here to "raw" JSON
 
-    const curlStrings = results.map((person) => {
-      const mutationStr = `mutation {
-addPerson(input: [
-    { personID:"${person.personID}"
-    , name: "${escape(person.name)}"
-    ${createNickNamesField(person.nickNames)}
-    ${createStrField("gender", person.gender)}
-    ${createStrField("dateOfBirth", person.dateOfBirth)}
-    ${createStrField("dateOfDeath", person.dateOfDeath)}
-    ${createRelationsField("children", "personID", person.children)}
-    ${createRelationsField("nonBioChildren", "personID", person.nonBioChildren)}
-    ${createRelationsField("parents", "personID", person.parents)}
-    ${createRelationsField("nonBioParents", "personID", person.nonBioParents)}
-    ${createRelationsField("physicalRelation", "personID", person.physicalRelation)}
-    ${createRelationsField("otherRelation", "personID", person.otherRelation)}
-    ${createRelationField("story", "storyID", person.story)}
-    ${createField("cx", person.cx)}
-    ${createField("cy", person.cy)}
-}]) {
-    person {
-    personID
-    name
-    nickNames
-    gender
-    dateOfBirth
-    dateOfDeath
-    children {
-        personID
-    }
-    nonBioChildren {
-        personID
-    }
-    parents {
-        personID
-    }
-    nonBioParents {
-        personID
-    }
-    physicalRelation {
-        personID
-    }
-    otherRelation {
-        personID
-    }
-    story {
-        storyID
-    }
-    cx
-    cy
-    }
-}
-}`;
-      console.log(mutationStr);
-      return `curl 'http://localhost:8080/graphql' -H 'Content-Type: application/json' --compressed --data-binary '{"query":"${escapeMutationStr(
-        mutationStr
-      )}","variables":null}'`;
-    });
+    const rdfString = personsToPersonRdfs(results);
+
+    // const curlStrings = personsToCurlStrings(results);
     // console.log(curlStrings);
 
     try {
@@ -137,11 +170,45 @@ addPerson(input: [
     }
 
     const stream = fs.createWriteStream(OUTPUT_FILE_NAME, { flags: "a" });
-    curlStrings.forEach((str) => {
-      stream.write(str + "\n");
+    // curlStrings.forEach((str) => {
+    //   stream.write(str + "\n");
+    // });
+
+    stream.write(
+      `curl -H "Content-Type: application/rdf" "http://localhost:8080/mutate?commitNow=true" -X POST -d $'
+{
+  set {\n`
+    );
+    rdfString.forEach((str) => {
+      stream.write(str + "\n\n");
     });
+    stream.write(
+      `  }
+}
+'\n`
+    );
+
+    stream.write(`
+    {
+       addPerson(input: [
+         { personID:"tp1", name: "TestPerson1", nonBioParentParent: { personID: "pasalt" } },
+         { personID:"tp2", name: "TestPerson2", nonBioParentParent: { personID: "pasalt" } }
+       ]) {
+         person {
+           personID
+           name
+           nonBioParentParent {
+             personID
+           }
+         }
+       }
+     }    
+`)
+
     stream.write("echo ;");
-    stream.write("echo 🎉 Finished curl scripts with graphql mutate statements");
+    stream.write(
+      "echo 🎉 Finished curl scripts with graphql mutate statements"
+    );
     stream.end();
     console.log(`Wrote ${OUTPUT_FILE_NAME}`);
   });
