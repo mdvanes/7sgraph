@@ -6,8 +6,17 @@
 
 I do not own any rights to these characters or books. For more information about the series of books see [the site by the author, Lucinda Riley](http://lucindariley.co.uk/seven-sisters-series/).
 
+## Lite Mode
+
+When the application is running in Lite Mode, limited features are available.
+
+Lite Mode exists to be able to run without a dynamic back-end. To have a dynamic back-end, I need a public facing host for the Dgraph Docker container, that persists data.
+
+To run in Normal Mode, clone this repo and follow the instructions below to run the application locally. Lite Mode will only be enabled in production builds from `yarn build`, because it will retrieve the endpoint URL from the REACT_APP_GRAPHQL_URL environmental variable.
+
 ## TODO
 
+- Detail view in Lite mode?
 - Fixes for mobile
 - Try out Geo tab in Ratel
 - filter/query by geo
