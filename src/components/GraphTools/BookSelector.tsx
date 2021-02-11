@@ -1,6 +1,16 @@
-import { FormControl, InputLabel, Select, MenuItem, SelectProps } from "@material-ui/core";
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  SelectProps,
+  Tooltip,
+  Typography,
+  Link
+} from "@material-ui/core";
 import { FC } from "react";
 import { GraphSettingsState } from "../../context/reducer";
+import { isLiteMode } from "../GraphQuery/graphClient";
 import useStyles from "./GraphTools.styles";
 
 interface Props {
@@ -10,7 +20,17 @@ interface Props {
 
 const BookSelector: FC<Props> = ({ searchByBook, onChange }) => {
   const classes = useStyles();
-  return (
+  const warning = (
+    <Tooltip
+      title="This feature is disabled because the application is running in Lite Mode.
+  For more information, click to see the documentation on Github."
+    >
+      <Link href="https://github.com/mdvanes/7sgraph#lite-mode">
+        <Typography variant="h4">Lite Mode</Typography>
+      </Link>
+    </Tooltip>
+  );
+  const formControl = (
     <FormControl variant="outlined" classes={{ root: classes.formControlRoot }}>
       <InputLabel id="demo-simple-select-outlined-label">
         Search by book
@@ -36,6 +56,7 @@ const BookSelector: FC<Props> = ({ searchByBook, onChange }) => {
       </Select>
     </FormControl>
   );
+  return isLiteMode ? warning : formControl;
 };
 
 export default BookSelector;
