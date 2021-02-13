@@ -39,7 +39,7 @@ const GraphQuery: FC = () => {
 
   const memoizedInitialize = useCallback(async () => {
     try {
-      const maybePersons = await getMaybePersons(searchByBook);
+      const maybePersons = await getMaybePersons(searchByBook, dispatch);
       const justPersons = maybePersons?.filter(isJustVal) ?? [];
       const [nodes, links] = convertPersonsToGraphData(justPersons);
 
@@ -69,7 +69,7 @@ const GraphQuery: FC = () => {
     } catch (err) {
       console.error(err);
     }
-  }, [searchByBook]);
+  }, [searchByBook, dispatch]);
 
   useEffect(() => {
     memoizedInitialize();

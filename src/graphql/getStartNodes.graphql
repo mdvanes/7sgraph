@@ -1,5 +1,6 @@
 query getStartNodes {
   queryPerson(filter: { name: { allofterms: "Pa Salt" } }) {
+    __typename
     ...PersonFields
     story {
       title

@@ -6,11 +6,11 @@ import {
   SelectProps,
   Tooltip,
   Typography,
-  Link
+  Link,
 } from "@material-ui/core";
 import { FC } from "react";
+import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 import { GraphSettingsState } from "../../context/reducer";
-import { isLiteMode } from "../GraphQuery/graphClient";
 import useStyles from "./GraphTools.styles";
 
 interface Props {
@@ -19,6 +19,9 @@ interface Props {
 }
 
 const BookSelector: FC<Props> = ({ searchByBook, onChange }) => {
+  const {
+    state: { isLiteMode },
+  } = useGraphSettingsContext();
   const classes = useStyles();
   const warning = (
     <Tooltip
