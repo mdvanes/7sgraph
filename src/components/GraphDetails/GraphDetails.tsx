@@ -23,6 +23,8 @@ const GraphDetails: FC = () => {
     GetPersonDetailsByUidQuery["getPerson"] | null
   >(null);
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const memoizedInitialize = useCallback(async () => {
     try {
       const { getPersonDetailsByUid } = getSdk(client);
@@ -33,6 +35,7 @@ const GraphDetails: FC = () => {
     } catch (err) {
       console.error(err);
     }
+    setIsOpen(true);
   }, [uid]);
 
   useEffect(() => {
@@ -40,8 +43,12 @@ const GraphDetails: FC = () => {
   }, [memoizedInitialize]);
 
   const closeCard = () => {
-    setPerson(null);
+    setIsOpen(false);
   };
+
+  if(!isOpen) {
+    return <></>
+  }
 
   if (person) {
     const title = person
