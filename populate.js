@@ -62,9 +62,14 @@ const createRelationsField = (name, key, val) =>
     .join(", ")}]`;
 
 const personsToPersonRdfs = (persons) =>
+  // TODO is personId to personID mapping needed?
+  // TODO nickNames is array
   persons.map(
-    (person) => `    _:${person.personID} <Person.name> "${escape(person.name)}" .
-    _:${person.personID} <Person.nickNames> "${escape(person.nickNames)}" .
+    (person) => `    _:${person.personID} <Person.personID> "${escape(
+      person.personID
+    )}" . 
+    _:${person.personID} <Person.name> "${escape(person.name)}" .
+    _:${person.personID} <Person.nickNames> "${escape(person.nickNames)}" . 
     _:${person.personID} <Person.gender> "${escape(person.gender)}" .
     _:${person.personID} <Person.dateOfBirth> "${escape(person.dateOfBirth)}" .
     _:${person.personID} <Person.dateOfDeath> "${escape(person.dateOfDeath)}" .
@@ -156,9 +161,9 @@ fs.createReadStream("persons.csv")
     console.log(results);
     // TODO write here to "raw" JSON
 
-    const rdfString = personsToPersonRdfs(results);
+    // const rdfString = personsToPersonRdfs(results);
 
-    // const curlStrings = personsToCurlStrings(results);
+    const curlStrings = personsToCurlStrings(results);
     // console.log(curlStrings);
 
     try {
@@ -170,40 +175,34 @@ fs.createReadStream("persons.csv")
     }
 
     const stream = fs.createWriteStream(OUTPUT_FILE_NAME, { flags: "a" });
-    // curlStrings.forEach((str) => {
-    //   stream.write(str + "\n");
-    // });
-
-    stream.write(
-      `curl -H "Content-Type: application/rdf" "http://localhost:8080/mutate?commitNow=true" -X POST -d $'
-{
-  set {\n`
-    );
-    rdfString.forEach((str) => {
-      stream.write(str + "\n\n");
+    curlStrings.forEach((str) => {
+      stream.write(str + "\n");
     });
-    stream.write(
-      `  }
-}
-'\n`
-    );
 
-    stream.write(`
-    {
-       addPerson(input: [
-         { personID:"tp1", name: "TestPerson1", nonBioParentParent: { personID: "pasalt" } },
-         { personID:"tp2", name: "TestPerson2", nonBioParentParent: { personID: "pasalt" } }
-       ]) {
-         person {
-           personID
-           name
-           nonBioParentParent {
-             personID
-           }
-         }
-       }
-     }    
-`)
+//     stream.write(
+//       `curl -H "Content-Type: application/rdf" "http://localhost:8080/mutate?commitNow=true" -X POST -d $'
+// {
+//   set {\n`
+//     );
+//     rdfString.forEach((str) => {
+//       stream.write(str + "\n\n");
+//     });
+//     stream.write(
+//       `  }
+// }
+// '\n`
+//     );
+
+//     stream.write(`curl -H "Content-Type: application/rdf" "http://localhost:8080/mutate?commitNow=true" -X POST -d $'
+// {
+//   set {
+//     _:pasalt <Person.nonBioChildren> _:alcyone .
+//     _:pasalt <Person.nonBioChildren> _:merope .
+//     _:pasalt <Person.story> _:book1 .
+//   }
+// }
+// '
+// `);
 
     stream.write("echo ;");
     stream.write(
