@@ -1,4 +1,5 @@
 fragment PersonWithLinksFields on Person {
+  __typename
   ...PersonFields
   story {
     title

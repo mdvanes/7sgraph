@@ -1,5 +1,6 @@
 query getPersonByUid($uid: String!) {
   getPerson(personID: $uid) {
+    __typename
     ...PersonWithLinksFields
   }
 }
