@@ -1,20 +1,8 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  IconButton,
-  Typography,
-} from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons";
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { useGraphSettingsContext } from "../../context/GraphSettingsContext";
 import { GetPersonDetailsByUidQuery, getSdk } from "../../generated/graphql";
 import client from "../GraphQuery/graphClient";
-import useStyles from "./GraphDetails.styles";
-
-interface Props {
-  uid: string;
-}
+import GraphDetailsCard from "./GraphDetailsCard";
 
 const getGenderIcon = (gender?: string | null) => {
   if (gender === "male") {
@@ -25,21 +13,11 @@ const getGenderIcon = (gender?: string | null) => {
   return "";
 };
 
-const getDodValue = (dod?: string | null) => {
-  if (dod && dod === "1") {
-    return "dead";
-  }
-  if (dod) {
-    return dod;
-  }
-  return "alive";
-};
-
-const GraphDetails: FC<Props> = ({ uid }) => {
-  const classes = useStyles();
+const GraphDetails: FC = () => {
   const {
     state: { detailsFor },
   } = useGraphSettingsContext();
+  const [uid, fallback] = detailsFor;
 
   const [person, setPerson] = useState<
     GetPersonDetailsByUidQuery["getPerson"] | null
@@ -61,51 +39,43 @@ const GraphDetails: FC<Props> = ({ uid }) => {
     memoizedInitialize();
   }, [memoizedInitialize]);
 
-  const title = person ? `${person.name} ${getGenderIcon(person.gender)}` : "";
+  const closeCard = () => {
+    setPerson(null);
+  };
 
-  return person ? (
-    <div className={classes.root}>
-      <Card classes={{ root: classes.cardRoot }}>
-        <CardHeader
-          title={title}
-          action={
-            <IconButton
-              onClick={() => {
-                setPerson(null);
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
-          }
-        />
-        <CardContent>
-          {person.nickNames && person.nickNames.length > 0 && (
-            <Typography variant="body1">
-              Nicknames: <em>{person.nickNames?.join(", ")}</em>
-            </Typography>
-          )}
-          <Typography variant="body1">
-            Main book: <em>{person.story?.title}</em>
-          </Typography>
-          <Typography variant="body1">
-            {person.dateOfBirth && (
-              <>
-                🚼 <em>{person.dateOfBirth}</em>
-              </>
-            )}
-          </Typography>
-          <Typography variant="body1">
-            ✝️ <em>{getDodValue(person.dateOfDeath)}</em>
-          </Typography>
-          <Typography variant="body2" align="center">
-            <em>&lt;{detailsFor}&gt;</em>
-          </Typography>
-        </CardContent>
-      </Card>
-    </div>
-  ) : (
-    <></>
-  );
+  if (person) {
+    const title = person
+      ? `${person.name} ${getGenderIcon(person.gender)}`
+      : "";
+
+    return (
+      <GraphDetailsCard
+        title={title}
+        uid={uid}
+        nickNames={person.nickNames}
+        story={person.story}
+        dateOfBirth={person.dateOfBirth}
+        dateOfDeath={person.dateOfDeath}
+        isFallback={false}
+        close={closeCard}
+      />
+    );
+  }
+
+  if (!person && fallback) {
+    return (
+      <GraphDetailsCard
+        title={fallback.name}
+        uid={uid}
+        dateOfBirth={fallback?.dateOfBirth}
+        dateOfDeath={fallback?.dateOfDeath}
+        isFallback
+        close={closeCard}
+      />
+    );
+  }
+
+  return <></>;
 };
 
 export default GraphDetails;

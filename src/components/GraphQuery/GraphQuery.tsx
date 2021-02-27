@@ -19,7 +19,7 @@ import { useMediaQuery } from "@material-ui/core";
 const GraphQuery: FC = () => {
   const {
     dispatch,
-    state: { searchByBook, detailsFor, timeRange },
+    state: { searchByBook, timeRange },
   } = useGraphSettingsContext();
   const isSmall = useMediaQuery("(max-width:600px)");
   const [graphData, setGraphData] = useState<GraphData<CustomNode, GraphLink>>({
@@ -42,6 +42,7 @@ const GraphQuery: FC = () => {
       const maybePersons = await getMaybePersons(searchByBook, dispatch);
       const justPersons = maybePersons?.filter(isJustVal) ?? [];
       const [nodes, links] = convertPersonsToGraphData(justPersons);
+      // console.log(nodes, links);
 
       const lastNode = nodes[nodes.length - 1];
 
@@ -102,12 +103,15 @@ const GraphQuery: FC = () => {
     });
   }, [timeRange, graphData]);
 
+  // TODO show wiki
+
   const onClickNode = (uid: string, originNode: CustomNode) => {
     // getConnectedToNameDQL(name);
+    // console.log(uid, originNode.x, originNode.y);
 
     dispatch({
       type: SET_DETAILS_FOR,
-      payload: uid,
+      payload: [uid, originNode],
     });
 
     (async () => {
@@ -154,7 +158,7 @@ const GraphQuery: FC = () => {
   return (
     <>
       <GraphTools />
-      <GraphDetails uid={detailsFor} />
+      <GraphDetails />
       {filteredGraphData && filteredGraphData.nodes.length > 0 && (
         <Graph
           id="graph-id" // id is mandatory

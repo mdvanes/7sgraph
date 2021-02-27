@@ -1,3 +1,4 @@
+import { CustomNode } from "../components/GraphQuery/appGraphConfig";
 import {
   SET_BOOK_FILTER,
   SET_DETAILS_FOR,
@@ -8,7 +9,7 @@ import {
 export interface GraphSettingsState {
   isLiteMode: boolean;
   searchByBook: string;
-  detailsFor: string;
+  detailsFor: [string, CustomNode | undefined];
   timeRange: [number, number];
 }
 
@@ -18,13 +19,13 @@ export const TIME_RANGE_MAX = 2008;
 export const initialState: GraphSettingsState = {
   isLiteMode: false,
   searchByBook: "",
-  detailsFor: "",
+  detailsFor: ["", undefined],
   timeRange: [TIME_RANGE_MIN, TIME_RANGE_MAX],
 };
 
 type Action =
   | { type: typeof SET_BOOK_FILTER; payload: string }
-  | { type: typeof SET_DETAILS_FOR; payload: string }
+  | { type: typeof SET_DETAILS_FOR; payload: [string, CustomNode | undefined] }
   | { type: typeof SET_TIME_RANGE; payload: [number, number] }
   | { type: typeof SET_LITE_MODE; payload: boolean };
 
