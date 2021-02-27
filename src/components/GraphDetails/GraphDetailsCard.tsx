@@ -17,6 +17,7 @@ interface CardProps {
   story?: PersonWithLinksFieldsFragment["story"];
   dateOfBirth: PersonWithLinksFieldsFragment["dateOfBirth"];
   dateOfDeath: PersonWithLinksFieldsFragment["dateOfDeath"];
+  wiki?: PersonWithLinksFieldsFragment["wiki"];
   isFallback: boolean;
   close: () => void;
 }
@@ -38,6 +39,7 @@ const GraphDetailsCard: FC<CardProps> = ({
   story,
   dateOfBirth,
   dateOfDeath,
+  wiki,
   isFallback,
   close,
 }) => {
@@ -77,6 +79,12 @@ const GraphDetailsCard: FC<CardProps> = ({
           <Typography variant="body1">
             ✝️ <em>{getDodValue(dateOfDeath)}</em>
           </Typography>
+          {wiki && (
+            <Typography variant="body2">
+              This character is based on a real person.{" "}
+              <a href={wiki}>Read more</a>.
+            </Typography>
+          )}
           <Typography variant="body2" align="center">
             <em>&lt;{uid}&gt;</em>
           </Typography>

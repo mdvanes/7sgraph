@@ -25,11 +25,14 @@ const convertPersonToNode = (originNode?: CustomNode) => ({
   cy,
   dateOfBirth,
   dateOfDeath,
+  wiki,
 }: PersonWithLinksFieldsFragment): CustomNode => {
   const node = {
     id: personID || "INVALID_PERSON_ID",
     name: name || "INVALID_PERSON_NAME",
     color: genderColor(gender),
+    strokeColor: wiki ? "black" : "none",
+    strokeWidth: wiki ? 3 : 1.5,
     dateOfBirth: dateOfBirth || undefined,
     dateOfDeath: dateOfDeath || undefined,
   };
@@ -86,6 +89,11 @@ export const convertPersonsToGraphData = (
   originNode?: CustomNode
 ): [CustomNode[], GraphLink[]] => {
   const justPersons = persons?.filter(isJustVal) ?? [];
+
+  // Fallback for (old) lite mode
+  // if(!justPersons || justPersons.length === 0) {
+  //   return [[], []];
+  // }
 
   const nodes = justPersons.map<CustomNode>(convertPersonToNode(originNode));
 

@@ -112,6 +112,7 @@ const personsToCurlStrings = (persons) => {
         ${createRelationField("story", "storyID", person.story)}
         ${createField("cx", person.cx)}
         ${createField("cy", person.cy)}
+        ${createStrField("wiki", person.wiki)}
     }]) {
         person {
         personID
@@ -143,6 +144,7 @@ const personsToCurlStrings = (persons) => {
         }
         cx
         cy
+        wiki
         }
     }
     }`;

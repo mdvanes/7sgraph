@@ -21,6 +21,7 @@ type Person @auth(
     physicalRelation: [Person] @hasInverse(field: physicalRelation)
     otherRelation: [Person] @hasInverse(field: otherRelation)
     story: Story
+    wiki: String
     cx: Float
     cy: Float
 }

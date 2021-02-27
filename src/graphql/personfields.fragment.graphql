@@ -7,4 +7,5 @@ fragment PersonFields on Person {
   gender
   cx
   cy
+  wiki
 }
