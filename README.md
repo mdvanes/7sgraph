@@ -16,8 +16,7 @@ To run in Normal Mode, clone this repo and follow the instructions below to run 
 
 ## TODO
 
-- Detail view in Lite mode?
-- Fixes for mobile
+- Wiki in detail
 - Try out Geo tab in Ratel
 - filter/query by geo
 - fix should this not for tail too? in convertPersonsToGraphData
