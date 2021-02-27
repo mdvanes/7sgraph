@@ -82,7 +82,10 @@ const GraphDetailsCard: FC<CardProps> = ({
           {wiki && (
             <Typography variant="body2">
               This character is based on a real person.{" "}
-              <a href={wiki}>Read more</a>.
+              <a href={wiki} target="_blank" rel="noreferrer">
+                Read more
+              </a>
+              .
             </Typography>
           )}
           <Typography variant="body2" align="center">

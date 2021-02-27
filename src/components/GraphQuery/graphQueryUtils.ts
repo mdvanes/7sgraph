@@ -26,7 +26,7 @@ export const getMaybePersons = async (searchByBook: string, dispatch: React.Disp
     } else {
       const { queryPerson } = await getStartNodes();
       return queryPerson;
-    }  
+    }
   } catch (err) {
     console.error("DGraph server not available, falling back to Lite Mode: " + err);
     const allJson = await (await fetch("/7sgraph/all.json")).json();
