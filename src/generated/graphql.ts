@@ -41,6 +41,7 @@ export type AddPersonInput = {
   personID: Scalars['String'];
   physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
   story?: Maybe<StoryRef>;
+  wiki?: Maybe<Scalars['String']>;
 };
 
 export type AddPersonPayload = {
@@ -316,6 +317,7 @@ export type Person = {
   physicalRelation?: Maybe<Array<Maybe<Person>>>;
   physicalRelationAggregate?: Maybe<PersonAggregateResult>;
   story?: Maybe<Story>;
+  wiki?: Maybe<Scalars['String']>;
 };
 
 
@@ -422,6 +424,8 @@ export type PersonAggregateResult = {
   nameMin?: Maybe<Scalars['String']>;
   personIDMax?: Maybe<Scalars['String']>;
   personIDMin?: Maybe<Scalars['String']>;
+  wikiMax?: Maybe<Scalars['String']>;
+  wikiMin?: Maybe<Scalars['String']>;
 };
 
 export type PersonFilter = {
@@ -449,7 +453,8 @@ export enum PersonHasFilter {
   Parents = 'parents',
   PersonId = 'personID',
   PhysicalRelation = 'physicalRelation',
-  Story = 'story'
+  Story = 'story',
+  Wiki = 'wiki'
 }
 
 export type PersonOrder = {
@@ -465,7 +470,8 @@ export enum PersonOrderable {
   DateOfDeath = 'dateOfDeath',
   Gender = 'gender',
   Name = 'name',
-  PersonId = 'personID'
+  PersonId = 'personID',
+  Wiki = 'wiki'
 }
 
 export type PersonPatch = {
@@ -484,6 +490,7 @@ export type PersonPatch = {
   parents?: Maybe<Array<Maybe<PersonRef>>>;
   physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
   story?: Maybe<StoryRef>;
+  wiki?: Maybe<Scalars['String']>;
 };
 
 export type PersonRef = {
@@ -503,6 +510,7 @@ export type PersonRef = {
   personID?: Maybe<Scalars['String']>;
   physicalRelation?: Maybe<Array<Maybe<PersonRef>>>;
   story?: Maybe<StoryRef>;
+  wiki?: Maybe<Scalars['String']>;
 };
 
 export type Point = {
@@ -862,7 +870,7 @@ export type PersonWithLinksFieldsFragment = (
 
 export type PersonFieldsFragment = (
   { __typename?: 'Person' }
-  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'dateOfDeath' | 'nickNames' | 'gender' | 'cx' | 'cy'>
+  & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'dateOfDeath' | 'nickNames' | 'gender' | 'cx' | 'cy' | 'wiki'>
 );
 
 export const PersonFieldsFragmentDoc = gql`
@@ -875,6 +883,7 @@ export const PersonFieldsFragmentDoc = gql`
   gender
   cx
   cy
+  wiki
 }
     `;
 export const PersonWithLinksFieldsFragmentDoc = gql`

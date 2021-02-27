@@ -46,8 +46,8 @@ const GraphDetails: FC = () => {
     setIsOpen(false);
   };
 
-  if(!isOpen) {
-    return <></>
+  if (!isOpen) {
+    return <></>;
   }
 
   if (person) {
@@ -63,6 +63,7 @@ const GraphDetails: FC = () => {
         story={person.story}
         dateOfBirth={person.dateOfBirth}
         dateOfDeath={person.dateOfDeath}
+        wiki={person.wiki}
         isFallback={false}
         close={closeCard}
       />
