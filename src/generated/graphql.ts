@@ -777,7 +777,7 @@ export type GetPersonByUidQueryVariables = Exact<{
 export type GetPersonByUidQuery = (
   { __typename?: 'Query' }
   & { getPerson?: Maybe<(
-    { __typename?: 'Person' }
+    { __typename: 'Person' }
     & PersonWithLinksFieldsFragment
   )> }
 );
@@ -806,7 +806,7 @@ export type GetStartNodesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetStartNodesQuery = (
   { __typename?: 'Query' }
   & { queryPerson?: Maybe<Array<Maybe<(
-    { __typename?: 'Person' }
+    { __typename: 'Person' }
     & { story?: Maybe<(
       { __typename?: 'Story' }
       & Pick<Story, 'title'>
@@ -842,7 +842,7 @@ export type GetStoryByIdQuery = (
 );
 
 export type PersonWithLinksFieldsFragment = (
-  { __typename?: 'Person' }
+  { __typename: 'Person' }
   & { story?: Maybe<(
     { __typename?: 'Story' }
     & Pick<Story, 'title'>
@@ -869,12 +869,13 @@ export type PersonWithLinksFieldsFragment = (
 );
 
 export type PersonFieldsFragment = (
-  { __typename?: 'Person' }
+  { __typename: 'Person' }
   & Pick<Person, 'personID' | 'name' | 'dateOfBirth' | 'dateOfDeath' | 'nickNames' | 'gender' | 'cx' | 'cy' | 'wiki'>
 );
 
 export const PersonFieldsFragmentDoc = gql`
     fragment PersonFields on Person {
+  __typename
   personID
   name
   dateOfBirth
@@ -888,6 +889,7 @@ export const PersonFieldsFragmentDoc = gql`
     `;
 export const PersonWithLinksFieldsFragmentDoc = gql`
     fragment PersonWithLinksFields on Person {
+  __typename
   ...PersonFields
   story {
     title
@@ -929,6 +931,7 @@ export const GetPersonByNameDocument = gql`
 export const GetPersonByUidDocument = gql`
     query getPersonByUid($uid: String!) {
   getPerson(personID: $uid) {
+    __typename
     ...PersonWithLinksFields
   }
 }
@@ -947,6 +950,7 @@ export const GetPersonDetailsByUidDocument = gql`
 export const GetStartNodesDocument = gql`
     query getStartNodes {
   queryPerson(filter: {name: {allofterms: "Pa Salt"}}) {
+    __typename
     ...PersonFields
     story {
       title

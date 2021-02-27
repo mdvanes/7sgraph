@@ -1,4 +1,5 @@
 fragment PersonFields on Person {
+  __typename
   personID
   name
   dateOfBirth
