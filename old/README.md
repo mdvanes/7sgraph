@@ -8,6 +8,8 @@ I do not own any rights to these characters or books. For more information about
 
 ## Lite Mode
 
+Also see the branch `full-mode`
+
 When the application is running in Lite Mode, limited features are available.
 
 Lite Mode exists to be able to run without a dynamic back-end. To have a dynamic back-end, I need a public facing host for the Dgraph Docker container, that persists data.
