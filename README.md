@@ -1,5 +1,7 @@
 # 7sgraph
 
+## ⚠️ OUTDATED, see the new graph [here](https://mdworld.nl/cytocom/?gedcomPath=%2Fcytocom%2F7sisters.ged&layout=cola) ([source](https://github.com/mdvanes/cytocom)) ⚠️
+
 > Graph of characters from The Seven Sisters series of books
 
 **Spoiler alert**: this app contains spoilers for The Seven Sisters series of books.
