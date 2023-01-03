@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 
 const StartDialog = () => {
-  const dialogHasBeenSeen = localStorage.getItem("dialogHasBeenSeen") === "true" || false;
+  const dialogHasBeenSeen = localStorage.getItem("dialogHasBeenSeen1") === "true" || false;
   const [open, setOpen] = useState(!dialogHasBeenSeen);
   return (
     <Dialog
@@ -33,7 +33,7 @@ const StartDialog = () => {
       <DialogActions>
         <Button
           onClick={() => {
-            localStorage.setItem("dialogHasBeenSeen", "true");
+            localStorage.setItem("dialogHasBeenSeen1", "true");
             setOpen(false);
           }}
           color="primary"
